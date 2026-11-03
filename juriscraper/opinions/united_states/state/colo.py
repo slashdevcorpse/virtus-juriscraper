@@ -230,12 +230,12 @@ class Site(OpinionSiteLinear):
         instead of the most recent ones
 
         :param dates: start and end date tuple. If not present,
-            scrape last week
+            scrape the last 30 days (weekly releases often miss a 7-day window)
         :return: The dates used for the URL
         """
         if not dates:
             today = datetime.now()
-            dates = (today - timedelta(7), today + timedelta(1))
+            dates = (today - timedelta(days=30), today + timedelta(1))
 
         start = dates[0].strftime("%Y-%m-%d")
         end = dates[1].strftime("%Y-%m-%d")

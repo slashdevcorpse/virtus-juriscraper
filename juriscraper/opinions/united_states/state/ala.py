@@ -21,6 +21,8 @@ from juriscraper.OpinionSiteLinear import OpinionSiteLinear
 class Site(OpinionSiteLinear):
     court_str = "68f021c4-6a44-4735-9a76-5360b2e8af13"
     base_url = "https://publicportal-api.alappeals.gov"
+    # Weekly releases are often order-only; walk back until one has opinions.
+    max_publication_pages = 15
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -34,6 +36,23 @@ class Site(OpinionSiteLinear):
         }
         self.make_backscrape_iterable(kwargs)
 
+    async def _fetch_publication_list(self, page: int, request_dict=None):
+        self.url = f"{self.base_url}/courts/cms/publications"
+        self.request["parameters"]["params"] = {
+            "courtID": self.court_str,
+            "page": page,
+            "size": 1,
+            "sort": "publicationDate,desc",
+        }
+        return await super()._download(request_dict)
+
+    async def _fetch_publication_detail(self, publication_uuid: str, request_dict=None):
+        self.url = (
+            f"{self.base_url}/courts/{self.court_str}/cms/publication/{publication_uuid}"
+        )
+        self.request["parameters"]["params"] = {}
+        return await super()._download(request_dict)
+
     async def _download(self, request_dict=None):
         """Download the publication list and then fetch detailed publication data.
 
@@ -44,17 +63,21 @@ class Site(OpinionSiteLinear):
             self.json = await super()._download(request_dict)
             return
 
-        # First, get the list of publications
-        resp = await super()._download(request_dict)
-
-        # Get the publicationUUID from the initial response
-        releases = resp["_embedded"]["results"]
-        publication_uuid = releases[0].get("publicationUUID")
-
-        # Fetch detailed publication data (no params needed for this endpoint)
-        self.url = f"{self.base_url}/courts/{self.court_str}/cms/publication/{publication_uuid}"
-        self.request["parameters"]["params"] = {}
-        self.json = await super()._download(request_dict)
+        self.cases = []
+        for page in range(self.max_publication_pages):
+            resp = await self._fetch_publication_list(page, request_dict)
+            releases = resp.get("_embedded", {}).get("results") or []
+            if not releases:
+                break
+            publication_uuid = releases[0].get("publicationUUID")
+            if not publication_uuid:
+                continue
+            self.json = await self._fetch_publication_detail(
+                publication_uuid, request_dict
+            )
+            self._process_html()
+            if self.cases:
+                return
 
     @override
     def _process_html(self) -> None:
@@ -123,14 +146,15 @@ class Site(OpinionSiteLinear):
 
     async def _download_backwards(self, d: int):
         """Fetches a page of publications for backscraping."""
-        self.url = f"{self.base_url}/courts/cms/publications"
-        self.request["parameters"]["params"] = {
-            "courtID": self.court_str,
-            "page": d,
-            "size": 1,
-            "sort": "publicationDate,desc",
-        }
-        await self._download()
+        self.cases = []
+        resp = await self._fetch_publication_list(d)
+        releases = resp.get("_embedded", {}).get("results") or []
+        if not releases:
+            return
+        publication_uuid = releases[0].get("publicationUUID")
+        if not publication_uuid:
+            return
+        self.json = await self._fetch_publication_detail(publication_uuid)
         self._process_html()
 
     def make_backscrape_iterable(self, kwargs: dict):

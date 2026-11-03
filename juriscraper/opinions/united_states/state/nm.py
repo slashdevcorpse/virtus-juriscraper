@@ -83,7 +83,7 @@ class Site(OpinionSiteLinear):
     ) -> None:
         """Formats and sets `self.url` with date inputs
 
-        If no start or end dates are given, scrape last 7 days.
+        If no start or end dates are given, scrape the last 30 days.
 
         :param start: start date
         :param end: end date
@@ -92,7 +92,7 @@ class Site(OpinionSiteLinear):
         """
         if not start:
             end = datetime.now() + timedelta(1)
-            start = end - timedelta(7)
+            start = end - timedelta(days=30)
 
         params = {
             "cont": "",
