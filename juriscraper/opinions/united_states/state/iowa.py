@@ -25,19 +25,14 @@ class Site(OpinionSite):
             request_dict = {}
         html = await super()._download(request_dict)
         self.extract_cases(html)
+        # One page per call. The family schedules `next_page_url` as its own discover unit.
+        # Walking Next here retries the whole list when the 30 s crawl delay throttles page 2.
+        self.next_page_url = None
         if self.test_mode_enabled() or self.archive:
             return html
-
-        # Walk over pagination "Next" page(s), if present
-        proceed = True
-        while proceed:
-            next_page_url = self.extract_next_page_url(html)
-            if next_page_url:
-                logger.info(f"Scraping next page: {next_page_url}")
-                html = await self._get_html_tree_by_url(next_page_url)
-                self.extract_cases(html)
-            else:
-                proceed = False
+        next_page_url = self.extract_next_page_url(html)
+        self.next_page_url = next_page_url or None
+        return html
 
     def _get_case_names(self):
         return [case["name"] for case in self.cases]
