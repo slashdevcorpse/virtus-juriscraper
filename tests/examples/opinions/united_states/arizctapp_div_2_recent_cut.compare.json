@@ -1,10 +1,13 @@
 [
   {
-    "case_dates": "10/26/2026",
+    "case_dates": "2026-10-26",
     "case_names": "State of Arizona v. Terry L. McCutcheon",
-    "docket_numbers": "2 CA-CR 2026-0088-PR",
     "download_urls": "https://www.appeals2.az.gov/serveFile.php?type=DE&file=CR20260088Opinion.pdf",
     "precedential_statuses": "Published",
-    "summaries": "Sample summary for the recorded cut."
+    "blocked_statuses": false,
+    "date_filed_is_approximate": false,
+    "docket_numbers": "2 CA-CR 2026-0088-PR",
+    "summaries": "Did the trial court err in denying post-conviction relief when the defendant received enhanced sentences because he committed offenses while on parole but the offense underlying that parole was later expunged pursuant to A.R.S. \u00a7 36-2862?",
+    "case_name_shorts": ""
   }
 ]

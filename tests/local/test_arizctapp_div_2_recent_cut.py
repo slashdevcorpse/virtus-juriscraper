@@ -1,7 +1,6 @@
 """Recorded cut of the 2026 RecentOpinionsHTML.php card layout (Division 2).
 
-Recorded 2026-11-03 from https://www.appeals2.az.gov/RecentOpinionsHTML.php
-(one criminal block; the legacy .cfm URL 301s here).
+Provenance: tests/examples/opinions/united_states/arizctapp_div_2_recent_cut.RECORDED.md
 """
 
 from pathlib import Path
