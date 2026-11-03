@@ -89,6 +89,8 @@ class Site(OpinionSiteLinear):
             "endDate": end_date.strftime("%Y-%m-%d"),
             "court": self.court_param,
             "page": page,
+            # Elm sends pageSize. Without it GetOpinions answers 404.
+            "pageSize": 10,
         }
         return f"{self.opinions_url}?{urlencode(params)}"
 
