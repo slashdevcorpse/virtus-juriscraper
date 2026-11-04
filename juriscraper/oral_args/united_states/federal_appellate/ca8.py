@@ -17,7 +17,7 @@ class Site(OralArgumentSite):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.court_id = self.__module__
-        self.url = "http://media-oa.ca8.uscourts.gov/circ8rss.xml"
+        self.url = "https://media-oa.ca8.uscourts.gov/circ8rss.xml"
 
     async def _download(self, request_dict=None):
         """Go through the items and filter out ones that aren't complete."""

@@ -13,10 +13,13 @@ class Site(OralArgumentSite):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.court_id = self.__module__
-        self.url = "http://www.ca4.uscourts.gov/oral-argument/listen-to-oral-arguments"
+        self.url = "https://www.ca4.uscourts.gov/oral-argument/listen-to-oral-arguments"
 
     def _get_download_urls(self):
-        return list(self.html.xpath("//tr/td[2]//a/@href"))
+        return [
+            href.replace("http://", "https://", 1)
+            for href in self.html.xpath("//tr/td[2]//a/@href")
+        ]
 
     def _get_case_names(self):
         return self.text_from_cell(3)
