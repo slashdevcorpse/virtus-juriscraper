@@ -1,20 +1,20 @@
 [
   {
-    "case_names": "In the Interest of F. E. C., a Child v. the State of Texas",
-    "nature_of_suit": "Suit affecting parent child relationship",
+    "case_names": "Philip J. Emerson, Jr. v. Holly Lake Ranch Association, Inc.",
+    "nature_of_suit": "Miscellaneous/other civil",
     "sub_opinions": [
       {
-        "download_urls": "https://search.txcourts.gov/SearchMedia.aspx?MediaVersionID=8448992e-e1ac-4405-b733-766b6b280058&coa=coa12&DT=Opinion&MediaID=ef354059-d6e2-48d4-8508-48bab0fad969",
+        "download_urls": "https://search.txcourts.gov/SearchMedia.aspx?MediaVersionID=b5fabdb6-95cd-49ea-8734-50d94f9addc0&coa=coa12&DT=Opinion&MediaID=c312e1a3-ac34-4947-b932-f96551c094b0",
         "types": "020lead"
       }
     ],
-    "dispositions": "Dismissed",
-    "lower_courts": "County Court at Law",
-    "lower_court_judges": "Honorable John A. Sinz",
-    "lower_court_numbers": "C1934782",
-    "court_reporter": "Leah Hale",
-    "case_dates": "2024-02-22",
-    "docket_numbers": "12-23-00146-CV",
+    "dispositions": "Affirmed",
+    "lower_courts": "402nd District Court",
+    "lower_court_judges": "Honorable J. Brad McCampbell",
+    "lower_court_numbers": "2020-059",
+    "court_reporter": "Jana Rushing",
+    "case_dates": "2026-10-14",
+    "docket_numbers": "12-26-00011-CV",
     "judges": "",
     "case_name_shorts": "",
     "date_filed_is_approximate": false,
@@ -22,21 +22,21 @@
     "precedential_statuses": "Published"
   },
   {
-    "case_names": "Jeremy Christian Moffitt v. the State of Texas",
-    "nature_of_suit": "Evading Arrest",
+    "case_names": "Oncor Electric Delivery Company NTU, LLC v. Smith County Tax Assessor-Collector, Smith County, Chapel Hill ISD, Tyler ISD, Winona ISD, City of Lindale, City of Tyler, Smith County ESD 2, Arp ISD, City of Whitehouse, East Texas Municipal Utility District Number 1, Bullard ISD, Troup ISD, Whitehouse, ISD, City of Bullard, City of Troup, Smith County ESD1 and Tyler Jr. College District",
+    "nature_of_suit": "Miscellaneous/other civil",
     "sub_opinions": [
       {
-        "download_urls": "https://search.txcourts.gov/SearchMedia.aspx?MediaVersionID=36e830b3-837d-4eca-b6df-dbc65aede36f&coa=coa12&DT=Opinion&MediaID=84c9c02b-d4e4-47bd-a0bf-682e10cc82b2",
+        "download_urls": "https://search.txcourts.gov/SearchMedia.aspx?MediaVersionID=6e671b03-f9c8-438c-9a8e-45965a77f2af&coa=coa12&DT=Opinion&MediaID=6f7b814a-3462-4c2c-8a8c-817e28776390",
         "types": "020lead"
       }
     ],
-    "dispositions": "",
+    "dispositions": "Reversed and Remanded",
     "lower_courts": "114th District Court",
     "lower_court_judges": "Honorable Austin R. Jackson",
-    "lower_court_numbers": "114-0071-21",
-    "court_reporter": "Shawna Gauntt-Hicks",
-    "case_dates": "2024-02-14",
-    "docket_numbers": "12-23-00110-CR",
+    "lower_court_numbers": "24-3461-B",
+    "court_reporter": "Linda J. Webster",
+    "case_dates": "2026-10-14",
+    "docket_numbers": "12-25-00282-CV",
     "judges": "",
     "case_name_shorts": "",
     "date_filed_is_approximate": false,

@@ -1,20 +1,20 @@
 [
   {
-    "case_names": "Vanessa Treviso v. Discover Bank",
+    "case_names": "Cori Phillips v. Tides at Highland Meadows",
     "nature_of_suit": "Contract",
     "sub_opinions": [
       {
-        "download_urls": "https://search.txcourts.gov/SearchMedia.aspx?MediaVersionID=2b84eefb-9432-4bfd-acc0-4b41c7beebda&coa=coa05&DT=Opinion&MediaID=bac41586-2d8b-45e0-b1d0-185b08e2aa28",
+        "download_urls": "https://search.txcourts.gov/SearchMedia.aspx?MediaVersionID=deb9fa49-10a5-49d9-9665-03825a100e45&coa=coa05&DT=Opinion&MediaID=dd251caf-2188-44b8-9d10-a960c7e9150b",
         "types": "020lead"
       }
     ],
     "dispositions": "Affirmed",
-    "lower_courts": "134th Judicial District Court",
-    "lower_court_judges": "Honorable Dale B. Tillery",
-    "lower_court_numbers": "DC-20-17584",
-    "court_reporter": "Tina Thompson",
-    "case_dates": "2024-02-28",
-    "docket_numbers": "05-22-00834-CV",
+    "lower_courts": "County Court at Law No. 5",
+    "lower_court_judges": "Honorable Nicole Taylor",
+    "lower_court_numbers": "CC-24-05442-E",
+    "court_reporter": "Sharyl Zeno",
+    "case_dates": "2026-08-13",
+    "docket_numbers": "05-25-00037-CV",
     "judges": "",
     "case_name_shorts": "",
     "date_filed_is_approximate": false,
@@ -22,21 +22,21 @@
     "precedential_statuses": "Published"
   },
   {
-    "case_names": "In Re: Philip Floyd v. the State of Texas",
-    "nature_of_suit": "Mandamus",
+    "case_names": "Aaron Nilsson v. Dial Lubricants, Inc.",
+    "nature_of_suit": "Contract",
     "sub_opinions": [
       {
-        "download_urls": "https://search.txcourts.gov/SearchMedia.aspx?MediaVersionID=603f8742-8f0c-4801-8013-32399c65e27f&coa=coa05&DT=Opinion&MediaID=0bc17a91-d8f1-4ec1-b3ec-128faf7fc889",
+        "download_urls": "https://search.txcourts.gov/SearchMedia.aspx?MediaVersionID=97e26991-a605-45e2-b011-e8b0c39b42dc&coa=coa05&DT=Opinion&MediaID=161ffb89-77b7-4657-a613-5b732a7f248e",
         "types": "020lead"
       }
     ],
-    "dispositions": "Motion or Writ Denied",
-    "lower_courts": "471st Judicial District Court",
-    "lower_court_judges": "Honorable Andrea K. Bouressa",
-    "lower_court_numbers": "471-02423-2021",
-    "court_reporter": "Denise Carrillo",
-    "case_dates": "2024-02-27",
-    "docket_numbers": "05-24-00192-CV",
+    "dispositions": "Affirmed",
+    "lower_courts": "134th Judicial District Court",
+    "lower_court_judges": "Honorable Dale B. Tillery",
+    "lower_court_numbers": "DC-22-17078",
+    "court_reporter": "Tina Thompson",
+    "case_dates": "2026-08-13",
+    "docket_numbers": "05-25-00503-CV",
     "judges": "",
     "case_name_shorts": "",
     "date_filed_is_approximate": false,

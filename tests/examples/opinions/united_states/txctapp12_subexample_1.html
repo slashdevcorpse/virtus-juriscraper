@@ -1,206 +1,578 @@
-<html><head><title>
+
+
+<!DOCTYPE html />
+<html lang="en">
+<head id="ctl00_Head1"><meta charset="utf-8" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><title>
 	Case Detail
-</title>
-    <header>
-        </header>
-        </head><body><div class="container-fluid" id="content">
+</title><meta name="description" /><meta name="viewport" content="width=device-width, initial-scale=1" /><link rel="shortcut icon" href="/ico/favicon.ico" /><link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" />
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+
+    <link href="css/bootstrap.css" rel="stylesheet" /><link href="css/bootstrap-responsive.css" rel="stylesheet" />
+    <script src="../scripts/bootstrap.min.js"></script>
+
+    <link href="css/searchoca.css" rel="stylesheet" /><link href="/bundles/sitecss.css?v=lYifLenTvIvu0It2jRfwX9GVJY2dFOUn1xlTpgPmwas1" rel="stylesheet"/>
+<script src="/bundles/sitescripts.js?v=vRHg8M97TWK3ybrYtO1RwDl29d8uY6Ijx8steLQb3BI1"></script>
+
+
+    <script language="javascript" type="text/javascript">
+        function loadXMLDoc(url) {
+            // window.clipboardData.setData("text", url);
+            // alert(url);
+            if (window.clipboardData) {
+                window.clipboardData.setData('text', url);
+                alert('The text is copied to your clipboard...' + url);
+            }
+            else {
+                var clipboarddiv = document.getElementById('divclipboardswf');
+                if (clipboarddiv == null) {
+                    clipboarddiv = document.createElement('div');
+                    clipboarddiv.setAttribute("name", "divclipboardswf");
+                    clipboarddiv.setAttribute("id", "divclipboardswf");
+                    document.body.appendChild(clipboarddiv);
+                }
+                clipboarddiv.innerHTML = '<embed src="clipboard.swf" FlashVars="clipboard=' +
+  encodeURIComponent(url) + '" width="0" height="0" type="application/x-shockwave-flash"></embed>';
+                copyIntoClipboard(url);
+                alert('Clip board copy did not work in none IE browser, select link and right click to copy link...' + url);
+            }
+            return false;
+        }
+        function copyIntoClipboard(text) {
+
+            var flashId = 'flashId-HKxmj5';
+
+            /* Replace this with your clipboard.swf location */
+            var clipboardSWF = 'http://appengine.bravo9.com/copy-into-clipboard/clipboard.swf';
+
+            if (!document.getElementById(flashId)) {
+                var div = document.createElement('div');
+                div.id = flashId;
+                document.body.appendChild(div);
+            }
+            document.getElementById(flashId).innerHTML = '';
+            var content = '<embed src="' +
+        clipboardSWF +
+        '" FlashVars="clipboard=' + encodeURIComponent(text) +
+        '" width="0" height="0" type="application/x-shockwave-flash"></embed>';
+            document.getElementById(flashId).innerHTML = content;
+        }
+    </script>
+
+    <!-- script src="scripts/search.js"></script -->
+    <!-- this js section for managing window resizing -->
+
+    <script type="text/javascript" src="scripts/hideheader.js"></script>
+
+    <script type="text/javascript">
+        var baseUrl = '/';
+
+        function InitializeWindowSizeSettings() {
+            if (document.documentElement.clientWidth < 480) {
+                HideGridColumns();
+            }
+            else {
+                ShowGridColumns();
+           }
+        }
+
+        var count = 0;
+
+        $(document).ready(function () {
+            InitializeWindowSizeSettings();
+            window.onresize = (function () {
+                InitializeWindowSizeSettings();
+                InitializeWindowSettings();
+            });
+
+        });
+
+    </script>
+    <script type="text/javascript">
+
+        var gridEvent;
+        var gridBrief;
+
+        function GetEventObject(sender, eventArgs) {
+            gridEvent = sender;
+        }
+        function GetBriefObject(sender, eventArgs) {
+            gridBrief = sender;
+        }
+
+        function HideGridColumns() {
+
+            if (gridEvent != null) {
+                ///gridEvent.get_masterTableView().hideColumn(1);
+                gridEvent.get_masterTableView().hideColumn(2);
+                gridEvent.get_masterTableView().hideColumn(3);
+                //gridEvent.get_masterTableView().hideColumn(4);
+                //gridEvent.get_masterTableView().hideColumn(5);
+                //gridEvent.get_masterTableView().hideColumn(6);
+            }
+
+            if (gridBrief != null) {
+                ///gridBrief.get_masterTableView().hideColumn(1);
+                gridBrief.get_masterTableView().hideColumn(2);
+                gridBrief.get_masterTableView().hideColumn(3);
+                //gridBrief.get_masterTableView().hideColumn(4);
+                //gridBrief.get_masterTableView().hideColumn(5);
+                //gridBrief.get_masterTableView().hideColumn(6);
+            }
+
+            return false;
+        }
+
+        function ShowGridColumns()
+        {
+            if (gridEvent != null) {
+                //gridEvent.get_masterTableView().showColumn(1);
+                gridEvent.get_masterTableView().showColumn(2);
+                gridEvent.get_masterTableView().showColumn(3);
+                //gridEvent.get_masterTableView().showColumn(4);
+                //gridEvent.get_masterTableView().showColumn(5);
+                //gridEvent.get_masterTableView().showColumn(6);
+            }
+
+            if (gridBrief != null) {
+                ///gridBrief.get_masterTableView().hideColumn(1);
+                gridBrief.get_masterTableView().showColumn(2);
+                gridBrief.get_masterTableView().showColumn(3);
+                //gridBrief.get_masterTableView().hideColumn(4);
+                //gridBrief.get_masterTableView().hideColumn(5);
+                //gridBrief.get_masterTableView().hideColumn(6);
+            }
+            return false;
+        }
+
+    </script>
+
+    <style type="text/css">
+        .RadGrid_WebBlue .rgRow a:visited, .RadGrid_WebBlue .rgAltRow a:visited, .RadGrid_WebBlue .rgEditRow a:visited, .RadGrid_WebBlue .rgFooter a:visited, .RadGrid_WebBlue .rgEditForm a:visited {
+            color: red;
+        }
+    </style>
+
+    <style type="text/css">
+        .footer dd {
+            color: #96B7D4;
+            font-weight: 400;
+        }
+
+        .btn-primary {
+            height: 30px;
+        }
+
+        .panel-phone ul.nav-list {
+            font-size: 1em !important;
+        }
+    </style>
+
+
+<link href="/WebResource.axd?d=VTVkP81VnFLpPCHJQttOwJ0DcQhxLISyNdO1ixcHjDtqBXWKldDyAvmessdadE1CU75CIihtyPM9OSdky5L94y6N7w2k3yCV6hANLgXc1ks2pclr7PZRZX2Ytyzkv643quxlxVyFAZJyPtXtJIKkmg2&amp;t=637269762200000000" type="text/css" rel="stylesheet" class="Telerik_stylesheet" /><link href="/WebResource.axd?d=hcJkVhMhJg3rsvrFfYe5xd-Wir1mGQS3DqgddCv7FO13yA5mXvjmI4KHa6Qqb9GYwL9Wh70UvH-vu6UoJBpArq4Ahp8q0eVojq679lhXAS1Y8ZyGEOXMRGrRiR2dfZqSYm96lyEipmLCtBmAqUYsckS5SbYkJ5xzwuHR2te_Bjo1&amp;t=637269762200000000" type="text/css" rel="stylesheet" class="Telerik_stylesheet" /></head>
+<body>
+    <!--[if lt IE 7]>
+			<p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+    <![endif]-->
+    <header id="top-header" class="header-main no-print">
+        <div id="mainnav" class="mainnav">
+            <div class="container-fluid">
+                <div class="row-fluid">
+                    <div class="brand span6">
+                        <a class="brand" href="https://www.txcourts.gov/">
+                            <div class="brand-block">Texas Judicial</div>
+                            <p class="brandp">Branch</p>
+                        </a>
+                    </div>
+                    <div class="span3 text-right">
+                        <ul class="inline">
+                            <li>
+                                <a href="#MainContent"><span class="sr-only">Skip to main content</span></a>
+                            </li>
+                        </ul>
+                    </div>
+                    <nav class="span3">
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- top nav -->
+    <nav class="navbar tcomenu no-print">
+        <div class="navbar-inner">
+            <div class="container-fluid">
+                <button type="button" class="btn btn-navbar btn-small" data-toggle="collapse" data-target="#nav1">Menu</button>
+                <div class="nav-collapse collapse" id="nav1">
+                    <ul class="nav">
+  <li class="menuborder active"><a href="http://www.txcourts.gov/">Home</a></li>
+  <li class="menuborder dropdown"><a data-toggle="dropdown" class="dropdown-toggle" href="#">Courts<span class="sr-only">Click to expand submenu</span><b class="caret"></b></a><ul class="dropdown-menu">
+      <li>
+        <div class="tcomenu-content">
+          <ul class="span3 unstyled">
+            <li><a href="http://www.txcourts.gov/about-texas-courts/" target="_self">About Texas Courts</a></li>
+            <li><a href="http://www.txcourts.gov/supreme/" target="_self">Supreme Court</a></li>
+            <li><a href="http://www.txcourts.gov/cca/" target="_self">Court of Criminal Appeals</a></li>
+            <li><a href="http://www.txcourts.gov/1stcoa/" target="_self">1<sup>st</sup> Court of Appeals</a></li>
+            <li><a href="http://www.txcourts.gov/2ndcoa/" target="_self">2<sup>nd</sup> Court of Appeals</a></li>
+            <li><a href="http://www.txcourts.gov/3rdcoa/" target="_self">3<sup>rd</sup> Court of Appeals</a></li>
+            <li><a href="http://www.txcourts.gov/4thcoa/" target="_self">4<sup>th</sup> Court of Appeals</a></li>
+            <li><a href="http://www.txcourts.gov/5thcoa/" target="_self">5<sup>th</sup> Court of Appeals</a></li>
+            <li><a href="http://www.txcourts.gov/6thcoa/" target="_self">6<sup>th</sup> Court of Appeals</a></li>
+            <li><a href="http://www.txcourts.gov/7thcoa/" target="_self">7<sup>th</sup> Court of Appeals</a></li></ul><ul class=" span3 unstyled "><li><a href="http://www.txcourts.gov/8thcoa/" target="_self">8<sup>th</sup> Court of Appeals</a></li>
+            <li><a href="http://www.txcourts.gov/9thcoa/" target="_self">9<sup>th</sup> Court of Appeals</a></li>
+            <li><a href="http://www.txcourts.gov/10thcoa/" target="_self">10<sup>th</sup> Court of Appeals</a></li>
+            <li><a href="http://www.txcourts.gov/11thcoa/" target="_self">11<sup>th</sup> Court of Appeals</a></li>
+            <li><a href="http://www.txcourts.gov/12thcoa/" target="_self">12<sup>th</sup> Court of Appeals</a></li>
+            <li><a href="http://www.txcourts.gov/13thcoa/" target="_self">13<sup>th</sup> Court of Appeals</a></li>
+            <li><a href="http://www.txcourts.gov/14thcoa/" target="_self">14<sup>th</sup> Court of Appeals</a></li>
+            <li><a href="http://www.txcourts.gov/15thcoa/" target="_self">15<sup>th</sup> Court of Appeals</a></li>
+            <li><a href="http://www.txcourts.gov/courts/non-appellate-courts/multi-district-litigation-panel/" target="_self">Multi-District Litigation Panel</a></li>
+            <li><a href="http://www.txcourts.gov/courts/non-appellate-courts/specialty-courts/" target="_self">Specialty Courts</a></li>
+            <li><a href="http://www.txcourts.gov/courts/non-appellate-courts/trial-courts/" target="_self">Trial Courts</a></li>
+          </ul>
+        </div>
+      </li>
+    </ul>
+  </li>
+  <li class="menuborder dropdown"><a data-toggle="dropdown" class="dropdown-toggle" href="#">Rules &amp; Forms<span class="sr-only">Click to expand submenu</span><b class="caret"></b></a><ul class="dropdown-menu">
+      <li><a href="http://www.txcourts.gov/rules-forms/forms/" target="_self">Forms</a></li>
+      <li><a href="http://www.txcourts.gov/rules-forms/rules-advisories/" target="_self">Rules Advisories</a></li>
+      <li><a href="http://www.txcourts.gov/rules-forms/rules-standards/" target="_self">Rules & Standards</a></li>
+    </ul>
+  </li>
+  <li class="menuborder dropdown"><a data-toggle="dropdown" class="dropdown-toggle" href="#">Organizations<span class="sr-only">Click to expand submenu</span><b class="caret"></b></a><ul class="dropdown-menu">
+      <li>
+        <div class="tcomenu-content">
+          <ul class="unstyled border-rt pull-left">
+            <li class="header">Policy &amp; Funding</li>
+            <li><a href="http://www.txcourts.gov/organizations/policy-funding/administrative-judicial-regions/" target="_self">Administrative Judicial Regions</a></li>
+            <li><a href="http://texaschildrenscommission.gov/" target="_blank">Children's Commission</a></li>
+            <li><a href="http://www.txcourts.gov/organizations/policy-funding/criminal-justice-integrity-unit/" target="_self">Criminal Justice Integrity Unit</a></li>
+            <li><a href="http://www.txcourts.gov/jbcc/" target="_self">Judicial Branch Certification Commission</a></li>
+            <li><a href="http://www.txcourts.gov/jcit/" target="_self">Judicial  Committee on Information Technology</a></li>
+            <li><a href="http://www.txcourts.gov/jcc/" target="_self">Judicial Compensation Commission</a></li>
+            <li><a href="http://www.txcourts.gov/scac/" target="_self">Supreme Court Advisory Committee</a></li>
+            <li><a href="http://www.txcourts.gov/organizations/policy-funding/task-force-on-judicial-emergency-preparedness/" target="_self">Task Force on Judicial Emergency Preparedness</a></li>
+            <li><a href="http://www.texasatj.org/" target="_blank">Texas Access to Justice Commission</a></li>
+            <li><a href="http://www.teajf.org/index.aspx" target="_blank">Texas Access to Justice Foundation</a></li>
+            <li><a href="http://www.txcourts.gov/organizations/policy-funding/texas-commission-to-expand-civil-legal-services/" target="_self">Texas Commission to Expand Civil Legal Services</a></li>
+            <li><a href="http://www.tidc.texas.gov" target="_blank">Texas Indigent Defense Commission</a></li>
+            <li><a href="http://www.txcourts.gov/tjc/" target="_self">Texas Judicial Council</a></li>
+            <li><a href="http://www.txcourts.gov/organizations/policy-funding/timothy-cole-exoneration-review-commission/" target="_self">Timothy Cole Exoneration Review Commission</a></li>
+          </ul>
+          <ul class="unstyled pull-left">
+            <li class="header">Agencies</li>
+            <li><a href="http://www.ocfw.texas.gov/" target="_blank">Office of Capital and Forensic Writs</a></li>
+            <li><a href="http://www.txcourts.gov/oca/" target="_self">Office of Court Administration</a></li>
+            <li><a href="http://www.scjc.texas.gov/" target="_blank">State Commission on Judicial Conduct</a></li>
+            <li><a href="http://www.sll.texas.gov/" target="_blank">State Law Library</a></li>
+            <li><a href="http://www.spa.texas.gov/" target="_blank">State Prosecuting Attorney</a></li>
+          </ul>
+          <ul class="unstyled border-lt pull-left">
+            <li class="header">Bar &amp; Education</li>
+            <li><a href="http://www.ble.state.tx.us/ " target="_blank">Board of Law Examiners</a></li>
+            <li><a href="http://www.txcourts.gov/organizations/bar-education/judicial-education/" target="_self">Judicial Education</a></li>
+            <li><a href="http://www.texasbar.com/" target="_blank">State Bar of Texas</a></li>
+            <li><a href="http://www.tbls.org/Default.aspx " target="_blank">Texas Board of Legal Specialization</a></li>
+            <li><a href="http://www.legalethicstexas.com/Home.aspx " target="_blank">Texas Center for Legal Ethics</a></li>
+          </ul>
+        </div>
+      </li>
+    </ul>
+  </li>
+  <li class="menuborder dropdown"><a data-toggle="dropdown" class="dropdown-toggle" href="#">Publications &amp; Training<span class="sr-only">Click to expand submenu</span><b class="caret"></b></a><ul class="dropdown-menu">
+      <li><a href="http://www.txcourts.gov/publications-training/judicial-ethics-bench-books/" target="_self">Judicial Ethics & Bench Books</a></li>
+      <li><a href="http://www.txcourts.gov/publications-training/legislative-information/" target="_self">Legislative Information</a></li>
+      <li><a href="http://www.txcourts.gov/publications-training/publications/" target="_self">Publications</a></li>
+      <li><a href="http://www.txcourts.gov/publications-training/training-materials/" target="_self">Training Materials</a></li>
+    </ul>
+  </li>
+  <li class="menuborder dropdown"><a data-toggle="dropdown" class="dropdown-toggle" href="#">Programs &amp; Services<span class="sr-only">Click to expand submenu</span><b class="caret"></b></a><ul class="dropdown-menu">
+      <li><a href="http://www.txcourts.gov/programs-services/certification-registration-licensing/" target="_self">Certification, Registration & Licensing</a></li>
+      <li><a href="http://www.txcourts.gov/cip/" target="_self">Collection Improvement Program</a></li>
+      <li><a href="http://www.txcourts.gov/ccs/" target="_self">Court Consultant Services</a></li>
+      <li><a href="http://www.txcourts.gov/dvrp/" target="_self">Domestic Violence Resource Program</a></li>
+      <li><a href="http://www.txcourts.gov/programs-services/electronic-filing/" target="_self">Electronic Filing</a></li>
+      <li><a href="http://www.txcourts.gov/programs-services/guardianship-compliance-project/" target="_self">Guardianship Compliance Project</a></li>
+      <li><a href="http://www.tidc.texas.gov/" target="_blank">Indigent Defense</a></li>
+      <li><a href="http://www.txcourts.gov/programs-services/interpretation-translation/" target="_self">Interpretation & Translation</a></li>
+      <li><a href="http://www.txcourts.gov/programs-services/legal-aid/" target="_self">Legal Aid</a></li>
+      <li><a href="http://www.txcourts.gov/programs-services/self-help/" target="_self">Self-Help</a></li>
+      <li><a href="http://www.txcourts.gov/programs-services/statewide-ecitation-system/" target="_self">Statewide eCitation System</a></li>
+    </ul>
+  </li>
+  <li class="menuborder dropdown"><a data-toggle="dropdown" class="dropdown-toggle" href="#">Judicial Data<span class="sr-only">Click to expand submenu</span><b class="caret"></b></a><ul class="dropdown-menu">
+      <li><a href="http://card.txcourts.gov/" target="_blank">Court Activity Database</a></li>
+      <li><a href="http://www.txcourts.gov/judicial-directory/" target="_self">Judicial Directory</a></li>
+      <li><a href="http://www.txcourts.gov/open-records-policy/" target="_self">Open Records Policy</a></li>
+      <li><a href="http://www.txcourts.gov/reporting-to-oca/" target="_self">Reporting to OCA</a></li>
+      <li><a href="http://www.txcourts.gov/statistics/" target="_self">Statistics & Other Data</a></li>
+      <li><a href="http://www.txcourts.gov/judicial-data/vexatious-litigants/" target="_self">Vexatious Litigants</a></li>
+    </ul>
+  </li>
+  <li class="menuborder"><a href="http://www.efiletexas.gov/" target="_blank">eFile Texas</a></li>
+  <li class="menuborder"><a href="http://www.txcourts.gov/media/" target="_self">Media</a></li>
+</ul>
+                </div>
+                <!--/.nav-collapse -->
+            </div>
+        </div>
+    </nav>
+    <!-- end top nav -->
+    <!-- side nav -->
+    <div class="container-fluid" id="content">
         <div class="row-fluid tcopage-header">
             <div class="span4 no-print">
-                <h1>
+                <h1 id="pageName">
                     Twelfth Court of Appeals
                 </h1>
             </div>
             <div class="span4 search no-print">
             </div>
             <div class="span4 search no-print">
+                <form class="form-inline pull-right" method="get" action="https://www.txcourts.gov/search-result-page.aspx">
                     <div class="input-append input-push-top no-print">
-                        <label>
-                            <span>Site Search</span></label>
-                            <i></i>
+                        <label for="searchInput">
+                            <span class="sr-only">Site Search</span></label>
+                        <input class="span10" id="searchInput" name="q" placeholder="Site Search" type="text"
+                            required="required" />
+                        <button type="submit" class="btn btn-primary" title="Search">
+                            <i class="fa fa-search"></i>
+                        </button>
                     </div>
+                </form>
             </div>
         </div>
+
         <div class="row-fluid no-print">
             <div class="span6 pull-left">
-                    <ul>
-                        <li><a href="https://www.txcourts.gov/">Home</a><span>/</span></li>
-                        <li>Courts<span>/</span></li>
-                        <li><a href="https://www.txcourts.gov//12thcoa.aspx">Twelfth Court of Appeals</a></li>
+                <nav class="pull-left">
+                    <ul class="breadcrumb breadcrumbsBackColor">
+                        <li><a href="https://www.txcourts.gov/">Home</a><span class="divider">/</span></li>
+                        <li>Courts<span class="divider">/</span></li>
+                        <li class="active"><a href="https://www.txcourts.gov//12thcoa.aspx">Twelfth Court of Appeals</a></li>
                     </ul>
+                </nav>
             </div>
             <div class="span6">
             </div>
         </div>
+
+        
+
         <div class="row-fluid">
+            <!--Start:main page content-->
             <div class="span2 no-print">
-                <div class="panel-heading-no-collapse">Case Information<i></i></div>
-  <div class="panel-heading-no-collapse">
-                        Administration
-                            <i></i>
+                <nav class="panel panel-phone no-print"><div class="panel-heading-no-collapse">Case Information<i class="icon-caret-right pull-right"></i></div>
+  <ul class="nav nav-list">
+    <li><a href="https://search.txcourts.gov/CaseSearch.aspx?coa=coa12&amp;s=c">Case Search</a></li>
+    <li><a href="https://search.txcourts.gov/CaseSearch.aspx?coa=coa12&amp;s=d&amp;d=1">Document Search</a></li>
+    <li><a href="https://search.txcourts.gov/Events/default.aspx?coa=coa12">Event Reports</a></li>
+    <li><a href="https://search.txcourts.gov/DocketSrch.aspx?coa=coa12&amp;s=c">Released Orders/Opinions</a></li>
+    <li><a href="https://search.txcourts.gov/submission.aspx?coa=coa12">Case Submissions</a></li>
+    <li><a href="https://search.txcourts.gov/submittedCases.aspx?coa=coa12">Submitted Cases</a></li>
+    <li><a href="https://casemail.txcourts.gov/?coa=coa12&amp;s=c">Case Mail</a></li>
+  </ul></nav>
+
+
+
+                <nav id="ctl00_adminLinks" class="panel panel-phone no-print">
+                    <div class="panel-heading-no-collapse">
+                        Appellate Staff & OCA
+                            <i class="icon-caret-right pull-right"></i>
                     </div>
-                    <ul>
+                    <ul class="nav nav-list">
                         <li>
+                            
                         </li>
+                        
                         <li>
-                            <a href="/login.aspx?coa=coa12">Log In</a>
+                            <a id="ctl00_lnkLogin" href="/login.aspx?coa=coa12">Log In</a>
                         </li>
+                        
                     </ul>
+                </nav>
+
             </div>
+
             <div class="span10" id="MainContent">
+
+                <form name="aspnetForm" method="post" action="./Case.aspx?cn=12-25-00282-CV&amp;coa=coa12" id="aspnetForm">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUJNjQyNzQxMzA1ZBg1BSNjdGwwMCRDb250ZW50UGxhY2VIb2xkZXIxJGdyZEV2ZW50cw8UKwACZBcCBQtFZGl0SW5kZXhlcxYABQ9TZWxlY3RlZEluZGV4ZXMWAGQFPGN0bDAwJENvbnRlbnRQbGFjZUhvbGRlcjEkZ3JkRXZlbnRzJGN0bDAwJGN0bDEyJGdyaWREb2N1bWVudA88KwAMAQhmZAU8Y3RsMDAkQ29udGVudFBsYWNlSG9sZGVyMSRncmRFdmVudHMkY3RsMDAkY3RsMDQkZ3JpZERvY3VtZW50DzwrAAwBCGZkBStjdGwwMCRDb250ZW50UGxhY2VIb2xkZXIxJGdyZENhbGVuZGFyJGN0bDAwDxQrAAMUKwACZBcDBQZfIURTSUMCAgUIXyFQQ291bnRkBQtfIUl0ZW1Db3VudAICFgIeA19zZRYCHgJfY2ZkZAUoY3RsMDAkQ29udGVudFBsYWNlSG9sZGVyMSRncmRQYXJ0eSRjdGwwMA8UKwADFCsAAmQXAwUGXyFEU0lDAhQFCF8hUENvdW50ZAULXyFJdGVtQ291bnQCFBYCHwAWAh8BZmRkBSljdGwwMCRDb250ZW50UGxhY2VIb2xkZXIxJGdyZEV2ZW50cyRjdGwwMA8UKwADFCsAAmQXAwUGXyFEU0lDAiUFCF8hUENvdW50ZAULXyFJdGVtQ291bnQCJRYCHwAWAh8BZmRkBTxjdGwwMCRDb250ZW50UGxhY2VIb2xkZXIxJGdyZEV2ZW50cyRjdGwwMCRjdGw3NCRncmlkRG9jdW1lbnQPPCsADAEIAgFkBTxjdGwwMCRDb250ZW50UGxhY2VIb2xkZXIxJGdyZEV2ZW50cyRjdGwwMCRjdGw1MCRncmlkRG9jdW1lbnQPPCsADAEIAgFkBTxjdGwwMCRDb250ZW50UGxhY2VIb2xkZXIxJGdyZEV2ZW50cyRjdGwwMCRjdGw3MiRncmlkRG9jdW1lbnQPPCsADAEIAgFkBTxjdGwwMCRDb250ZW50UGxhY2VIb2xkZXIxJGdyZEV2ZW50cyRjdGwwMCRjdGw2OCRncmlkRG9jdW1lbnQPPCsADAEIAgFkBTxjdGwwMCRDb250ZW50UGxhY2VIb2xkZXIxJGdyZEV2ZW50cyRjdGwwMCRjdGwxNiRncmlkRG9jdW1lbnQPPCsADAEIAgFkBTxjdGwwMCRDb250ZW50UGxhY2VIb2xkZXIxJGdyZEV2ZW50cyRjdGwwMCRjdGw2NiRncmlkRG9jdW1lbnQPPCsADAEIAgFkBR5fX0NvbnRyb2xzUmVxdWlyZVBvc3RCYWNrS2V5X18WBAUjY3RsMDAkQ29udGVudFBsYWNlSG9sZGVyMSRncmRCcmllZnMFI2N0bDAwJENvbnRlbnRQbGFjZUhvbGRlcjEkZ3JkRXZlbnRzBSVjdGwwMCRDb250ZW50UGxhY2VIb2xkZXIxJGdyZENhbGVuZGFyBSJjdGwwMCRDb250ZW50UGxhY2VIb2xkZXIxJGdyZFBhcnR5BTxjdGwwMCRDb250ZW50UGxhY2VIb2xkZXIxJGdyZEV2ZW50cyRjdGwwMCRjdGwxNCRncmlkRG9jdW1lbnQPPCsADAEIZmQFPGN0bDAwJENvbnRlbnRQbGFjZUhvbGRlcjEkZ3JkRXZlbnRzJGN0bDAwJGN0bDM2JGdyaWREb2N1bWVudA88KwAMAQgCAWQFPGN0bDAwJENvbnRlbnRQbGFjZUhvbGRlcjEkZ3JkRXZlbnRzJGN0bDAwJGN0bDU4JGdyaWREb2N1bWVudA88KwAMAQgCAWQFImN0bDAwJENvbnRlbnRQbGFjZUhvbGRlcjEkZ3JkUGFydHkPFCsAAmQXAgULRWRpdEluZGV4ZXMWAAUPU2VsZWN0ZWRJbmRleGVzFgBkBTxjdGwwMCRDb250ZW50UGxhY2VIb2xkZXIxJGdyZEV2ZW50cyRjdGwwMCRjdGw2MCRncmlkRG9jdW1lbnQPPCsADAEIAgFkBTxjdGwwMCRDb250ZW50UGxhY2VIb2xkZXIxJGdyZEV2ZW50cyRjdGwwMCRjdGw3NiRncmlkRG9jdW1lbnQPPCsADAEIZmQFJWN0bDAwJENvbnRlbnRQbGFjZUhvbGRlcjEkZ3JkQ2FsZW5kYXIPFCsAAmQXAgULRWRpdEluZGV4ZXMWAAUPU2VsZWN0ZWRJbmRleGVzFgBkBT1jdGwwMCRDb250ZW50UGxhY2VIb2xkZXIxJGdyZEJyaWVmcyRjdGwwMCRjdGwxMiRncmlkQnJpZWZEb2NzDzwrAAwBCGZkBTxjdGwwMCRDb250ZW50UGxhY2VIb2xkZXIxJGdyZEV2ZW50cyRjdGwwMCRjdGwyNCRncmlkRG9jdW1lbnQPPCsADAEIZmQFPGN0bDAwJENvbnRlbnRQbGFjZUhvbGRlcjEkZ3JkRXZlbnRzJGN0bDAwJGN0bDQ2JGdyaWREb2N1bWVudA88KwAMAQgCAWQFPGN0bDAwJENvbnRlbnRQbGFjZUhvbGRlcjEkZ3JkRXZlbnRzJGN0bDAwJGN0bDQ0JGdyaWREb2N1bWVudA88KwAMAQgCAWQFPGN0bDAwJENvbnRlbnRQbGFjZUhvbGRlcjEkZ3JkRXZlbnRzJGN0bDAwJGN0bDQyJGdyaWREb2N1bWVudA88KwAMAQgCAWQFPGN0bDAwJENvbnRlbnRQbGFjZUhvbGRlcjEkZ3JkRXZlbnRzJGN0bDAwJGN0bDQ4JGdyaWREb2N1bWVudA88KwAMAQgCAWQFKWN0bDAwJENvbnRlbnRQbGFjZUhvbGRlcjEkZ3JkQnJpZWZzJGN0bDAwDxQrAAMUKwACZBcDBQZfIURTSUMCBgUIXyFQQ291bnRkBQtfIUl0ZW1Db3VudAIGFgIfABYEHwECAR4BMBYEHgNfZm4FCUV2ZW50RGF0ZR4DX3NvCyl1VGVsZXJpay5XZWIuVUkuR3JpZFNvcnRPcmRlciwgVGVsZXJpay5XZWIuVUksIFZlcnNpb249MjAyMC4yLjUxMi40NSwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj0xMjFmYWU3ODE2NWJhM2Q0AmRkBTxjdGwwMCRDb250ZW50UGxhY2VIb2xkZXIxJGdyZEV2ZW50cyRjdGwwMCRjdGwyOCRncmlkRG9jdW1lbnQPPCsADAEIZmQFPGN0bDAwJENvbnRlbnRQbGFjZUhvbGRlcjEkZ3JkRXZlbnRzJGN0bDAwJGN0bDM0JGdyaWREb2N1bWVudA88KwAMAQgCAWQFPGN0bDAwJENvbnRlbnRQbGFjZUhvbGRlcjEkZ3JkRXZlbnRzJGN0bDAwJGN0bDI2JGdyaWREb2N1bWVudA88KwAMAQgCAWQFPGN0bDAwJENvbnRlbnRQbGFjZUhvbGRlcjEkZ3JkRXZlbnRzJGN0bDAwJGN0bDM4JGdyaWREb2N1bWVudA88KwAMAQgCAWQFPGN0bDAwJENvbnRlbnRQbGFjZUhvbGRlcjEkZ3JkRXZlbnRzJGN0bDAwJGN0bDcwJGdyaWREb2N1bWVudA88KwAMAQgCAWQFPGN0bDAwJENvbnRlbnRQbGFjZUhvbGRlcjEkZ3JkRXZlbnRzJGN0bDAwJGN0bDE4JGdyaWREb2N1bWVudA88KwAMAQhmZAU9Y3RsMDAkQ29udGVudFBsYWNlSG9sZGVyMSRncmRCcmllZnMkY3RsMDAkY3RsMDQkZ3JpZEJyaWVmRG9jcw88KwAMAQgCAWQFPGN0bDAwJENvbnRlbnRQbGFjZUhvbGRlcjEkZ3JkRXZlbnRzJGN0bDAwJGN0bDIyJGdyaWREb2N1bWVudA88KwAMAQgCAWQFPGN0bDAwJENvbnRlbnRQbGFjZUhvbGRlcjEkZ3JkRXZlbnRzJGN0bDAwJGN0bDYyJGdyaWREb2N1bWVudA88KwAMAQgCAWQFPWN0bDAwJENvbnRlbnRQbGFjZUhvbGRlcjEkZ3JkQnJpZWZzJGN0bDAwJGN0bDA2JGdyaWRCcmllZkRvY3MPPCsADAEIAgFkBTxjdGwwMCRDb250ZW50UGxhY2VIb2xkZXIxJGdyZEV2ZW50cyRjdGwwMCRjdGwxMCRncmlkRG9jdW1lbnQPPCsADAEIAgFkBTxjdGwwMCRDb250ZW50UGxhY2VIb2xkZXIxJGdyZEV2ZW50cyRjdGwwMCRjdGw1NCRncmlkRG9jdW1lbnQPPCsADAEIAgFkBT1jdGwwMCRDb250ZW50UGxhY2VIb2xkZXIxJGdyZEJyaWVmcyRjdGwwMCRjdGwxNCRncmlkQnJpZWZEb2NzDzwrAAwBCAIBZAU8Y3RsMDAkQ29udGVudFBsYWNlSG9sZGVyMSRncmRFdmVudHMkY3RsMDAkY3RsNTIkZ3JpZERvY3VtZW50DzwrAAwBCAIBZAUjY3RsMDAkQ29udGVudFBsYWNlSG9sZGVyMSRncmRCcmllZnMPFCsAAmQXAgULRWRpdEluZGV4ZXMWAAUPU2VsZWN0ZWRJbmRleGVzFgBkBTxjdGwwMCRDb250ZW50UGxhY2VIb2xkZXIxJGdyZEV2ZW50cyRjdGwwMCRjdGwwOCRncmlkRG9jdW1lbnQPPCsADAEIAgFkBTxjdGwwMCRDb250ZW50UGxhY2VIb2xkZXIxJGdyZEV2ZW50cyRjdGwwMCRjdGwzMiRncmlkRG9jdW1lbnQPPCsADAEIAgFkBTxjdGwwMCRDb250ZW50UGxhY2VIb2xkZXIxJGdyZEV2ZW50cyRjdGwwMCRjdGwyMCRncmlkRG9jdW1lbnQPPCsADAEIZmQFIWN0bDAwJENvbnRlbnRQbGFjZUhvbGRlcjEkZ3JkRmlsZQ8UKwACZBcAZAU8Y3RsMDAkQ29udGVudFBsYWNlSG9sZGVyMSRncmRFdmVudHMkY3RsMDAkY3RsNDAkZ3JpZERvY3VtZW50DzwrAAwBCGZkBTxjdGwwMCRDb250ZW50UGxhY2VIb2xkZXIxJGdyZEV2ZW50cyRjdGwwMCRjdGw2NCRncmlkRG9jdW1lbnQPPCsADAEIZmQFPGN0bDAwJENvbnRlbnRQbGFjZUhvbGRlcjEkZ3JkRXZlbnRzJGN0bDAwJGN0bDU2JGdyaWREb2N1bWVudA88KwAMAQgCAWQFPGN0bDAwJENvbnRlbnRQbGFjZUhvbGRlcjEkZ3JkRXZlbnRzJGN0bDAwJGN0bDMwJGdyaWREb2N1bWVudA88KwAMAQgCAWQFPWN0bDAwJENvbnRlbnRQbGFjZUhvbGRlcjEkZ3JkQnJpZWZzJGN0bDAwJGN0bDA4JGdyaWRCcmllZkRvY3MPPCsADAEIZmQFPGN0bDAwJENvbnRlbnRQbGFjZUhvbGRlcjEkZ3JkRXZlbnRzJGN0bDAwJGN0bDA2JGdyaWREb2N1bWVudA88KwAMAQgCAWQFPWN0bDAwJENvbnRlbnRQbGFjZUhvbGRlcjEkZ3JkQnJpZWZzJGN0bDAwJGN0bDEwJGdyaWRCcmllZkRvY3MPPCsADAEIAgFk0kvjFhgsLOCgWwhKFuT7/2E5s5fJHsyW82/JeKjPz+w=" />
+
+
+<script src="/ScriptResource.axd?d=g76YPjbmPIp8V2BPCLACqQcVKN5dQ_kHf76LrC7pkbxLv-5Q4tZhi_6Up2qlhCMfhSGPPSsJpXzs2BBMdiyDfUX0nU-IOomktHlUEqU2-JyBR_xrxmxoPECRpERkuwr3LkvLMtazRGLKKw3p1EOGVWWIzRwbHsATxR-JcoW8WH8byj4UcxCxyPrENsBWpttx0&amp;t=ffffffffbec1863d" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+if (typeof(Sys) === 'undefined') throw new Error('ASP.NET Ajax client-side framework failed to load.');
+//]]>
+</script>
+
+<script src="/ScriptResource.axd?d=KDeG2Sjx-J0LV5PT1nwp1Co2mPC7x9ZAH8wDvuHrfDFverV3rtP42dKMj-y2Xn_PwZEABBf41MVyGcs-9ibeb8XUVvRisanY5iqdZeq8IBTVlAUk-lxmX7M40LxmpEmSjbRD-R-PhAqrQ2XyvaOQgA2&amp;t=ffffffffcd00b330" type="text/javascript"></script>
+<script src="/ScriptResource.axd?d=0sUms4dgelia4zGtqldWWFDgv46rGlbVaOAwwVKigKTlAE1Pdt3q1gvyZVdUfjoSqwhQ21UKsAOkz44yVISWktGt4BoEJRdp2ImCj5E_OAjir6A0L8Innaa-v0yfwGM_GbOQsT7hAUXP240-GQoY5Sw8DKOGUNytC9xasgNJNI3ydSmx-JthKRvYM5rSlhuy0&amp;t=ffffffffcd00b330" type="text/javascript"></script>
+<script src="/ScriptResource.axd?d=nVqKBsHJd8K7WdHognOFkBtPJkIrAqnElPnXOjdbybDTWTGAIdfu3bC7c_JuNfjtapg218JEU2HxbiYNYzBFXb3ViF_5ea9NY_ycwSR7QZbmXBpuAWTeRpLJ40-8-j5qm1-0pI88sJJRgpf7qHplFw2&amp;t=ffffffffcd00b330" type="text/javascript"></script>
+<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="C606338E" />
+<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="/wEdAAiun0x18oUZaVs+4N7F/SgtZCuzTStWOJug5EWzeFvksdqT7UyShhLKSHHyRuhW23S+fiS3BNeTUA91HGVscNi+6OJgDE5x64zIHmBvtwcY8pwUwgA1eBLZJvU1n6iV6/K789lBdn/dEbxQHx7wweZLq6/wfhi1DfkF55Yn57hDk5taDSVz0pCQwogvscTDGUVFdikJPBDdyle0STKwJyVc" />
+
+                    
+                    
     <div id="main-panel-content">
         <div id="main-content-head" class="panel-heading">
             Case:
-            12-23-00146-CV
-            &#160;&#160;&#160;
+            12-25-00282-CV
+            &nbsp;&nbsp;&nbsp;
         </div>
         <div id="main-content" class="panel-content">
             <div id="printfriendly" class="row-fluid no-print">
-                <div class="span2">
-                    <strong><a href="https://search.txcourts.gov/Case.aspx?cn=12-23-00146-CV&amp;coa=coa12&amp;p=1"><i></i>
+                <div class="span2" style="float: left;">
+                    <strong><a href="https://search.txcourts.gov/Case.aspx?cn=12-25-00282-CV&coa=coa12&p=1"><i class="fa fa-print"></i>
                         Print-Friendly</a> </strong>
+                    
                 </div>
                 <div id="linkCaseMail" class="span3">
-                    <strong><a href="https://casemail.txcourts.gov/CaseAdd.aspx?coa=coa12&amp;FullCaseNumber=12-23-00146-CV&amp;cID=coa12">
-                        <i></i>&#160;Add to CaseMail</a></strong>
+                    <strong><a href='https://casemail.txcourts.gov/CaseAdd.aspx?coa=coa12&FullCaseNumber=12-25-00282-CV&cID=coa12'>
+                        <i class="fa fa-envelope-o"></i>&nbsp;Add to CaseMail</a></strong>
                 </div>
             </div>
-            <div class="row-fluid">
+
+            <div class="row-fluid" style="display: block">
                 <div class="span12">
                     <div class="panel" id="panelTextSelection">
                         <div class="panel-content">
                             <div id="case" class="row-fluid">
                                 <div class="span2">
-                                    <label>
+                                    <label class="form1">
                                         Case:
                                     </label>
                                 </div>
-                                <div class="span10">
+                                <div class="span10" style="float: left;">
                                     <div>
                                         <strong>
-                                            12-23-00146-CV
+                                            12-25-00282-CV
                                         </strong>
                                     </div>
                                 </div>
                             </div>
                             <div class="row-fluid">
                                 <div class="span2">
-                                    <label>
+                                    <label class="form1">
                                         Date Filed:
                                     </label>
                                 </div>
                                 <div class="span10">
                                     <div>
-                                        06/02/2023
+                                        10/21/2025
                                     </div>
                                 </div>
                             </div>
                             <div class="row-fluid">
                                 <div class="span2">
-                                    <label>
+                                    <label class="form1">
                                         Case Type:
                                     </label>
                                 </div>
                                 <div class="span10">
-                                    Suit affecting parent child relationship
+                                    Miscellaneous/other civil
                                 </div>
                             </div>
                             <div class="row-fluid">
                                 <div class="span2">
-                                    <label>
+                                    <label class="form1">
                                         Style:
                                     </label>
                                 </div>
                                 <div class="span10">
-                                    In the Interest of  F. E. C., a child&#160;
+                                    Oncor Electric Delivery Company NTU, LLC&nbsp;
                                 </div>
                             </div>
                             <div class="row-fluid">
                                 <div class="span2">
-                                    <label>
+                                    <label class="form1">
                                         v.:
                                     </label>
                                 </div>
                                 <div class="span10">
-                                    &#160;
+                                    Smith County Tax Assessor-Collector, Smith County, Chapel Hill ISD, Tyler ISD, Winona ISD, City of Lindale, City of Tyler, Smith County ESD 2, Arp ISD, City of Whitehouse, East Texas Municipal Utility District Number 1, Bullard ISD, Troup ISD, Whitehouse, ISD, City of Bullard, City of Troup, Smith County ESD1 and Tyler Jr. College District&nbsp;
                                 </div>
                             </div>
                             <div id="ctl00_ContentPlaceHolder1_COAOnly">
+	
                                 <div class="row-fluid">
                                     <div class="span2">
-                                        <label>
+                                        <label class="form1">
                                             Orig Proc:
                                         </label>
                                     </div>
                                     <div class="span10">
-                                        No&#160;
+                                        No&nbsp;
                                     </div>
                                 </div>
                                 <div class="row-fluid">
                                     <div class="span2">
-                                        <label>
+                                        <label class="form1">
                                             Transfer From:
                                         </label>
                                     </div>
                                     <div class="span10">
-                                        &#160;
+                                        &nbsp;
                                     </div>
                                 </div>
                                 <div class="row-fluid">
                                     <div class="span2">
-                                        <label>
+                                        <label class="form1">
                                             Transfer In:
                                         </label>
                                     </div>
                                     <div class="span10">
-                                        &#160;
+                                        &nbsp;
                                     </div>
                                 </div>
                                 <div class="row-fluid">
                                     <div class="span2">
-                                        <label>
+                                        <label class="form1">
                                             Transfer Case:
                                         </label>
                                     </div>
                                     <div class="span8">
-                                        &#160;
+                                        &nbsp;
                                     </div>
                                 </div>
                                 <div class="row-fluid">
                                     <div class="span2">
-                                        <label>
+                                        <label class="form1">
                                             Transfer To:
                                         </label>
                                     </div>
                                     <div class="span10">
-                                        &#160;
+                                        &nbsp;
                                     </div>
                                 </div>
                                 <div class="row-fluid">
                                     <div class="span2">
-                                        <label>
+                                        <label class="form1">
                                             Transfer Out:
                                         </label>
                                     </div>
                                     <div class="span10">
-                                        &#160;
+                                        &nbsp;
                                     </div>
                                 </div>
                                 <div class="row-fluid">
                                     <div class="span2">
-                                        <label>
+                                        <label class="form1">
                                             Pub Service:
                                         </label>
                                     </div>
                                     <div class="span10">
-                                        West Publishing&#160;
+                                        West Publishing&nbsp;
                                     </div>
                                 </div>
+                            
 </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="row-fluid">
+            <div class="row-fluid" style="display: block">
                 <div class="span12">
                     <div class="panel" id="Div3">
                         <div class="panel-heading panel-heading-content">
@@ -208,31 +580,93 @@
                         </div>
                         <div class="panel-content">
                             <div id="ctl00_ContentPlaceHolder1_pnlBriefs">
+	
                                 <div id="ctl00_ContentPlaceHolder1_grdBriefs" class="RadGrid RadGrid_Default">
-	<table class="rgMasterTable rgClipCells">
+
+	<!-- 2020.2.512.45 --><table class="rgMasterTable rgClipCells" rules="rows" border="1" id="ctl00_ContentPlaceHolder1_grdBriefs_ctl00" width="100%" style="table-layout:fixed;empty-cells:show;">
 		<colgroup>
-		<col>
-		<col>
-		<col>
-		<col>
+		<col  />
+		<col  />
+		<col  />
+		<col  />
 	</colgroup>
 <thead>
 			<tr>
-				<th scope="col"><a title="Click here to sort">Date</a>&#160;</th><th scope="col"><a title="Click here to sort">Event Type</a></th><th scope="col"><a title="Click here to sort">Description</a></th><th scope="col">Document</th>
+				<th scope="col" class="rgHeader rgSorted"><a onclick="Telerik.Web.UI.Grid.Sort($find(&#39;ctl00_ContentPlaceHolder1_grdBriefs_ctl00&#39;), &#39;EventDate&#39;); return false;" title="Click here to sort" href="javascript:__doPostBack(&#39;ctl00$ContentPlaceHolder1$grdBriefs$ctl00$ctl02$ctl00$ctl00&#39;,&#39;&#39;)">Date</a>&nbsp;<input type="submit" name="ctl00$ContentPlaceHolder1$grdBriefs$ctl00$ctl02$ctl00$ctl01" value=" " title="Sorted desc" class="rgSortDesc" /></th><th scope="col" class="rgHeader"><a onclick="Telerik.Web.UI.Grid.Sort($find(&#39;ctl00_ContentPlaceHolder1_grdBriefs_ctl00&#39;), &#39;EventType&#39;); return false;" title="Click here to sort" href="javascript:__doPostBack(&#39;ctl00$ContentPlaceHolder1$grdBriefs$ctl00$ctl02$ctl00$ctl02&#39;,&#39;&#39;)">Event Type</a></th><th scope="col" class="rgHeader"><a onclick="Telerik.Web.UI.Grid.Sort($find(&#39;ctl00_ContentPlaceHolder1_grdBriefs_ctl00&#39;), &#39;Description&#39;); return false;" title="Click here to sort" href="javascript:__doPostBack(&#39;ctl00$ContentPlaceHolder1$grdBriefs$ctl00$ctl02$ctl00$ctl03&#39;,&#39;&#39;)">Description</a></th><th scope="col" class="rgHeader">Document</th>
 			</tr>
 		</thead><tbody>
-		<tr class="rgNoRecords">
-			<td colspan="4"><div><b>No briefs.</b></div></td>
+		<tr class="rgRow" id="ctl00_ContentPlaceHolder1_grdBriefs_ctl00__0">
+			<td class="rgSorted">09/16/2026</td><td width="80">Additional authorities filed</td><td width="80">Appellant</td><td align="left" width="160">
+                                                    <div>
+				<table class="docGrid" cellspacing="0" border="0" id="ctl00_ContentPlaceHolder1_grdBriefs_ctl00_ctl04_gridBriefDocs" width="160">
+					<tr>
+						<td class="docLink" align="left" width="75" nowrap="nowrap"><a href="SearchMedia.aspx?MediaVersionID=c6f43327-ac20-4648-80a7-7e64cd3b7826&amp;coa=coa12&amp;DT=Brief&amp;MediaID=e8b09b88-9b85-48e9-a3fe-dd2dc45f41ed" target="_blank"> [ PDF/446 KB ] </a></td><td class="docLink" align="left" width="75" nowrap="nowrap">Ltr Brief </td>
+					</tr>
+				</table>
+			</div>
+                                                </td>
+		</tr><tr class="rgAltRow" id="ctl00_ContentPlaceHolder1_grdBriefs_ctl00__1" bgcolor="WhiteSmoke">
+			<td class="rgSorted">06/02/2026</td><td width="80">Reply brief filed</td><td width="80">Appellant</td><td align="left" width="160">
+                                                    <div>
+				<table class="docGrid" cellspacing="0" border="0" id="ctl00_ContentPlaceHolder1_grdBriefs_ctl00_ctl06_gridBriefDocs" width="160">
+					<tr>
+						<td class="docLink" align="left" width="75" nowrap="nowrap"><a href="SearchMedia.aspx?MediaVersionID=3e93caf2-6073-4905-b7c3-29c050ba6f4a&amp;coa=coa12&amp;DT=Brief&amp;MediaID=4f31498c-a481-4a80-8271-53a4f98ace7c" target="_blank"> [ PDF/405 KB ] </a></td><td class="docLink" align="left" width="75" nowrap="nowrap">Reply Brief </td>
+					</tr><tr>
+						<td class="docLink" align="left" width="75" nowrap="nowrap"><a href="SearchMedia.aspx?MediaVersionID=684ec9de-de85-434f-890e-4ea5b135ba62&amp;coa=coa12&amp;DT=REPLY BRIEF FLD&amp;MediaID=342a849b-2f8b-4be8-bd34-5133ee70c325" target="_blank"> [ PDF/135 KB ] </a></td><td class="docLink" align="left" width="75" nowrap="nowrap">Notice</td>
+					</tr>
+				</table>
+			</div>
+                                                </td>
+		</tr><tr class="rgRow" id="ctl00_ContentPlaceHolder1_grdBriefs_ctl00__2">
+			<td class="rgSorted">05/20/2026</td><td width="80">Appendix filed</td><td width="80">Appellee</td><td align="left" width="160">
+                                                    <div>
+
+			</div>
+                                                </td>
+		</tr><tr class="rgAltRow" id="ctl00_ContentPlaceHolder1_grdBriefs_ctl00__3" bgcolor="WhiteSmoke">
+			<td class="rgSorted">05/20/2026</td><td width="80">Electronic brief filed - oral argument not requested</td><td width="80">Appellee</td><td align="left" width="160">
+                                                    <div>
+				<table class="docGrid" cellspacing="0" border="0" id="ctl00_ContentPlaceHolder1_grdBriefs_ctl00_ctl10_gridBriefDocs" width="160">
+					<tr>
+						<td class="docLink" align="left" width="75" nowrap="nowrap"><a href="SearchMedia.aspx?MediaVersionID=36bd4aeb-2b1e-481a-9f90-0ba2e23c3c80&amp;coa=coa12&amp;DT=Brief&amp;MediaID=175e295e-b97e-443f-8bd2-086187e67d7d" target="_blank"> [ PDF/477 KB ] </a></td><td class="docLink" align="left" width="75" nowrap="nowrap">Aoe Brief </td>
+					</tr><tr>
+						<td class="docLink" align="left" width="75" nowrap="nowrap"><a href="SearchMedia.aspx?MediaVersionID=f49c7cdf-bf08-46e7-b93d-efbf522fd836&amp;coa=coa12&amp;DT=EBRIEF FLD NO&amp;MediaID=e166f9d8-d870-43b3-a42f-e09fd775751d" target="_blank"> [ PDF/132 KB ] </a></td><td class="docLink" align="left" width="75" nowrap="nowrap">Notice</td>
+					</tr>
+				</table>
+			</div>
+                                                </td>
+		</tr><tr class="rgRow" id="ctl00_ContentPlaceHolder1_grdBriefs_ctl00__4">
+			<td class="rgSorted">03/06/2026</td><td width="80">Appendix filed</td><td width="80">Appellant</td><td align="left" width="160">
+                                                    <div>
+
+			</div>
+                                                </td>
+		</tr><tr class="rgAltRow" id="ctl00_ContentPlaceHolder1_grdBriefs_ctl00__5" bgcolor="WhiteSmoke">
+			<td class="rgSorted">03/06/2026</td><td width="80">Electronic brief filed - oral argument requested</td><td width="80">Appellant</td><td align="left" width="160">
+                                                    <div>
+				<table class="docGrid" cellspacing="0" border="0" id="ctl00_ContentPlaceHolder1_grdBriefs_ctl00_ctl14_gridBriefDocs" width="160">
+					<tr>
+						<td class="docLink" align="left" width="75" nowrap="nowrap"><a href="SearchMedia.aspx?MediaVersionID=2723960f-129d-43a7-95f2-2c14eb4dd89b&amp;coa=coa12&amp;DT=Brief&amp;MediaID=a8de8e98-5cd1-4c0c-b5f6-1ffec11f388c" target="_blank"> [ PDF/1.33 MB ] </a></td><td class="docLink" align="left" width="75" nowrap="nowrap">Brief </td>
+					</tr><tr>
+						<td class="docLink" align="left" width="75" nowrap="nowrap"><a href="SearchMedia.aspx?MediaVersionID=ec2cf0f5-7e90-4ec9-96e3-b8a655fa919b&amp;coa=coa12&amp;DT=EBRIEF FLD YES&amp;MediaID=5594e840-d916-4b61-a920-21cc73e4a185" target="_blank"> [ PDF/133 KB ] </a></td><td class="docLink" align="left" width="75" nowrap="nowrap">Notice</td>
+					</tr>
+				</table>
+			</div>
+                                                </td>
 		</tr>
 		</tbody>
-	</table><div id="ctl00_ContentPlaceHolder1_grdBriefs_SharedCalendarContainer">
-	</div>	</div>
+
+	</table><div id="ctl00_ContentPlaceHolder1_grdBriefs_SharedCalendarContainer" style="display:none;">
+
+	</div><input id="ctl00_ContentPlaceHolder1_grdBriefs_ClientState" name="ctl00_ContentPlaceHolder1_grdBriefs_ClientState" type="hidden" />	</div>
+	
+                            
 </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="row-fluid">
+            <div class="row-fluid" style="display: block">
                 <div class="span12">
                     <div class="panel" id="Div4">
                         <div class="panel-heading panel-heading-content">
@@ -240,267 +674,385 @@
                         </div>
                         <div class="panel-content">
                             <div id="ctl00_ContentPlaceHolder1_pnlEvents">
+	
                                 <div id="ctl00_ContentPlaceHolder1_grdEvents" class="RadGrid RadGrid_Default">
-	<table class="rgMasterTable rgClipCells">
+
+	<table class="rgMasterTable rgClipCells" rules="rows" border="1" id="ctl00_ContentPlaceHolder1_grdEvents_ctl00" width="100%" style="table-layout:fixed;empty-cells:show;">
 		<colgroup>
-		<col>
-		<col>
-		<col>
-		<col>
+		<col  />
+		<col  />
+		<col  />
+		<col  />
 	</colgroup>
 <thead>
 			<tr>
-				<th scope="col"><a title="Click here to sort">Date</a></th><th scope="col"><a title="Click here to sort">Event Type</a></th><th scope="col"><a title="Click here to sort">Disposition</a></th><th scope="col">Document</th>
+				<th scope="col" class="rgHeader"><a onclick="Telerik.Web.UI.Grid.Sort($find(&#39;ctl00_ContentPlaceHolder1_grdEvents_ctl00&#39;), &#39;EventDate&#39;); return false;" title="Click here to sort" href="javascript:__doPostBack(&#39;ctl00$ContentPlaceHolder1$grdEvents$ctl00$ctl02$ctl00$ctl00&#39;,&#39;&#39;)">Date</a></th><th scope="col" class="rgHeader"><a onclick="Telerik.Web.UI.Grid.Sort($find(&#39;ctl00_ContentPlaceHolder1_grdEvents_ctl00&#39;), &#39;EventType&#39;); return false;" title="Click here to sort" href="javascript:__doPostBack(&#39;ctl00$ContentPlaceHolder1$grdEvents$ctl00$ctl02$ctl00$ctl01&#39;,&#39;&#39;)">Event Type</a></th><th scope="col" class="rgHeader"><a onclick="Telerik.Web.UI.Grid.Sort($find(&#39;ctl00_ContentPlaceHolder1_grdEvents_ctl00&#39;), &#39;Disposition&#39;); return false;" title="Click here to sort" href="javascript:__doPostBack(&#39;ctl00$ContentPlaceHolder1$grdEvents$ctl00$ctl02$ctl00$ctl03&#39;,&#39;&#39;)">Disposition</a></th><th scope="col" class="rgHeader">Document</th>
 			</tr>
 		</thead><tbody>
-		<tr class="rgRow">
-			<td>02/22/2024</td><td>Motion to dismiss disposed</td><td>Motion or Writ Granted</td><td align="left">
+		<tr class="rgRow" id="ctl00_ContentPlaceHolder1_grdEvents_ctl00__0">
+			<td width="35">10/29/2026</td><td width="60">Motion for rehearing was not filed</td><td>&nbsp;</td><td align="left" width="160">
                                                     <div>
+
 			</div>
                                                 </td>
-		</tr><tr class="rgAltRow">
-			<td>02/22/2024</td><td>Memorandum opinion issued</td><td>Dismissed</td><td align="left">
+		</tr><tr class="rgAltRow" id="ctl00_ContentPlaceHolder1_grdEvents_ctl00__1" bgcolor="WhiteSmoke">
+			<td width="35">10/14/2026</td><td width="60">Opinion issued</td><td>Reversed and Remanded</td><td align="left" width="160">
                                                     <div>
-				<table class="docGrid">
-					<tbody><tr>
-						<td align="left"><a href="SearchMedia.aspx?MediaVersionID=8448992e-e1ac-4405-b733-766b6b280058&amp;coa=coa12&amp;DT=Opinion&amp;MediaID=ef354059-d6e2-48d4-8508-48bab0fad969"> [ PDF/162 KB ] </a></td><td align="left">Memorandum Opinion</td>
+				<table class="docGrid" cellspacing="0" rules="all" border="1" id="ctl00_ContentPlaceHolder1_grdEvents_ctl00_ctl06_gridDocument" width="100%">
+					<tr>
+						<td class="docLink" align="left" nowrap="nowrap"><a href="SearchMedia.aspx?MediaVersionID=6e671b03-f9c8-438c-9a8e-45965a77f2af&amp;coa=coa12&amp;DT=Opinion&amp;MediaID=6f7b814a-3462-4c2c-8a8c-817e28776390" target="_blank"> [ PDF/254 KB ] </a></td><td class="docLink" align="left" nowrap="nowrap">Opinion</td>
 					</tr><tr>
-						<td align="left"><a href="SearchMedia.aspx?MediaVersionID=3673aa3a-21bc-4995-ae93-44dbc4e76783&amp;coa=coa12&amp;DT=MEM%20OPINION%20ISSD&amp;MediaID=d77252ad-9d50-40f3-91e8-17a5e9bc4c6f"> [ PDF/143 KB ] </a></td><td align="left">Notice</td>
+						<td class="docLink" align="left" nowrap="nowrap"><a href="SearchMedia.aspx?MediaVersionID=95699c56-028a-4c3d-8cca-011f7d8e590c&amp;coa=coa12&amp;DT=OPINION ISSD&amp;MediaID=9c8e3ac2-9097-4e64-a0f9-1e7c1f19f708" target="_blank"> [ PDF/140 KB ] </a></td><td class="docLink" align="left" nowrap="nowrap">Notice</td>
 					</tr>
-				</tbody></table>
+				</table>
 			</div>
                                                 </td>
-		</tr><tr class="rgRow">
-			<td>02/15/2024</td><td>Motion to dismiss filed</td><td>&#160;</td><td align="left">
+		</tr><tr class="rgRow" id="ctl00_ContentPlaceHolder1_grdEvents_ctl00__2">
+			<td width="35">09/16/2026</td><td width="60">Additional authorities filed</td><td>&nbsp;</td><td align="left" width="160">
                                                     <div>
-				<table class="docGrid">
-					<tbody><tr>
-						<td align="left"><a href="SearchMedia.aspx?MediaVersionID=f845e71a-e5fc-4cbe-8737-783300670843&amp;coa=coa12&amp;DT=MT%20DISM%20FLD&amp;MediaID=a5c048d7-24f4-4699-bda4-1c3ed4b57cd4"> [ PDF/142 KB ] </a></td><td align="left">Notice</td>
+				<table class="docGrid" cellspacing="0" rules="all" border="1" id="ctl00_ContentPlaceHolder1_grdEvents_ctl00_ctl08_gridDocument" width="100%">
+					<tr>
+						<td class="docLink" align="left" nowrap="nowrap"><a href="SearchMedia.aspx?MediaVersionID=c6f43327-ac20-4648-80a7-7e64cd3b7826&amp;coa=coa12&amp;DT=Brief&amp;MediaID=e8b09b88-9b85-48e9-a3fe-dd2dc45f41ed" target="_blank"> [ PDF/446 KB ] </a></td><td class="docLink" align="left" nowrap="nowrap">ltr brief </td>
 					</tr>
-				</tbody></table>
+				</table>
 			</div>
                                                 </td>
-		</tr><tr class="rgAltRow">
-			<td>01/18/2024</td><td>Electronic Motion for extension of time to file brief disp</td><td>Motion or Writ Granted</td><td align="left">
+		</tr><tr class="rgAltRow" id="ctl00_ContentPlaceHolder1_grdEvents_ctl00__3" bgcolor="WhiteSmoke">
+			<td width="35">09/15/2026</td><td width="60">Submitted</td><td>&nbsp;</td><td align="left" width="160">
                                                     <div>
-				<table class="docGrid">
-					<tbody><tr>
-						<td align="left"><a href="SearchMedia.aspx?MediaVersionID=68f55b45-7b5c-4bdb-94dc-3d0b7220c9c0&amp;coa=coa12&amp;DT=EMT%20EXT%20BRIEF%20DISP&amp;MediaID=2e7ad4a1-f33b-417a-aaff-e8faabb68f0d"> [ PDF/144 KB ] </a></td><td align="left">Notice</td>
+				<table class="docGrid" cellspacing="0" rules="all" border="1" id="ctl00_ContentPlaceHolder1_grdEvents_ctl00_ctl10_gridDocument" width="100%">
+					<tr>
+						<td class="docLink" align="left" nowrap="nowrap"><a href="SearchMedia.aspx?MediaVersionID=75a37ccf-ca7f-48f8-9938-91b22eeeb03d&amp;coa=coa12&amp;DT=Other&amp;MediaID=72e69b02-b9e5-4a8d-9eba-77be4866d0f7" target="_blank"> [ MP3/24.49 MB ] </a></td><td class="docLink" align="left" nowrap="nowrap">Oral Argument </td>
 					</tr>
-				</tbody></table>
+				</table>
 			</div>
                                                 </td>
-		</tr><tr class="rgRow">
-			<td>01/12/2024</td><td>Electronic Motion for extension of time to file brief filed</td><td>&#160;</td><td align="left">
+		</tr><tr class="rgRow" id="ctl00_ContentPlaceHolder1_grdEvents_ctl00__4">
+			<td width="35">09/11/2026</td><td width="60">Confirmation of oral argument & counsel presenting oral argument</td><td>&nbsp;</td><td align="left" width="160">
                                                     <div>
-				<table class="docGrid">
-					<tbody><tr>
-						<td align="left"><a href="SearchMedia.aspx?MediaVersionID=0a53f55f-d098-453d-99e3-55856fa54869&amp;coa=coa12&amp;DT=EMT%20EXT%20BRIEF%20FLD&amp;MediaID=c9c1542d-0a60-4b5b-b086-a41cfd8615ae"> [ PDF/130 KB ] </a></td><td align="left">Notice</td>
+
+			</div>
+                                                </td>
+		</tr><tr class="rgAltRow" id="ctl00_ContentPlaceHolder1_grdEvents_ctl00__5" bgcolor="WhiteSmoke">
+			<td width="35">09/11/2026</td><td width="60">Confirmation of oral argument & counsel presenting oral argument</td><td>&nbsp;</td><td align="left" width="160">
+                                                    <div>
+
+			</div>
+                                                </td>
+		</tr><tr class="rgRow" id="ctl00_ContentPlaceHolder1_grdEvents_ctl00__6">
+			<td width="35">07/09/2026</td><td width="60">Set for submission on oral argument</td><td>&nbsp;</td><td align="left" width="160">
+                                                    <div>
+				<table class="docGrid" cellspacing="0" rules="all" border="1" id="ctl00_ContentPlaceHolder1_grdEvents_ctl00_ctl16_gridDocument" width="100%">
+					<tr>
+						<td class="docLink" align="left" nowrap="nowrap"><a href="SearchMedia.aspx?MediaVersionID=88b64885-8767-460f-a626-a52487ec3234&amp;coa=coa12&amp;DT=SUBMISSION/OA&amp;MediaID=add01020-2129-4def-a568-9adfe0d15af2" target="_blank"> [ PDF/164 KB ] </a></td><td class="docLink" align="left" nowrap="nowrap">Notice</td>
 					</tr>
-				</tbody></table>
+				</table>
 			</div>
                                                 </td>
-		</tr><tr class="rgAltRow">
-			<td>01/04/2024</td><td>Notice of late brief</td><td>&#160;</td><td align="left">
+		</tr><tr class="rgAltRow" id="ctl00_ContentPlaceHolder1_grdEvents_ctl00__7" bgcolor="WhiteSmoke">
+			<td width="35">06/11/2026</td><td width="60">Internal memo</td><td>&nbsp;</td><td align="left" width="160">
                                                     <div>
-				<table class="docGrid">
-					<tbody><tr>
-						<td align="left"><a href="SearchMedia.aspx?MediaVersionID=aa3af01d-2751-4bc1-9346-7e7d41c73d80&amp;coa=coa12&amp;DT=LATE%20BRIEF%20NOTICE&amp;MediaID=d98bf004-07fd-4515-b54a-e7b18d208bff"> [ PDF/145 KB ] </a></td><td align="left">Notice</td>
-					</tr>
-				</tbody></table>
+
 			</div>
                                                 </td>
-		</tr><tr class="rgRow">
-			<td>11/29/2023</td><td>Submit on clerk's record alone - briefs due</td><td>&#160;</td><td align="left">
+		</tr><tr class="rgRow" id="ctl00_ContentPlaceHolder1_grdEvents_ctl00__8">
+			<td width="35">06/11/2026</td><td width="60">Prescreened</td><td>&nbsp;</td><td align="left" width="160">
                                                     <div>
-				<table class="docGrid">
-					<tbody><tr>
-						<td align="left"><a href="SearchMedia.aspx?MediaVersionID=b134a776-1dff-43f1-b8b9-74f1150e6c84&amp;coa=coa12&amp;DT=NO%20RPT%20REC%20BRIEF%20DUE&amp;MediaID=986452e6-65fd-4447-b71c-a0c606beb400"> [ PDF/143 KB ] </a></td><td align="left">Notice</td>
-					</tr>
-				</tbody></table>
+
 			</div>
                                                 </td>
-		</tr><tr class="rgAltRow">
-			<td>11/17/2023</td><td>Telephone call received</td><td>&#160;</td><td align="left">
+		</tr><tr class="rgAltRow" id="ctl00_ContentPlaceHolder1_grdEvents_ctl00__9" bgcolor="WhiteSmoke">
+			<td width="35">06/02/2026</td><td width="60">Reply brief filed</td><td>&nbsp;</td><td align="left" width="160">
                                                     <div>
-			</div>
-                                                </td>
-		</tr><tr class="rgRow">
-			<td>11/03/2023</td><td>Notice of late record</td><td>Order Setting Final Deadline</td><td align="left">
-                                                    <div>
-				<table class="docGrid">
-					<tbody><tr>
-						<td align="left"><a href="SearchMedia.aspx?MediaVersionID=3e638ed2-6680-4afe-900b-f8d39ca479fb&amp;coa=coa12&amp;DT=LATE%20RECORD%20NOTICE&amp;MediaID=90e7afe2-d53b-493a-8e94-2e0deaab9ee3"> [ PDF/147 KB ] </a></td><td align="left">Notice</td>
-					</tr>
-				</tbody></table>
-			</div>
-                                                </td>
-		</tr><tr class="rgAltRow">
-			<td>10/09/2023</td><td>Notice of late record</td><td>Warning from the Court</td><td align="left">
-                                                    <div>
-				<table class="docGrid">
-					<tbody><tr>
-						<td align="left"><a href="SearchMedia.aspx?MediaVersionID=9fb7f6b7-5a19-46ba-9c1d-e702bcc525aa&amp;coa=coa12&amp;DT=LATE%20RECORD%20NOTICE&amp;MediaID=26d4812d-f9a5-4613-9778-883156265346"> [ PDF/145 KB ] </a></td><td align="left">Notice</td>
-					</tr>
-				</tbody></table>
-			</div>
-                                                </td>
-		</tr><tr class="rgRow">
-			<td>09/21/2023</td><td>Notice of late record</td><td>&#160;</td><td align="left">
-                                                    <div>
-				<table class="docGrid">
-					<tbody><tr>
-						<td align="left"><a href="SearchMedia.aspx?MediaVersionID=96900008-9c72-4836-9602-d304ab90d6d8&amp;coa=coa12&amp;DT=LATE%20RECORD%20NOTICE&amp;MediaID=e872ef05-9426-433e-bbeb-f7eca2f6b3de"> [ PDF/134 KB ] </a></td><td align="left">Notice</td>
-					</tr>
-				</tbody></table>
-			</div>
-                                                </td>
-		</tr><tr class="rgAltRow">
-			<td>09/06/2023</td><td>Reporters record filed</td><td>&#160;</td><td align="left">
-                                                    <div>
-				<table class="docGrid">
-					<tbody><tr>
-						<td align="left"><a href="SearchMedia.aspx?MediaVersionID=8912376e-8624-4da6-a1b4-428a8bd3e170&amp;coa=coa12&amp;DT=RPT%20RECORD%20FLD&amp;MediaID=4508593c-8f06-4708-9d84-0b726701f6b6"> [ PDF/131 KB ] </a></td><td align="left">Notice</td>
-					</tr>
-				</tbody></table>
-			</div>
-                                                </td>
-		</tr><tr class="rgRow">
-			<td>09/06/2023</td><td>Electronic Reporter/Recorders Record Filed</td><td>&#160;</td><td align="left">
-                                                    <div>
-				<table class="docGrid">
-					<tbody><tr>
-						<td align="left"><a href="SearchMedia.aspx?MediaVersionID=c78623cd-1f44-4720-9ba6-6c96a5a14fb5&amp;coa=coa12&amp;DT=ERPT%20RECORD%20FLD&amp;MediaID=d4c3ed44-9ce9-460d-9aaf-eec5024927cf"> [ PDF/131 KB ] </a></td><td align="left">Notice</td>
-					</tr>
-				</tbody></table>
-			</div>
-                                                </td>
-		</tr><tr class="rgAltRow">
-			<td>08/02/2023</td><td>Electronic Supplemental Clerks Record Filed</td><td>&#160;</td><td align="left">
-                                                    <div>
-				<table class="docGrid">
-					<tbody><tr>
-						<td align="left"><a href="SearchMedia.aspx?MediaVersionID=6f68fdfa-d581-4834-bf13-f780c0481f68&amp;coa=coa12&amp;DT=ESUPP%20CLK%20RECORD%20FLD&amp;MediaID=0d73e5fb-bdb7-44ab-be13-cfda5dcfd8dd"> [ PDF/125 KB ] </a></td><td align="left">Notice</td>
-					</tr>
-				</tbody></table>
-			</div>
-                                                </td>
-		</tr><tr class="rgRow">
-			<td>07/26/2023</td><td>Email sent</td><td>&#160;</td><td align="left">
-                                                    <div>
-				<table class="docGrid">
-					<tbody><tr>
-						<td align="left"><a href="SearchMedia.aspx?MediaVersionID=ab94fd95-e0f3-46a0-80f5-cff37a1e9e03&amp;coa=coa12&amp;DT=Other&amp;MediaID=c1340518-fbc6-4e82-b09c-b862ff54192a"> [ MSG/44 KB ] </a></td><td align="left">Request for SClk rec </td>
-					</tr>
-				</tbody></table>
-			</div>
-                                                </td>
-		</tr><tr class="rgAltRow">
-			<td>07/26/2023</td><td>Electronic Clerks Record Filed</td><td>&#160;</td><td align="left">
-                                                    <div>
-				<table class="docGrid">
-					<tbody><tr>
-						<td align="left"><a href="SearchMedia.aspx?MediaVersionID=7a460c89-c188-4814-91f3-a232ea910620&amp;coa=coa12&amp;DT=ECLK%20RECORD%20FLD&amp;MediaID=31e9fd1a-6fab-491f-b44b-8e4429ae8ccb"> [ PDF/126 KB ] </a></td><td align="left">Notice</td>
-					</tr>
-				</tbody></table>
-			</div>
-                                                </td>
-		</tr><tr class="rgRow">
-			<td>06/30/2023</td><td>Amended notice of appeal filed</td><td>&#160;</td><td align="left">
-                                                    <div>
-				<table class="docGrid">
-					<tbody><tr>
-						<td align="left"><a href="SearchMedia.aspx?MediaVersionID=6b14f813-550b-4b5e-9a0e-85382fbb6921&amp;coa=coa12&amp;DT=AMEND%20NOA%20FLD&amp;MediaID=34ad57b2-4130-4439-b87f-a931c21728d8"> [ PDF/125 KB ] </a></td><td align="left">Notice</td>
-					</tr>
-				</tbody></table>
-			</div>
-                                                </td>
-		</tr><tr class="rgAltRow">
-			<td>06/30/2023</td><td>Appearance of counsel</td><td>&#160;</td><td align="left">
-                                                    <div>
-				<table class="docGrid">
-					<tbody><tr>
-						<td align="left"><a href="SearchMedia.aspx?MediaVersionID=5cbe6d47-1808-4b9e-ba26-80c6e74de160&amp;coa=coa12&amp;DT=Other&amp;MediaID=b84397a4-68ff-4ea8-b841-2e5376395484"> [ PDF/220 KB ] </a></td><td align="left">Ant Appearance </td>
+				<table class="docGrid" cellspacing="0" rules="all" border="1" id="ctl00_ContentPlaceHolder1_grdEvents_ctl00_ctl22_gridDocument" width="100%">
+					<tr>
+						<td class="docLink" align="left" nowrap="nowrap"><a href="SearchMedia.aspx?MediaVersionID=3e93caf2-6073-4905-b7c3-29c050ba6f4a&amp;coa=coa12&amp;DT=Brief&amp;MediaID=4f31498c-a481-4a80-8271-53a4f98ace7c" target="_blank"> [ PDF/405 KB ] </a></td><td class="docLink" align="left" nowrap="nowrap">REPLY BRIEF </td>
 					</tr><tr>
-						<td align="left"><a href="SearchMedia.aspx?MediaVersionID=92bbe236-e500-4831-bb75-a1dbb7bad96c&amp;coa=coa12&amp;DT=APPEARANCE&amp;MediaID=9f1f7220-53f7-4581-9c65-691f9c697976"> [ PDF/125 KB ] </a></td><td align="left">Notice</td>
+						<td class="docLink" align="left" nowrap="nowrap"><a href="SearchMedia.aspx?MediaVersionID=684ec9de-de85-434f-890e-4ea5b135ba62&amp;coa=coa12&amp;DT=REPLY BRIEF FLD&amp;MediaID=342a849b-2f8b-4be8-bd34-5133ee70c325" target="_blank"> [ PDF/135 KB ] </a></td><td class="docLink" align="left" nowrap="nowrap">Notice</td>
 					</tr>
-				</tbody></table>
+				</table>
 			</div>
                                                 </td>
-		</tr><tr class="rgRow">
-			<td>06/08/2023</td><td>Docketing statement filed</td><td>&#160;</td><td align="left">
+		</tr><tr class="rgRow" id="ctl00_ContentPlaceHolder1_grdEvents_ctl00__10">
+			<td width="35">05/20/2026</td><td width="60">Appendix filed</td><td>&nbsp;</td><td align="left" width="160">
                                                     <div>
+
 			</div>
                                                 </td>
-		</tr><tr class="rgAltRow">
-			<td>06/06/2023</td><td>Motion for new trial was filed in the trial court</td><td>&#160;</td><td align="left">
+		</tr><tr class="rgAltRow" id="ctl00_ContentPlaceHolder1_grdEvents_ctl00__11" bgcolor="WhiteSmoke">
+			<td width="35">05/20/2026</td><td width="60">Electronic brief filed - oral argument not requested</td><td>&nbsp;</td><td align="left" width="160">
                                                     <div>
-			</div>
-                                                </td>
-		</tr><tr class="rgRow">
-			<td>06/06/2023</td><td>Fee paid</td><td>&#160;</td><td align="left">
-                                                    <div>
-				<table class="docGrid">
-					<tbody><tr>
-						<td align="left"><a href="SearchMedia.aspx?MediaVersionID=c1ed7c4d-bd24-4e4c-8fd1-32cce24efdc6&amp;coa=coa12&amp;DT=FEE%20PAID&amp;MediaID=d9180397-5cc7-436d-ba5b-eeffe76f53b1"> [ PDF/130 KB ] </a></td><td align="left">Notice</td>
+				<table class="docGrid" cellspacing="0" rules="all" border="1" id="ctl00_ContentPlaceHolder1_grdEvents_ctl00_ctl26_gridDocument" width="100%">
+					<tr>
+						<td class="docLink" align="left" nowrap="nowrap"><a href="SearchMedia.aspx?MediaVersionID=36bd4aeb-2b1e-481a-9f90-0ba2e23c3c80&amp;coa=coa12&amp;DT=Brief&amp;MediaID=175e295e-b97e-443f-8bd2-086187e67d7d" target="_blank"> [ PDF/477 KB ] </a></td><td class="docLink" align="left" nowrap="nowrap">aoe brief </td>
+					</tr><tr>
+						<td class="docLink" align="left" nowrap="nowrap"><a href="SearchMedia.aspx?MediaVersionID=f49c7cdf-bf08-46e7-b93d-efbf522fd836&amp;coa=coa12&amp;DT=EBRIEF FLD NO&amp;MediaID=e166f9d8-d870-43b3-a42f-e09fd775751d" target="_blank"> [ PDF/132 KB ] </a></td><td class="docLink" align="left" nowrap="nowrap">Notice</td>
 					</tr>
-				</tbody></table>
+				</table>
 			</div>
                                                 </td>
-		</tr><tr class="rgAltRow">
-			<td>06/02/2023</td><td>Notice of defect regarding perfection of the notice of appeal</td><td>&#160;</td><td align="left">
+		</tr><tr class="rgRow" id="ctl00_ContentPlaceHolder1_grdEvents_ctl00__12">
+			<td width="35">05/20/2026</td><td width="60">Case ready to be set</td><td>&nbsp;</td><td align="left" width="160">
                                                     <div>
-				<table class="docGrid">
-					<tbody><tr>
-						<td align="left"><a href="SearchMedia.aspx?MediaVersionID=708b49d4-ed7f-4c36-b70c-a5c5cc5c1995&amp;coa=coa12&amp;DT=NOA%20DEFECTIVE&amp;MediaID=5ab2116d-fe4d-4470-905a-4e278ea93155"> [ PDF/138 KB ] </a></td><td align="left">Notice</td>
+
+			</div>
+                                                </td>
+		</tr><tr class="rgAltRow" id="ctl00_ContentPlaceHolder1_grdEvents_ctl00__13" bgcolor="WhiteSmoke">
+			<td width="35">04/22/2026</td><td width="60">Electronic Motion for extension of time to file brief disp</td><td>Motion or Writ Granted</td><td align="left" width="160">
+                                                    <div>
+				<table class="docGrid" cellspacing="0" rules="all" border="1" id="ctl00_ContentPlaceHolder1_grdEvents_ctl00_ctl30_gridDocument" width="100%">
+					<tr>
+						<td class="docLink" align="left" nowrap="nowrap"><a href="SearchMedia.aspx?MediaVersionID=57ca9154-2837-4a6d-b31b-2dc94b4f04e4&amp;coa=coa12&amp;DT=EMT EXT BRIEF DISP&amp;MediaID=dce8e42d-e33f-4378-af87-a86bee733599" target="_blank"> [ PDF/142 KB ] </a></td><td class="docLink" align="left" nowrap="nowrap">Notice</td>
 					</tr>
-				</tbody></table>
+				</table>
 			</div>
                                                 </td>
-		</tr><tr class="rgRow">
-			<td>06/02/2023</td><td>Case Information Sheet from trial court clerk filed</td><td>&#160;</td><td align="left">
+		</tr><tr class="rgRow" id="ctl00_ContentPlaceHolder1_grdEvents_ctl00__14">
+			<td width="35">04/20/2026</td><td width="60">Electronic Motion for extension of time to file brief filed</td><td>&nbsp;</td><td align="left" width="160">
                                                     <div>
-			</div>
-                                                </td>
-		</tr><tr class="rgAltRow">
-			<td>06/02/2023</td><td>Court packet sent to parties</td><td>&#160;</td><td align="left">
-                                                    <div>
-				<table class="docGrid">
-					<tbody><tr>
-						<td align="left"><a href="SearchMedia.aspx?MediaVersionID=0b243c14-6c21-4e4b-807f-6a1e50ce7881&amp;coa=coa12&amp;DT=COURT%20PACKET%20SENT&amp;MediaID=5c1781e6-01dd-4879-a4b0-cd76dfdbabe9"> [ PDF/148 KB ] </a></td><td align="left">Notice</td>
+				<table class="docGrid" cellspacing="0" rules="all" border="1" id="ctl00_ContentPlaceHolder1_grdEvents_ctl00_ctl32_gridDocument" width="100%">
+					<tr>
+						<td class="docLink" align="left" nowrap="nowrap"><a href="SearchMedia.aspx?MediaVersionID=d2ae691e-a4bc-4af9-8f58-4e42b4f6f94a&amp;coa=coa12&amp;DT=Motion&amp;MediaID=aa47d4f0-5bf9-4953-9d7f-f9d07c9189cf" target="_blank"> [ PDF/147 KB ] </a></td><td class="docLink" align="left" nowrap="nowrap">2nd xbrief </td>
+					</tr><tr>
+						<td class="docLink" align="left" nowrap="nowrap"><a href="SearchMedia.aspx?MediaVersionID=84a024fd-efd5-490d-991a-b85fa5d09ac2&amp;coa=coa12&amp;DT=EMT EXT BRIEF FLD&amp;MediaID=ec1b286c-2fc6-4235-9ec2-6860e662e2c4" target="_blank"> [ PDF/131 KB ] </a></td><td class="docLink" align="left" nowrap="nowrap">Notice</td>
 					</tr>
-				</tbody></table>
+				</table>
 			</div>
                                                 </td>
-		</tr><tr class="rgRow">
-			<td>06/02/2023</td><td>Fee requested</td><td>&#160;</td><td align="left">
+		</tr><tr class="rgAltRow" id="ctl00_ContentPlaceHolder1_grdEvents_ctl00__15" bgcolor="WhiteSmoke">
+			<td width="35">04/09/2026</td><td width="60">Electronic Motion for extension of time to file brief disp</td><td>Motion or Writ Granted</td><td align="left" width="160">
                                                     <div>
-				<table class="docGrid">
-					<tbody><tr>
-						<td align="left"><a href="SearchMedia.aspx?MediaVersionID=cf6d2cae-3e74-4729-86a5-a80829db94f9&amp;coa=coa12&amp;DT=FEE%20REQUEST&amp;MediaID=dda45871-5b0c-4358-8502-7758f3947fa0"> [ PDF/140 KB ] </a></td><td align="left">Notice</td>
+				<table class="docGrid" cellspacing="0" rules="all" border="1" id="ctl00_ContentPlaceHolder1_grdEvents_ctl00_ctl34_gridDocument" width="100%">
+					<tr>
+						<td class="docLink" align="left" nowrap="nowrap"><a href="SearchMedia.aspx?MediaVersionID=e1f2e746-1801-4955-909c-e226d54def67&amp;coa=coa12&amp;DT=EMT EXT BRIEF DISP&amp;MediaID=dda7666f-3c64-4452-b5a3-e13abae6022a" target="_blank"> [ PDF/140 KB ] </a></td><td class="docLink" align="left" nowrap="nowrap">Notice</td>
 					</tr>
-				</tbody></table>
+				</table>
 			</div>
                                                 </td>
-		</tr><tr class="rgAltRow">
-			<td>06/02/2023</td><td>Notice of appeal filed in court of appeals</td><td>&#160;</td><td align="left">
+		</tr><tr class="rgRow" id="ctl00_ContentPlaceHolder1_grdEvents_ctl00__16">
+			<td width="35">04/07/2026</td><td width="60">Notice filed</td><td>&nbsp;</td><td align="left" width="160">
                                                     <div>
+				<table class="docGrid" cellspacing="0" rules="all" border="1" id="ctl00_ContentPlaceHolder1_grdEvents_ctl00_ctl36_gridDocument" width="100%">
+					<tr>
+						<td class="docLink" align="left" nowrap="nowrap"><a href="SearchMedia.aspx?MediaVersionID=52190cc5-f26d-4b7a-b1b0-06a116482d9a&amp;coa=coa12&amp;DT=Other&amp;MediaID=a4b22902-1c8f-49ab-bb2d-0d403342e4c7" target="_blank"> [ PDF/174 KB ] </a></td><td class="docLink" align="left" nowrap="nowrap">notice filed </td>
+					</tr><tr>
+						<td class="docLink" align="left" nowrap="nowrap"><a href="SearchMedia.aspx?MediaVersionID=88cc156f-531e-4ffe-8762-6654f990b148&amp;coa=coa12&amp;DT=NOTICE FLD&amp;MediaID=8350e2ad-a8ff-4136-be71-b913f28ef907" target="_blank"> [ PDF/132 KB ] </a></td><td class="docLink" align="left" nowrap="nowrap">Notice</td>
+					</tr>
+				</table>
 			</div>
                                                 </td>
-		</tr><tr class="rgRow">
-			<td>06/01/2023</td><td>Notice of appeal filed in trial court</td><td>&#160;</td><td align="left">
+		</tr><tr class="rgAltRow" id="ctl00_ContentPlaceHolder1_grdEvents_ctl00__17" bgcolor="WhiteSmoke">
+			<td width="35">04/02/2026</td><td width="60">Electronic Motion for extension of time to file brief filed</td><td>&nbsp;</td><td align="left" width="160">
                                                     <div>
+				<table class="docGrid" cellspacing="0" rules="all" border="1" id="ctl00_ContentPlaceHolder1_grdEvents_ctl00_ctl38_gridDocument" width="100%">
+					<tr>
+						<td class="docLink" align="left" nowrap="nowrap"><a href="SearchMedia.aspx?MediaVersionID=621e2cbe-fc8b-4c94-a747-a3034358652c&amp;coa=coa12&amp;DT=Motion&amp;MediaID=38df932a-d251-4990-9742-6f3a99bf1940" target="_blank"> [ PDF/146 KB ] </a></td><td class="docLink" align="left" nowrap="nowrap">ape xbrief </td>
+					</tr><tr>
+						<td class="docLink" align="left" nowrap="nowrap"><a href="SearchMedia.aspx?MediaVersionID=23570e79-1e99-4825-9ac1-3948e780a8aa&amp;coa=coa12&amp;DT=EMT EXT BRIEF FLD&amp;MediaID=6819d396-73cd-43a7-8387-6c9f6137157c" target="_blank"> [ PDF/134 KB ] </a></td><td class="docLink" align="left" nowrap="nowrap">Notice</td>
+					</tr>
+				</table>
 			</div>
                                                 </td>
-		</tr><tr class="rgAltRow">
-			<td>05/08/2023</td><td>Judgment signed by trial court judge</td><td>&#160;</td><td align="left">
+		</tr><tr class="rgRow" id="ctl00_ContentPlaceHolder1_grdEvents_ctl00__18">
+			<td width="35">03/06/2026</td><td width="60">Appendix filed</td><td>&nbsp;</td><td align="left" width="160">
                                                     <div>
+
+			</div>
+                                                </td>
+		</tr><tr class="rgAltRow" id="ctl00_ContentPlaceHolder1_grdEvents_ctl00__19" bgcolor="WhiteSmoke">
+			<td width="35">03/06/2026</td><td width="60">Electronic brief filed - oral argument requested</td><td>&nbsp;</td><td align="left" width="160">
+                                                    <div>
+				<table class="docGrid" cellspacing="0" rules="all" border="1" id="ctl00_ContentPlaceHolder1_grdEvents_ctl00_ctl42_gridDocument" width="100%">
+					<tr>
+						<td class="docLink" align="left" nowrap="nowrap"><a href="SearchMedia.aspx?MediaVersionID=2723960f-129d-43a7-95f2-2c14eb4dd89b&amp;coa=coa12&amp;DT=Brief&amp;MediaID=a8de8e98-5cd1-4c0c-b5f6-1ffec11f388c" target="_blank"> [ PDF/1.33 MB ] </a></td><td class="docLink" align="left" nowrap="nowrap">brief </td>
+					</tr><tr>
+						<td class="docLink" align="left" nowrap="nowrap"><a href="SearchMedia.aspx?MediaVersionID=ec2cf0f5-7e90-4ec9-96e3-b8a655fa919b&amp;coa=coa12&amp;DT=EBRIEF FLD YES&amp;MediaID=5594e840-d916-4b61-a920-21cc73e4a185" target="_blank"> [ PDF/133 KB ] </a></td><td class="docLink" align="left" nowrap="nowrap">Notice</td>
+					</tr>
+				</table>
+			</div>
+                                                </td>
+		</tr><tr class="rgRow" id="ctl00_ContentPlaceHolder1_grdEvents_ctl00__20">
+			<td width="35">03/06/2026</td><td width="60">Letter filed</td><td>&nbsp;</td><td align="left" width="160">
+                                                    <div>
+				<table class="docGrid" cellspacing="0" rules="all" border="1" id="ctl00_ContentPlaceHolder1_grdEvents_ctl00_ctl44_gridDocument" width="100%">
+					<tr>
+						<td class="docLink" align="left" nowrap="nowrap"><a href="SearchMedia.aspx?MediaVersionID=f91255c7-5749-47cd-a7f9-64a9cb0dfa1c&amp;coa=coa12&amp;DT=Other&amp;MediaID=720f7d98-cab0-4776-957b-624078e3e4f7" target="_blank"> [ PDF/291 KB ] </a></td><td class="docLink" align="left" nowrap="nowrap">appearance </td>
+					</tr><tr>
+						<td class="docLink" align="left" nowrap="nowrap"><a href="SearchMedia.aspx?MediaVersionID=1e6f11ec-d766-4f7b-bf2c-ae0c9aa42d42&amp;coa=coa12&amp;DT=LTR FLD&amp;MediaID=2bd3a476-649c-4dc3-a8fe-7df3853df410" target="_blank"> [ PDF/132 KB ] </a></td><td class="docLink" align="left" nowrap="nowrap">Notice</td>
+					</tr>
+				</table>
+			</div>
+                                                </td>
+		</tr><tr class="rgAltRow" id="ctl00_ContentPlaceHolder1_grdEvents_ctl00__21" bgcolor="WhiteSmoke">
+			<td width="35">03/04/2026</td><td width="60">Appearance of counsel</td><td>&nbsp;</td><td align="left" width="160">
+                                                    <div>
+				<table class="docGrid" cellspacing="0" rules="all" border="1" id="ctl00_ContentPlaceHolder1_grdEvents_ctl00_ctl46_gridDocument" width="100%">
+					<tr>
+						<td class="docLink" align="left" nowrap="nowrap"><a href="SearchMedia.aspx?MediaVersionID=a1aff3bc-dcfb-4d2b-8cb6-c607c5ee3abc&amp;coa=coa12&amp;DT=Other&amp;MediaID=46e0d9ec-6a10-4e0d-8fcb-6a1dfe35a031" target="_blank"> [ PDF/182 KB ] </a></td><td class="docLink" align="left" nowrap="nowrap">appearance </td>
+					</tr><tr>
+						<td class="docLink" align="left" nowrap="nowrap"><a href="SearchMedia.aspx?MediaVersionID=accfaddc-6f4e-45ad-9ed7-c1f289224ec5&amp;coa=coa12&amp;DT=APPEARANCE&amp;MediaID=a5fd2bd2-0bf8-432f-a83d-b645ce397d14" target="_blank"> [ PDF/133 KB ] </a></td><td class="docLink" align="left" nowrap="nowrap">Notice</td>
+					</tr>
+				</table>
+			</div>
+                                                </td>
+		</tr><tr class="rgRow" id="ctl00_ContentPlaceHolder1_grdEvents_ctl00__22">
+			<td width="35">02/04/2026</td><td width="60">Electronic Motion for extension of time to file brief disp</td><td>Motion or Writ Granted</td><td align="left" width="160">
+                                                    <div>
+				<table class="docGrid" cellspacing="0" rules="all" border="1" id="ctl00_ContentPlaceHolder1_grdEvents_ctl00_ctl48_gridDocument" width="100%">
+					<tr>
+						<td class="docLink" align="left" nowrap="nowrap"><a href="SearchMedia.aspx?MediaVersionID=d1b31a5a-1d27-446a-bde8-9a802bfef7e8&amp;coa=coa12&amp;DT=EMT EXT BRIEF DISP&amp;MediaID=eb6b545c-bf61-41b1-9022-00e5474f90d6" target="_blank"> [ PDF/140 KB ] </a></td><td class="docLink" align="left" nowrap="nowrap">Notice</td>
+					</tr>
+				</table>
+			</div>
+                                                </td>
+		</tr><tr class="rgAltRow" id="ctl00_ContentPlaceHolder1_grdEvents_ctl00__23" bgcolor="WhiteSmoke">
+			<td width="35">01/30/2026</td><td width="60">Electronic Motion for extension of time to file brief filed</td><td>&nbsp;</td><td align="left" width="160">
+                                                    <div>
+				<table class="docGrid" cellspacing="0" rules="all" border="1" id="ctl00_ContentPlaceHolder1_grdEvents_ctl00_ctl50_gridDocument" width="100%">
+					<tr>
+						<td class="docLink" align="left" nowrap="nowrap"><a href="SearchMedia.aspx?MediaVersionID=23cd4b3b-d5ef-4fe2-b1e1-9586a2c87a98&amp;coa=coa12&amp;DT=Motion&amp;MediaID=3ab9ea6f-0cf3-4a02-ae7c-c81abdc93586" target="_blank"> [ PDF/223 KB ] </a></td><td class="docLink" align="left" nowrap="nowrap">ant xbrief </td>
+					</tr><tr>
+						<td class="docLink" align="left" nowrap="nowrap"><a href="SearchMedia.aspx?MediaVersionID=fd543390-e53e-4204-8235-9844f56f4144&amp;coa=coa12&amp;DT=EMT EXT BRIEF FLD&amp;MediaID=7e7bd208-913d-4dde-8045-9cb371b756c5" target="_blank"> [ PDF/132 KB ] </a></td><td class="docLink" align="left" nowrap="nowrap">Notice</td>
+					</tr>
+				</table>
+			</div>
+                                                </td>
+		</tr><tr class="rgRow" id="ctl00_ContentPlaceHolder1_grdEvents_ctl00__24">
+			<td width="35">01/30/2026</td><td width="60">Letter filed</td><td>&nbsp;</td><td align="left" width="160">
+                                                    <div>
+				<table class="docGrid" cellspacing="0" rules="all" border="1" id="ctl00_ContentPlaceHolder1_grdEvents_ctl00_ctl52_gridDocument" width="100%">
+					<tr>
+						<td class="docLink" align="left" nowrap="nowrap"><a href="SearchMedia.aspx?MediaVersionID=3a8f8a9f-3695-4b69-809e-93d8880a6b79&amp;coa=coa12&amp;DT=Other&amp;MediaID=9a10d42e-6815-4c3f-b1a2-852cc9052320" target="_blank"> [ PDF/180 KB ] </a></td><td class="docLink" align="left" nowrap="nowrap">ltr fld </td>
+					</tr><tr>
+						<td class="docLink" align="left" nowrap="nowrap"><a href="SearchMedia.aspx?MediaVersionID=77d93128-4513-430c-bb82-e1d0c8087b53&amp;coa=coa12&amp;DT=LTR FLD&amp;MediaID=10c4d0b3-51ef-48e4-b89a-2ccd54df9ad5" target="_blank"> [ PDF/132 KB ] </a></td><td class="docLink" align="left" nowrap="nowrap">Notice</td>
+					</tr>
+				</table>
+			</div>
+                                                </td>
+		</tr><tr class="rgAltRow" id="ctl00_ContentPlaceHolder1_grdEvents_ctl00__25" bgcolor="WhiteSmoke">
+			<td width="35">01/08/2026</td><td width="60">Electronic Motion for extension of time to file brief disp</td><td>Motion or Writ Granted</td><td align="left" width="160">
+                                                    <div>
+				<table class="docGrid" cellspacing="0" rules="all" border="1" id="ctl00_ContentPlaceHolder1_grdEvents_ctl00_ctl54_gridDocument" width="100%">
+					<tr>
+						<td class="docLink" align="left" nowrap="nowrap"><a href="SearchMedia.aspx?MediaVersionID=b1bef131-96aa-4c1b-92fd-fe0781ea2cb8&amp;coa=coa12&amp;DT=EMT EXT BRIEF DISP&amp;MediaID=0f81f1d6-0be2-4f4f-8406-eedd0096eed0" target="_blank"> [ PDF/141 KB ] </a></td><td class="docLink" align="left" nowrap="nowrap">Notice</td>
+					</tr>
+				</table>
+			</div>
+                                                </td>
+		</tr><tr class="rgRow" id="ctl00_ContentPlaceHolder1_grdEvents_ctl00__26">
+			<td width="35">12/29/2025</td><td width="60">Electronic Motion for extension of time to file brief filed</td><td>&nbsp;</td><td align="left" width="160">
+                                                    <div>
+				<table class="docGrid" cellspacing="0" rules="all" border="1" id="ctl00_ContentPlaceHolder1_grdEvents_ctl00_ctl56_gridDocument" width="100%">
+					<tr>
+						<td class="docLink" align="left" nowrap="nowrap"><a href="SearchMedia.aspx?MediaVersionID=fa538215-017a-441a-a8d3-49f4ec665cbc&amp;coa=coa12&amp;DT=Motion&amp;MediaID=6534e97d-3833-4b10-ab68-2f4118951e63" target="_blank"> [ PDF/194 KB ] </a></td><td class="docLink" align="left" nowrap="nowrap">xbrief </td>
+					</tr><tr>
+						<td class="docLink" align="left" nowrap="nowrap"><a href="SearchMedia.aspx?MediaVersionID=cc08ab23-88a3-47be-9321-b15ba1ce5389&amp;coa=coa12&amp;DT=EMT EXT BRIEF FLD&amp;MediaID=9ef21645-1a7c-42c9-a413-3a334268694d" target="_blank"> [ PDF/132 KB ] </a></td><td class="docLink" align="left" nowrap="nowrap">Notice</td>
+					</tr>
+				</table>
+			</div>
+                                                </td>
+		</tr><tr class="rgAltRow" id="ctl00_ContentPlaceHolder1_grdEvents_ctl00__27" bgcolor="WhiteSmoke">
+			<td width="35">12/11/2025</td><td width="60">Electronic Clerks Record Filed</td><td>&nbsp;</td><td align="left" width="160">
+                                                    <div>
+				<table class="docGrid" cellspacing="0" rules="all" border="1" id="ctl00_ContentPlaceHolder1_grdEvents_ctl00_ctl58_gridDocument" width="100%">
+					<tr>
+						<td class="docLink" align="left" nowrap="nowrap"><a href="SearchMedia.aspx?MediaVersionID=0d335f5e-86fb-49ba-ad07-2545d23a65ee&amp;coa=coa12&amp;DT=ECLK RECORD FLD&amp;MediaID=5c438960-c7ef-4ba0-b457-abf08aba9a4b" target="_blank"> [ PDF/137 KB ] </a></td><td class="docLink" align="left" nowrap="nowrap">Notice</td>
+					</tr>
+				</table>
+			</div>
+                                                </td>
+		</tr><tr class="rgRow" id="ctl00_ContentPlaceHolder1_grdEvents_ctl00__28">
+			<td width="35">12/04/2025</td><td width="60">Electronic Clerks Record Filed</td><td>&nbsp;</td><td align="left" width="160">
+                                                    <div>
+				<table class="docGrid" cellspacing="0" rules="all" border="1" id="ctl00_ContentPlaceHolder1_grdEvents_ctl00_ctl60_gridDocument" width="100%">
+					<tr>
+						<td class="docLink" align="left" nowrap="nowrap"><a href="SearchMedia.aspx?MediaVersionID=547ab193-2acb-4da0-8ac8-f4fbb19260e7&amp;coa=coa12&amp;DT=ECLK RECORD FLD&amp;MediaID=7ed5ba4b-2c49-4ef4-8f9e-366162f3c828" target="_blank"> [ PDF/137 KB ] </a></td><td class="docLink" align="left" nowrap="nowrap">Notice</td>
+					</tr>
+				</table>
+			</div>
+                                                </td>
+		</tr><tr class="rgAltRow" id="ctl00_ContentPlaceHolder1_grdEvents_ctl00__29" bgcolor="WhiteSmoke">
+			<td width="35">12/02/2025</td><td width="60">Reporters record filed</td><td>&nbsp;</td><td align="left" width="160">
+                                                    <div>
+				<table class="docGrid" cellspacing="0" rules="all" border="1" id="ctl00_ContentPlaceHolder1_grdEvents_ctl00_ctl62_gridDocument" width="100%">
+					<tr>
+						<td class="docLink" align="left" nowrap="nowrap"><a href="SearchMedia.aspx?MediaVersionID=5c27b531-7cac-4581-8555-73b364879a6d&amp;coa=coa12&amp;DT=RPT RECORD FLD&amp;MediaID=4cc990eb-8b53-4637-ac1b-f8dcd49f7fdf" target="_blank"> [ PDF/133 KB ] </a></td><td class="docLink" align="left" nowrap="nowrap">Notice</td>
+					</tr>
+				</table>
+			</div>
+                                                </td>
+		</tr><tr class="rgRow" id="ctl00_ContentPlaceHolder1_grdEvents_ctl00__30">
+			<td width="35">10/31/2025</td><td width="60">Docketing statement filed</td><td>&nbsp;</td><td align="left" width="160">
+                                                    <div>
+
+			</div>
+                                                </td>
+		</tr><tr class="rgAltRow" id="ctl00_ContentPlaceHolder1_grdEvents_ctl00__31" bgcolor="WhiteSmoke">
+			<td width="35">10/27/2025</td><td width="60">Letter filed</td><td>&nbsp;</td><td align="left" width="160">
+                                                    <div>
+				<table class="docGrid" cellspacing="0" rules="all" border="1" id="ctl00_ContentPlaceHolder1_grdEvents_ctl00_ctl66_gridDocument" width="100%">
+					<tr>
+						<td class="docLink" align="left" nowrap="nowrap"><a href="SearchMedia.aspx?MediaVersionID=ce9eb056-3324-41fb-8921-c0ab1193ea92&amp;coa=coa12&amp;DT=Other&amp;MediaID=2aad9238-0bc3-47b9-8043-b7c37d9490fe" target="_blank"> [ PDF/258 KB ] </a></td><td class="docLink" align="left" nowrap="nowrap">vtca compliance </td>
+					</tr>
+				</table>
+			</div>
+                                                </td>
+		</tr><tr class="rgRow" id="ctl00_ContentPlaceHolder1_grdEvents_ctl00__32">
+			<td width="35">10/21/2025</td><td width="60">Notice of defect regarding perfection of the notice of appeal</td><td>&nbsp;</td><td align="left" width="160">
+                                                    <div>
+				<table class="docGrid" cellspacing="0" rules="all" border="1" id="ctl00_ContentPlaceHolder1_grdEvents_ctl00_ctl68_gridDocument" width="100%">
+					<tr>
+						<td class="docLink" align="left" nowrap="nowrap"><a href="SearchMedia.aspx?MediaVersionID=eacb2f4b-47f6-48a9-a6e2-6e06c2258994&amp;coa=coa12&amp;DT=NOA DEFECTIVE&amp;MediaID=68924902-25d7-4661-a637-91f410b7e85c" target="_blank"> [ PDF/147 KB ] </a></td><td class="docLink" align="left" nowrap="nowrap">Notice</td>
+					</tr>
+				</table>
+			</div>
+                                                </td>
+		</tr><tr class="rgAltRow" id="ctl00_ContentPlaceHolder1_grdEvents_ctl00__33" bgcolor="WhiteSmoke">
+			<td width="35">10/21/2025</td><td width="60">Fee paid</td><td>&nbsp;</td><td align="left" width="160">
+                                                    <div>
+				<table class="docGrid" cellspacing="0" rules="all" border="1" id="ctl00_ContentPlaceHolder1_grdEvents_ctl00_ctl70_gridDocument" width="100%">
+					<tr>
+						<td class="docLink" align="left" nowrap="nowrap"><a href="SearchMedia.aspx?MediaVersionID=02abb55e-719a-4e0e-8bc5-8298eec24331&amp;coa=coa12&amp;DT=FEE PAID&amp;MediaID=ae9a5279-8e08-4050-9bb1-477e94521a6c" target="_blank"> [ PDF/133 KB ] </a></td><td class="docLink" align="left" nowrap="nowrap">Notice</td>
+					</tr>
+				</table>
+			</div>
+                                                </td>
+		</tr><tr class="rgRow" id="ctl00_ContentPlaceHolder1_grdEvents_ctl00__34">
+			<td width="35">10/21/2025</td><td width="60">Court packet sent to parties</td><td>&nbsp;</td><td align="left" width="160">
+                                                    <div>
+				<table class="docGrid" cellspacing="0" rules="all" border="1" id="ctl00_ContentPlaceHolder1_grdEvents_ctl00_ctl72_gridDocument" width="100%">
+					<tr>
+						<td class="docLink" align="left" nowrap="nowrap"><a href="SearchMedia.aspx?MediaVersionID=c5f3b4dc-41f0-4255-b151-3fa06af0039c&amp;coa=coa12&amp;DT=COURT PACKET SENT&amp;MediaID=f5809f7b-20d8-40dd-8c7a-a39654a83f7b" target="_blank"> [ PDF/153 KB ] </a></td><td class="docLink" align="left" nowrap="nowrap">Notice</td>
+					</tr>
+				</table>
+			</div>
+                                                </td>
+		</tr><tr class="rgAltRow" id="ctl00_ContentPlaceHolder1_grdEvents_ctl00__35" bgcolor="WhiteSmoke">
+			<td width="35">10/21/2025</td><td width="60">Notice of appeal filed in court of appeals</td><td>&nbsp;</td><td align="left" width="160">
+                                                    <div>
+				<table class="docGrid" cellspacing="0" rules="all" border="1" id="ctl00_ContentPlaceHolder1_grdEvents_ctl00_ctl74_gridDocument" width="100%">
+					<tr>
+						<td class="docLink" align="left" nowrap="nowrap"><a href="SearchMedia.aspx?MediaVersionID=7b4ccff0-0199-4bfc-993d-a431047e63ff&amp;coa=coa12&amp;DT=Other&amp;MediaID=df23f133-8af2-44ab-af21-52ff269dbc34" target="_blank"> [ PDF/174 KB ] </a></td><td class="docLink" align="left" nowrap="nowrap">noa fld </td>
+					</tr><tr>
+						<td class="docLink" align="left" nowrap="nowrap"><a href="SearchMedia.aspx?MediaVersionID=55a88b6e-b980-4530-b0f8-58028b779f37&amp;coa=coa12&amp;DT=NOA FLD/COA&amp;MediaID=e288fcad-bd0f-4bed-b7d4-c12d390c7590" target="_blank"> [ PDF/133 KB ] </a></td><td class="docLink" align="left" nowrap="nowrap">Notice</td>
+					</tr>
+				</table>
+			</div>
+                                                </td>
+		</tr><tr class="rgRow" id="ctl00_ContentPlaceHolder1_grdEvents_ctl00__36">
+			<td width="35">10/03/2025</td><td width="60">Order entered</td><td>&nbsp;</td><td align="left" width="160">
+                                                    <div>
+
 			</div>
                                                 </td>
 		</tr>
 		</tbody>
-	</table><div id="ctl00_ContentPlaceHolder1_grdEvents_SharedCalendarContainer">
-	</div>	</div>
+
+	</table><div id="ctl00_ContentPlaceHolder1_grdEvents_SharedCalendarContainer" style="display:none;">
+
+	</div><input id="ctl00_ContentPlaceHolder1_grdEvents_ClientState" name="ctl00_ContentPlaceHolder1_grdEvents_ClientState" type="hidden" />	</div>
+	
+                            
 </div>
                         </div>
                     </div>
@@ -514,34 +1066,38 @@
                         </div>
                         <div class="panel-content">
                             <div id="ctl00_ContentPlaceHolder1_Panel2">
+	
                                 <div id="ctl00_ContentPlaceHolder1_grdCalendar" class="RadGrid RadGrid_Default">
-	<table class="rgMasterTable rgClipCells">
+
+	<table class="rgMasterTable rgClipCells" border="0" id="ctl00_ContentPlaceHolder1_grdCalendar_ctl00" width="100%" style="table-layout:fixed;empty-cells:show;">
 		<colgroup>
-		<col>
-		<col>
-		<col>
+		<col  />
+		<col  />
+		<col  />
 	</colgroup>
 <thead>
 			<tr>
-				<th scope="col">Set Date</th><th scope="col">Calendar Type</th><th scope="col">Reason Set</th>
+				<th scope="col" class="rgHeader">Set Date</th><th scope="col" class="rgHeader">Calendar Type</th><th scope="col" class="rgHeader">Reason Set</th>
 			</tr>
 		</thead><tbody>
-		<tr class="rgRow">
-			<td>03/08/2024</td><td>Status</td><td>Motion for rehearing due</td>
-		</tr><tr class="rgAltRow">
-			<td>04/08/2024</td><td>Status</td><td>Petition for review due in the Supreme Court</td>
-		</tr><tr class="rgRow">
-			<td>04/18/2024</td><td>Status</td><td>Mandate to Issue</td>
+		<tr class="rgRow" id="ctl00_ContentPlaceHolder1_grdCalendar_ctl00__0">
+			<td>11/30/2026</td><td>Status</td><td>Petition for review due in the Supreme Court</td>
+		</tr><tr class="rgAltRow" id="ctl00_ContentPlaceHolder1_grdCalendar_ctl00__1" bgcolor="WhiteSmoke">
+			<td>12/28/2026</td><td>Status</td><td>Mandate to Issue</td>
 		</tr>
 		</tbody>
-	</table><div id="ctl00_ContentPlaceHolder1_grdCalendar_SharedCalendarContainer">
-	</div>	</div>
+
+	</table><div id="ctl00_ContentPlaceHolder1_grdCalendar_SharedCalendarContainer" style="display:none;">
+
+	</div><input id="ctl00_ContentPlaceHolder1_grdCalendar_ClientState" name="ctl00_ContentPlaceHolder1_grdCalendar_ClientState" type="hidden" />	</div>
+	
+                            
 </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="row-fluid">
+            <div class="row-fluid" style="display: block">
                 <div class="span12">
                     <div class="panel" id="Div6">
                         <div class="panel-heading panel-heading-content">
@@ -549,45 +1105,90 @@
                         </div>
                         <div class="panel-content">
                             <div id="ctl00_ContentPlaceHolder1_Panel1">
+	
                                 <div id="ctl00_ContentPlaceHolder1_grdParty" class="RadGrid RadGrid_Default">
-	<table class="rgMasterTable rgClipCells">
+
+	<table class="rgMasterTable rgClipCells" border="0" id="ctl00_ContentPlaceHolder1_grdParty_ctl00" width="100%" style="table-layout:fixed;empty-cells:show;">
 		<colgroup>
-		<col>
-		<col>
-		<col>
+		<col  />
+		<col  />
+		<col  />
 	</colgroup>
 <thead>
 			<tr>
-				<th scope="col">Party</th><th scope="col">PartyType</th><th scope="col">Representative</th>
+				<th scope="col" class="rgHeader">Party</th><th scope="col" class="rgHeader">PartyType</th><th scope="col" class="rgHeader">Representative</th>
 			</tr>
 		</thead><tbody>
-		<tr class="rgRow">
-			<td>Connaway, Travis Aaron</td><td>Appellee</td><td>Ms. Lisa G. Flournoy  <br>Ms. Lisa Moran  <br></td>
-		</tr><tr class="rgAltRow">
-			<td>Matthews (Paluch), Heather Lynn</td><td>Appellant</td><td>Ms. Rebecca C. Brightwell  <br>Ms. Heather Lynn Matthews (Paluch)  <br></td>
+		<tr class="rgRow" id="ctl00_ContentPlaceHolder1_grdParty_ctl00__0">
+			<td>City of Troup</td><td>Appellee</td><td>Mr. Jim L. Lambeth  <br/>Mr. John C. Hardy  <br/>Mr. Ethan Ranis  <br/></td>
+		</tr><tr class="rgAltRow" id="ctl00_ContentPlaceHolder1_grdParty_ctl00__1" bgcolor="WhiteSmoke">
+			<td>Troup ISD</td><td>Appellee</td><td>Mr. Ethan Ranis  <br/>Mr. John C. Hardy  <br/>Mr. Jim L. Lambeth  <br/></td>
+		</tr><tr class="rgRow" id="ctl00_ContentPlaceHolder1_grdParty_ctl00__2">
+			<td>Tyler Jr. College District</td><td>Appellee</td><td>Mr. Jim L. Lambeth  <br/>Mr. John C. Hardy  <br/>Mr. Ethan Ranis  <br/></td>
+		</tr><tr class="rgAltRow" id="ctl00_ContentPlaceHolder1_grdParty_ctl00__3" bgcolor="WhiteSmoke">
+			<td>City of Whitehouse</td><td>Appellee</td><td>Mr. John C. Hardy  <br/>Mr. Ethan Ranis  <br/>Mr. Jim L. Lambeth  <br/></td>
+		</tr><tr class="rgRow" id="ctl00_ContentPlaceHolder1_grdParty_ctl00__4">
+			<td>Van ISD</td><td>Appellee</td><td>&nbsp;</td>
+		</tr><tr class="rgAltRow" id="ctl00_ContentPlaceHolder1_grdParty_ctl00__5" bgcolor="WhiteSmoke">
+			<td>City of Lindale</td><td>Appellee</td><td>Mr. Ethan Ranis  <br/>Mr. John C. Hardy  <br/>Mr. Jim L. Lambeth  <br/></td>
+		</tr><tr class="rgRow" id="ctl00_ContentPlaceHolder1_grdParty_ctl00__6">
+			<td>Smith County ESD 2</td><td>Appellee</td><td>Mr. John C. Hardy  <br/>Mr. Jim L. Lambeth  <br/>Mr. Ethan Ranis  <br/></td>
+		</tr><tr class="rgAltRow" id="ctl00_ContentPlaceHolder1_grdParty_ctl00__7" bgcolor="WhiteSmoke">
+			<td>City of Bullard</td><td>Appellee</td><td>Mr. Jim L. Lambeth  <br/>Mr. John C. Hardy  <br/>Mr. Ethan Ranis  <br/></td>
+		</tr><tr class="rgRow" id="ctl00_ContentPlaceHolder1_grdParty_ctl00__8">
+			<td>Arp ISD</td><td>Appellee</td><td>Mr. Jim L. Lambeth  <br/>Mr. John C. Hardy  <br/>Mr. Ethan Ranis  <br/></td>
+		</tr><tr class="rgAltRow" id="ctl00_ContentPlaceHolder1_grdParty_ctl00__9" bgcolor="WhiteSmoke">
+			<td>Oncor Electric Delivery Company NTU, LLC</td><td>Appellant</td><td>Ms. Marnie A. McCormick  <br/>Mr. William E. Johnson  <br/>Ms. Stephanie Green  <br/>Mr. David Gilliland  <br/>Ms. Jo A. Merica  <br/></td>
+		</tr><tr class="rgRow" id="ctl00_ContentPlaceHolder1_grdParty_ctl00__10">
+			<td>Chapel Hill ISD</td><td>Appellee</td><td>&nbsp;</td>
+		</tr><tr class="rgAltRow" id="ctl00_ContentPlaceHolder1_grdParty_ctl00__11" bgcolor="WhiteSmoke">
+			<td>Tyler ISD</td><td>Appellee</td><td>&nbsp;</td>
+		</tr><tr class="rgRow" id="ctl00_ContentPlaceHolder1_grdParty_ctl00__12">
+			<td>Smith County</td><td>Appellee</td><td>&nbsp;</td>
+		</tr><tr class="rgAltRow" id="ctl00_ContentPlaceHolder1_grdParty_ctl00__13" bgcolor="WhiteSmoke">
+			<td>East Texas Municipal Utility District Number 1</td><td>Appellee</td><td>Mr. Jim L. Lambeth  <br/>Mr. Ethan Ranis  <br/>Mr. John C. Hardy  <br/></td>
+		</tr><tr class="rgRow" id="ctl00_ContentPlaceHolder1_grdParty_ctl00__14">
+			<td>Smith County ESD 1</td><td>Appellee</td><td>Mr. Ethan Ranis  <br/>Mr. Jim L. Lambeth  <br/>Mr. John C. Hardy  <br/></td>
+		</tr><tr class="rgAltRow" id="ctl00_ContentPlaceHolder1_grdParty_ctl00__15" bgcolor="WhiteSmoke">
+			<td>Winona ISD</td><td>Appellee</td><td>Mr. Jim L. Lambeth  <br/>Mr. John C. Hardy  <br/>Mr. Ethan Ranis  <br/></td>
+		</tr><tr class="rgRow" id="ctl00_ContentPlaceHolder1_grdParty_ctl00__16">
+			<td>Smith County Tax Assessor-Collector</td><td>Appellee</td><td>Mr. John C. Hardy  <br/>Mr. Ethan Ranis  <br/>Mr. Jim L. Lambeth  <br/></td>
+		</tr><tr class="rgAltRow" id="ctl00_ContentPlaceHolder1_grdParty_ctl00__17" bgcolor="WhiteSmoke">
+			<td>City Of Tyler</td><td>Appellee</td><td>Mr. John C. Hardy  <br/>Mr. Ethan Ranis  <br/>Mr. Jim L. Lambeth  <br/></td>
+		</tr><tr class="rgRow" id="ctl00_ContentPlaceHolder1_grdParty_ctl00__18">
+			<td>Bullard ISD</td><td>Appellee</td><td>&nbsp;</td>
+		</tr><tr class="rgAltRow" id="ctl00_ContentPlaceHolder1_grdParty_ctl00__19" bgcolor="WhiteSmoke">
+			<td>Whitehouse ISD</td><td>Appellee</td><td>Mr. Jim L. Lambeth  <br/>Mr. Ethan Ranis  <br/>Mr. John C. Hardy  <br/></td>
 		</tr>
 		</tbody>
-	</table><div id="ctl00_ContentPlaceHolder1_grdParty_SharedCalendarContainer">
-	</div>	</div>
+
+	</table><div id="ctl00_ContentPlaceHolder1_grdParty_SharedCalendarContainer" style="display:none;">
+
+	</div><input id="ctl00_ContentPlaceHolder1_grdParty_ClientState" name="ctl00_ContentPlaceHolder1_grdParty_ClientState" type="hidden" />	</div>
+	
+                            
 </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="row-fluid">
+            <div class="row-fluid" style="display: none">
                 <div class="span12">
                     <div class="panel" id="Div7">
                         <div class="panel-heading panel-heading-content">
                             Case Documents, Opinions, Notices:
                         </div>
                         <div class="panel-content">
+                            
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="row-fluid">
+            
+            <div class="row-fluid" style="display: block;">
                 <div class="span12">
                     <div id="ctl00_ContentPlaceHolder1_pnlTrialCourt2">
+	
                         <div class="panel" id="panelTrialCourtInfo">
                             <div class="panel-heading panel-heading-content">
                                 Trial Court Information
@@ -595,81 +1196,176 @@
                             <div class="panel-content">
                                 <div class="row-fluid">
                                     <div class="span2">
-                                        <label>
+                                        <label class="form1">
                                             Court
                                         </label>
                                     </div>
                                     <div class="span4">
-                                        County Court at Law&#160;
+                                        114th District Court&nbsp;
                                     </div>
                                 </div>
                                 <div class="row-fluid">
                                     <div class="span2">
-                                        <label>
+                                        <label class="form1">
                                             County
                                         </label>
                                     </div>
                                     <div class="span4">
-                                        Nacogdoches&#160;
+                                        Smith&nbsp;
                                     </div>
                                 </div>
                                 <div class="row-fluid">
                                     <div class="span2">
-                                        <label>
+                                        <label class="form1">
                                             Court Judge
                                         </label>
                                     </div>
                                     <div class="span4">
-                                        Honorable John A. Sinz&#160;
+                                        Honorable Austin R. Jackson&nbsp;
                                     </div>
                                 </div>
                                 <div class="row-fluid">
                                     <div class="span2">
-                                        <label>
+                                        <label class="form1">
                                             Court Case
                                         </label>
                                     </div>
                                     <div class="span4">
-                                        C1934782&#160;
+                                        24-3461-B&nbsp;
                                     </div>
                                 </div>
                                 <div class="row-fluid">
                                     <div class="span2">
-                                        <label>
+                                        <label class="form1">
                                             Reporter
                                         </label>
                                     </div>
                                     <div class="span4">
-                                        Leah Hale&#160;
+                                        Linda J. Webster&nbsp;
                                     </div>
                                 </div>
                                 <div id="ctl00_ContentPlaceHolder1_trPunishment" class="row-fluid">
                                     <div class="span2">
-                                        <label>
+                                        <label class="form1">
                                             Punishment
                                         </label>
                                     </div>
                                     <div class="span4">
-                                        &#160;
+                                        &nbsp;
                                     </div>
                                 </div>
                             </div>
                         </div>
+                    
 </div>
                 </div>
                 <div id="adobeNote">
-                    <hr>
-                    <p>
-                        To view or print PDF files you must have the Adobe Acrobat&#174; reader. This software
-                        may be obtained without charge from Adobe. <a href="http://www.adobe.com/products/acrobat/readstep2.html">Download the reader from the Adobe Web site</a>
+                    <hr />
+                    <p style="font-size: 12px; font-family: Tahoma, Arial, sans-serif;">
+                        To view or print PDF files you must have the Adobe Acrobat&reg; reader. This software
+                        may be obtained without charge from Adobe. <a href="http://www.adobe.com/products/acrobat/readstep2.html"
+                            target="_blank">Download the reader from the Adobe Web site</a>
                     </p>
                 </div>
             </div>
+            <!--End of form-->
+
             <div id="content-bottom">
+                
             </div>
         </div>
     </div>
+
+
+                
+
+<script type="text/javascript">
+//<![CDATA[
+Sys.Application.add_init(function() {
+    $create(Telerik.Web.UI.RadGrid, {"ClientID":"ctl00_ContentPlaceHolder1_grdBriefs","ClientSettings":{"AllowAutoScrollOnDragDrop":true,"ShouldCreateRows":true,"DataBinding":{},"Selecting":{"CellSelectionMode":0},"Scrolling":{},"Resizing":{},"ClientMessages":{},"KeyboardNavigationSettings":{"AllowActiveRowCycle":false,"EnableKeyboardShortcuts":true,"FocusKey":89,"InitInsertKey":73,"RebindKey":82,"ExitEditInsertModeKey":27,"UpdateInsertItemKey":13,"DeleteActiveRow":127,"ExpandDetailTableKey":39,"CollapseDetailTableKey":37,"MoveDownKey":40,"MoveUpKey":38,"SaveChangesKey":85,"CancelChangesKey":81},"Animation":{},"Virtualization":{}},"Skin":"Default","SortingSettings":{"SortToolTip":"Click here to sort","SortedAscToolTip":"Sorted asc","SortedDescToolTip":"Sorted desc","SortedBackColor":{"R":0,"G":0,"B":0,"A":0,"IsKnownColor":false,"IsEmpty":true,"IsNamedColor":false,"IsSystemColor":false,"Name":"0"},"EnableSkinSortStyles":true,"ViewState":{}},"UniqueID":"ctl00$ContentPlaceHolder1$grdBriefs","_activeRowIndex":"","_controlToFocus":"","_currentPageIndex":0,"_defaultDateTimeFormat":"M/d/yyyy h:mm:ss tt","_editIndexes":"[]","_embeddedSkin":true,"_freezeText":"Freeze","_gridTableViewsData":"[{\"ClientID\":\"ctl00_ContentPlaceHolder1_grdBriefs_ctl00\",\"UniqueID\":\"ctl00$ContentPlaceHolder1$grdBriefs$ctl00\",\"PageSize\":10,\"PageCount\":1,\"EditMode\":\"EditForms\",\"AllowPaging\":false,\"CurrentPageIndex\":0,\"VirtualItemCount\":0,\"AllowMultiColumnSorting\":false,\"AllowNaturalSort\":true,\"AllowFilteringByColumn\":false,\"PageButtonCount\":10,\"HasDetailTables\":false,\"HasMultiHeaders\":false,\"CheckListWebServicePath\":\"\",\"GroupLoadMode\":\"Server\",\"PagerAlwaysVisible\":true,\"IsItemInserted\":false,\"clientDataKeyNames\":[],\"hasDetailItemTemplate\":false,\"_dataBindTemplates\":false,\"_selectedItemStyle\":\"\",\"_selectedItemStyleClass\":\"rgSelectedRow\",\"_columnsData\":[{\"UniqueName\":\"EventDate\",\"Resizable\":true,\"Reorderable\":true,\"Selectable\":true,\"Groupable\":true,\"ColumnType\":\"GridBoundColumn\",\"ColumnGroupName\":\"\",\"Editable\":true,\"DataTypeName\":\"System.DateTime\",\"DataField\":\"EventDate\",\"DataFormatString\":\"{0:MM/dd/yyyy}\",\"Display\":true},{\"UniqueName\":\"EventType\",\"Resizable\":true,\"Reorderable\":true,\"Selectable\":true,\"Groupable\":true,\"ColumnType\":\"GridBoundColumn\",\"ColumnGroupName\":\"\",\"Editable\":true,\"DataTypeName\":\"System.String\",\"DataField\":\"EventType\",\"Display\":true},{\"UniqueName\":\"Description\",\"Resizable\":true,\"Reorderable\":true,\"Selectable\":true,\"Groupable\":true,\"ColumnType\":\"GridBoundColumn\",\"ColumnGroupName\":\"\",\"Editable\":true,\"DataTypeName\":\"System.String\",\"DataField\":\"Description\",\"Display\":true},{\"UniqueName\":\"TemplateColumn\",\"Resizable\":true,\"Reorderable\":true,\"Selectable\":true,\"Groupable\":true,\"ColumnType\":\"GridTemplateColumn\",\"ColumnGroupName\":\"\",\"Editable\":false,\"DataTypeName\":\"System.String\",\"DataField\":\"\",\"ReadOnly\":true,\"Display\":true}]}]","_masterClientID":"ctl00_ContentPlaceHolder1_grdBriefs_ctl00","_shouldFocusOnPage":false,"_unfreezeText":"Unfreeze","allowMultiRowSelection":false,"clientStateFieldID":"ctl00_ContentPlaceHolder1_grdBriefs_ClientState","expandItems":{},"renderMode":1}, {"gridCreated":GetBriefObject}, null, $get("ctl00_ContentPlaceHolder1_grdBriefs"));
+});
+Sys.Application.add_init(function() {
+    $create(Telerik.Web.UI.RadGrid, {"ClientID":"ctl00_ContentPlaceHolder1_grdEvents","ClientSettings":{"AllowAutoScrollOnDragDrop":true,"ShouldCreateRows":true,"DataBinding":{},"Selecting":{"CellSelectionMode":0},"Scrolling":{},"Resizing":{},"ClientMessages":{},"KeyboardNavigationSettings":{"AllowActiveRowCycle":false,"EnableKeyboardShortcuts":true,"FocusKey":89,"InitInsertKey":73,"RebindKey":82,"ExitEditInsertModeKey":27,"UpdateInsertItemKey":13,"DeleteActiveRow":127,"ExpandDetailTableKey":39,"CollapseDetailTableKey":37,"MoveDownKey":40,"MoveUpKey":38,"SaveChangesKey":85,"CancelChangesKey":81},"Animation":{},"Virtualization":{}},"Skin":"Default","SortingSettings":{"SortToolTip":"Click here to sort","SortedAscToolTip":"Sorted asc","SortedDescToolTip":"Sorted desc","SortedBackColor":{"R":0,"G":0,"B":0,"A":0,"IsKnownColor":false,"IsEmpty":true,"IsNamedColor":false,"IsSystemColor":false,"Name":"0"},"EnableSkinSortStyles":true,"ViewState":{}},"UniqueID":"ctl00$ContentPlaceHolder1$grdEvents","_activeRowIndex":"","_controlToFocus":"","_currentPageIndex":0,"_defaultDateTimeFormat":"M/d/yyyy h:mm:ss tt","_editIndexes":"[]","_embeddedSkin":true,"_freezeText":"Freeze","_gridTableViewsData":"[{\"ClientID\":\"ctl00_ContentPlaceHolder1_grdEvents_ctl00\",\"UniqueID\":\"ctl00$ContentPlaceHolder1$grdEvents$ctl00\",\"PageSize\":10,\"PageCount\":1,\"EditMode\":\"EditForms\",\"AllowPaging\":false,\"CurrentPageIndex\":0,\"VirtualItemCount\":0,\"AllowMultiColumnSorting\":false,\"AllowNaturalSort\":true,\"AllowFilteringByColumn\":false,\"PageButtonCount\":10,\"HasDetailTables\":false,\"HasMultiHeaders\":false,\"CheckListWebServicePath\":\"\",\"GroupLoadMode\":\"Server\",\"PagerAlwaysVisible\":true,\"IsItemInserted\":false,\"clientDataKeyNames\":[],\"hasDetailItemTemplate\":false,\"_dataBindTemplates\":false,\"_selectedItemStyle\":\"\",\"_selectedItemStyleClass\":\"rgSelectedRow\",\"_columnsData\":[{\"UniqueName\":\"EventDate\",\"Resizable\":true,\"Reorderable\":true,\"Selectable\":true,\"Groupable\":true,\"ColumnType\":\"GridBoundColumn\",\"ColumnGroupName\":\"\",\"Editable\":true,\"DataTypeName\":\"System.String\",\"DataField\":\"EventDate\",\"Display\":true},{\"UniqueName\":\"EventType\",\"Resizable\":true,\"Reorderable\":true,\"Selectable\":true,\"Groupable\":true,\"ColumnType\":\"GridBoundColumn\",\"ColumnGroupName\":\"\",\"Editable\":true,\"DataTypeName\":\"System.String\",\"DataField\":\"EventType\",\"Display\":true},{\"UniqueName\":\"Disposition\",\"Resizable\":true,\"Reorderable\":true,\"Selectable\":true,\"Groupable\":true,\"ColumnType\":\"GridBoundColumn\",\"ColumnGroupName\":\"\",\"Editable\":true,\"DataTypeName\":\"System.String\",\"DataField\":\"Disposition\",\"Display\":true},{\"UniqueName\":\"TemplateColumn\",\"Resizable\":true,\"Reorderable\":true,\"Selectable\":true,\"Groupable\":true,\"ColumnType\":\"GridTemplateColumn\",\"ColumnGroupName\":\"\",\"Editable\":false,\"DataTypeName\":\"System.String\",\"DataField\":\"\",\"ReadOnly\":true,\"Display\":true}]}]","_masterClientID":"ctl00_ContentPlaceHolder1_grdEvents_ctl00","_shouldFocusOnPage":false,"_unfreezeText":"Unfreeze","allowMultiRowSelection":false,"clientStateFieldID":"ctl00_ContentPlaceHolder1_grdEvents_ClientState","expandItems":{},"renderMode":1}, {"gridCreated":GetEventObject}, null, $get("ctl00_ContentPlaceHolder1_grdEvents"));
+});
+Sys.Application.add_init(function() {
+    $create(Telerik.Web.UI.RadGrid, {"ClientID":"ctl00_ContentPlaceHolder1_grdCalendar","ClientSettings":{"AllowAutoScrollOnDragDrop":true,"ShouldCreateRows":true,"DataBinding":{},"Selecting":{"CellSelectionMode":0},"Scrolling":{},"Resizing":{},"ClientMessages":{},"KeyboardNavigationSettings":{"AllowActiveRowCycle":false,"EnableKeyboardShortcuts":true,"FocusKey":89,"InitInsertKey":73,"RebindKey":82,"ExitEditInsertModeKey":27,"UpdateInsertItemKey":13,"DeleteActiveRow":127,"ExpandDetailTableKey":39,"CollapseDetailTableKey":37,"MoveDownKey":40,"MoveUpKey":38,"SaveChangesKey":85,"CancelChangesKey":81},"Animation":{},"Virtualization":{}},"Skin":"Default","UniqueID":"ctl00$ContentPlaceHolder1$grdCalendar","_activeRowIndex":"","_controlToFocus":"","_currentPageIndex":0,"_defaultDateTimeFormat":"M/d/yyyy h:mm:ss tt","_editIndexes":"[]","_embeddedSkin":true,"_freezeText":"Freeze","_gridTableViewsData":"[{\"ClientID\":\"ctl00_ContentPlaceHolder1_grdCalendar_ctl00\",\"UniqueID\":\"ctl00$ContentPlaceHolder1$grdCalendar$ctl00\",\"PageSize\":10,\"PageCount\":1,\"EditMode\":\"EditForms\",\"AllowPaging\":false,\"CurrentPageIndex\":0,\"VirtualItemCount\":0,\"AllowMultiColumnSorting\":false,\"AllowNaturalSort\":true,\"AllowFilteringByColumn\":false,\"PageButtonCount\":10,\"HasDetailTables\":false,\"HasMultiHeaders\":false,\"CheckListWebServicePath\":\"\",\"GroupLoadMode\":\"Server\",\"PagerAlwaysVisible\":true,\"IsItemInserted\":false,\"clientDataKeyNames\":[],\"hasDetailItemTemplate\":false,\"_dataBindTemplates\":false,\"_selectedItemStyle\":\"\",\"_selectedItemStyleClass\":\"rgSelectedRow\",\"_columnsData\":[{\"UniqueName\":\"SetDate\",\"Resizable\":true,\"Reorderable\":true,\"Selectable\":true,\"Groupable\":true,\"ColumnType\":\"GridBoundColumn\",\"ColumnGroupName\":\"\",\"Editable\":true,\"DataTypeName\":\"System.String\",\"DataField\":\"SetDate\",\"Display\":true},{\"UniqueName\":\"CalendarType\",\"Resizable\":true,\"Reorderable\":true,\"Selectable\":true,\"Groupable\":true,\"ColumnType\":\"GridBoundColumn\",\"ColumnGroupName\":\"\",\"Editable\":true,\"DataTypeName\":\"System.String\",\"DataField\":\"CalendarType\",\"Display\":true},{\"UniqueName\":\"ReasonSet\",\"Resizable\":true,\"Reorderable\":true,\"Selectable\":true,\"Groupable\":true,\"ColumnType\":\"GridBoundColumn\",\"ColumnGroupName\":\"\",\"Editable\":true,\"DataTypeName\":\"System.String\",\"DataField\":\"ReasonSet\",\"Display\":true}]}]","_masterClientID":"ctl00_ContentPlaceHolder1_grdCalendar_ctl00","_shouldFocusOnPage":false,"_unfreezeText":"Unfreeze","allowMultiRowSelection":false,"clientStateFieldID":"ctl00_ContentPlaceHolder1_grdCalendar_ClientState","expandItems":{},"renderMode":1}, null, null, $get("ctl00_ContentPlaceHolder1_grdCalendar"));
+});
+Sys.Application.add_init(function() {
+    $create(Telerik.Web.UI.RadGrid, {"ClientID":"ctl00_ContentPlaceHolder1_grdParty","ClientSettings":{"AllowAutoScrollOnDragDrop":true,"ShouldCreateRows":true,"DataBinding":{},"Selecting":{"CellSelectionMode":0},"Scrolling":{},"Resizing":{},"ClientMessages":{},"KeyboardNavigationSettings":{"AllowActiveRowCycle":false,"EnableKeyboardShortcuts":true,"FocusKey":89,"InitInsertKey":73,"RebindKey":82,"ExitEditInsertModeKey":27,"UpdateInsertItemKey":13,"DeleteActiveRow":127,"ExpandDetailTableKey":39,"CollapseDetailTableKey":37,"MoveDownKey":40,"MoveUpKey":38,"SaveChangesKey":85,"CancelChangesKey":81},"Animation":{},"Virtualization":{}},"Skin":"Default","UniqueID":"ctl00$ContentPlaceHolder1$grdParty","_activeRowIndex":"","_controlToFocus":"","_currentPageIndex":0,"_defaultDateTimeFormat":"M/d/yyyy h:mm:ss tt","_editIndexes":"[]","_embeddedSkin":true,"_freezeText":"Freeze","_gridTableViewsData":"[{\"ClientID\":\"ctl00_ContentPlaceHolder1_grdParty_ctl00\",\"UniqueID\":\"ctl00$ContentPlaceHolder1$grdParty$ctl00\",\"PageSize\":10,\"PageCount\":1,\"EditMode\":\"EditForms\",\"AllowPaging\":false,\"CurrentPageIndex\":0,\"VirtualItemCount\":0,\"AllowMultiColumnSorting\":false,\"AllowNaturalSort\":true,\"AllowFilteringByColumn\":false,\"PageButtonCount\":10,\"HasDetailTables\":false,\"HasMultiHeaders\":false,\"CheckListWebServicePath\":\"\",\"GroupLoadMode\":\"Server\",\"PagerAlwaysVisible\":true,\"IsItemInserted\":false,\"clientDataKeyNames\":[],\"hasDetailItemTemplate\":false,\"_dataBindTemplates\":false,\"_selectedItemStyle\":\"\",\"_selectedItemStyleClass\":\"rgSelectedRow\",\"_columnsData\":[{\"UniqueName\":\"Party\",\"Resizable\":true,\"Reorderable\":true,\"Selectable\":true,\"Groupable\":true,\"ColumnType\":\"GridBoundColumn\",\"ColumnGroupName\":\"\",\"Editable\":true,\"DataTypeName\":\"System.String\",\"DataField\":\"Party\",\"Display\":true},{\"UniqueName\":\"PartyType\",\"Resizable\":true,\"Reorderable\":true,\"Selectable\":true,\"Groupable\":true,\"ColumnType\":\"GridBoundColumn\",\"ColumnGroupName\":\"\",\"Editable\":true,\"DataTypeName\":\"System.String\",\"DataField\":\"PartyType\",\"Display\":true},{\"UniqueName\":\"Attorney\",\"Resizable\":true,\"Reorderable\":true,\"Selectable\":true,\"Groupable\":true,\"ColumnType\":\"GridBoundColumn\",\"ColumnGroupName\":\"\",\"Editable\":true,\"DataTypeName\":\"System.String\",\"DataField\":\"Attorney\",\"Display\":true}]}]","_masterClientID":"ctl00_ContentPlaceHolder1_grdParty_ctl00","_shouldFocusOnPage":false,"_unfreezeText":"Unfreeze","allowMultiRowSelection":false,"clientStateFieldID":"ctl00_ContentPlaceHolder1_grdParty_ClientState","expandItems":{},"renderMode":1}, null, null, $get("ctl00_ContentPlaceHolder1_grdParty"));
+});
+//]]>
+</script>
+</form>
             </div>
         </div>
     </div>
-    </body></html>
+    <footer class="footer no-print">
+        <div class="page">
+            <div class="container-fluid">
+                <div class="row-fluid">
+                    <div class="headpad">
+                        <div class="span1">
+                            <a href="https://www.txcourts.gov/">
+                            <img src="img/brand/tjb-seal-144.png" id="ctl00_seal" alt="Texas Judicial Branch home page" />
+                            </a>
+                            </div>
+                        <div class="span2">
+                            <a href="https://www.texasamerica250.com/" target="_blank">
+                            <img src="/img/brand/texasamerica250-logo.jpg" alt="Texas America250 website"/>
+                            </a>
+                        </div>
+                      
+                        <div class="span7">
+                        </div>
+
+                        <div class="span2 no-print">
+                            <dl>
+                                <dt class="goldText">Resources</dt>
+                                <dd><a target="_blank" href="https://www.txcourts.gov/careers.aspx">Careers</a></dd>
+                                <dd><a href="https://www.txcourts.gov/site-policies.aspx">Site Policies</a></dd>
+                                <dd><a target="_blank" href="http://www.texashomelandsecurity.com/">Texas Homeland Security</a></dd>
+                                <dd><a target="_blank" href="http://www.texas.gov/">Texas.gov</a></dd>
+                                <dd><a target="_blank" href="http://www2.tsl.state.tx.us/trail/">TRAIL</a></dd>
+                                <dd><a href="https://www.txcourts.gov/contact-us.aspx">WebMaster</a></dd>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- like it or not!!!!! -- tidc.js has the main navigation event handlers! --->
+    <script type="text/javascript" src="https://www.txcourts.gov/Scripts/tidc.js"></script>
+    <script type="text/javascript" src="https://www.txcourts.gov/Scripts/widgets-ck.js"></script>
+    <script type="text/javascript">
+        $(".panel-heading").click(function () {
+            var self = $(this),
+					arrow = $("i", self);
+
+            if (arrow.is(":visible")) {
+                var sibling = self.next(".nav"),
+						panel = self.parent();
+                if (sibling.is(":visible")) {
+                    arrow.attr('class', 'icon-caret-right pull-right');
+                    panel.addClass('panel-phone');
+                } else {
+                    arrow.attr('class', 'icon-caret-down pull-right');
+                    panel.removeClass('panel-phone');
+                }
+                sibling.toggle();
+            }
+        });
+    </script>
+
+    <script>
+        var _gaq = [['_setAccount', 'UA-XXXXX-X'], ['_trackPageview']];
+        (function (d, t) {
+            var g = d.createElement(t), s = d.getElementsByTagName(t)[0];
+            g.src = '//www.google-analytics.com/ga.js';
+            s.parentNode.insertBefore(g, s)
+        }(document, 'script'));
+    </script>
+
+</body>
+</html>

@@ -21,6 +21,7 @@ Changes:
 -
 
 Fixes:
+- Fix `txctapp5`, `txctapp8`, `txctapp12` and `txctapp14` returning no opinions. TAMES Document Search has had no "Opinion" documents for these courts since December 2024, so they now read each court's Released Orders & Opinions page for every day of the range.
 - Fix `tenn`, `tennctapp`, `tenncrimapp` and `tenn_workers_comp` crash when a row's opinion link has an empty URL; those rows are now skipped. #2303
 - Send the session's default headers, including `User-Agent`, on PACER magic link downloads; PACER was intermittently resetting the connection without them.
 

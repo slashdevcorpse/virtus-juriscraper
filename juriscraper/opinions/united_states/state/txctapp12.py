@@ -16,3 +16,7 @@ class Site(texapp.Site):
         self.court_name = "capp_12"
         self.court_number = "12"
         self.checkbox = 13
+        self.coa_code = "coa12"
+        self.url = (
+            "https://search.txcourts.gov/DocketSrch.aspx?coa=" + self.coa_code
+        )

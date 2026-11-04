@@ -20,7 +20,7 @@
 import os
 import re
 from datetime import date, datetime, timedelta
-from urllib.parse import urlparse
+from urllib.parse import urljoin, urlparse
 
 from dateutil import parser
 from lxml import html as lxmlHTML
@@ -58,6 +58,21 @@ class Site(ClusterSite):
 
     rows_xpath = (
         "//table[@class='rgMasterTable']/tbody/tr[not(@class='rgNoRecords')]"
+    )
+
+    # Courts whose Document Search "Opinion" index is empty set `coa_code`
+    # (for example "coa05") to be scraped from their released docket instead
+    coa_code: str | None = None
+    released_docket_url = (
+        "https://search.txcourts.gov/Docket.aspx?coa={coa}&FullDate={day}"
+    )
+    # "Civil Causes Decided" and "Criminal Causes Decided" tables; the orders
+    # tables are left out. The case link is the direct child of the first
+    # cell; the document links sit in a nested table.
+    released_docket_rows_xpath = (
+        "//table[@id='ctl00_ContentPlaceHolder1_grdDocket_ctl00' or "
+        "@id='ctl00_ContentPlaceHolder1_grdDocket2_ctl00']"
+        "/tbody/tr[td[1]/a]"
     )
 
     def __init__(self, *args, **kwargs):
@@ -142,6 +157,10 @@ class Site(ClusterSite):
 
         :return: None
         """
+        if self.coa_code:
+            await self._process_released_docket()
+            return
+
         if not self.test_mode_enabled():
             # Make our post request to get our data
             self.method = "POST"
@@ -153,50 +172,9 @@ class Site(ClusterSite):
             # each opinion in a single row. We keep track to skip if we already
             # parsed the case
             case_url = row.xpath(".//a")[2].get("href")
-            if case_url in self.seen_case_urls:
-                continue
-            self.seen_case_urls.add(case_url)
-
             op_date = row.xpath("td[2]")[0].text_content()
-            case_dict = await self.parse_case_page(case_url, op_date)
-            case_dict["date"] = op_date
-            case_dict["docket"] = row.xpath("td[5]")[0].text_content().strip()
-
-            judges = [
-                op["author"]
-                for op in case_dict["sub_opinions"]
-                if op.get("author")
-            ]
-            case_dict["judge"] = "; ".join(judges)
-
-            if (
-                self.checkbox >= 2  # only checking for COA's not crim
-                and self.court_number
-                != case_dict["docket"][
-                    :2
-                ]  # first to docket numbers indicate the court (03-26-00075-CV)
-            ):
-                logger.warning(
-                    "Skipping docket %s - belongs to court %s, not %s",
-                    case_dict["docket"],
-                    case_dict["docket"][:2],
-                    self.court_number,
-                )
-                continue
-
-            if not case_dict["sub_opinions"]:
-                # Some cases have opinion documents mislabeled on the
-                # court website (e.g. labeled as "Notice" or "Judgment"
-                # instead of "Opinion"), so get_opinions() returns an
-                # empty list.  Skip to avoid an InsanityException
-                # downstream when download_urls is missing. #1852
-                logger.error(
-                    "Skipping docket %s - no opinion documents found",
-                    case_dict["docket"],
-                )
-                continue
-
-            self.cases.append(case_dict)
+            docket = row.xpath("td[5]")[0].text_content().strip()
+            await self._add_case(case_url, op_date, docket)
 
         # pagination
         next_page_xpath = (
@@ -207,6 +185,102 @@ class Site(ClusterSite):
             self.current_page += 1
             logger.info(f"Paginating to page {self.current_page}")
             await self._process_html()
+
+    async def _add_case(
+        self, case_url: str, op_date: str, docket: str
+    ) -> None:
+        """Parse a case page found by either search path and keep it if it
+        holds opinions
+
+        :param case_url: url of the case page; a case is parsed only once
+        :param op_date: date the opinion was released, `m/d/Y`
+        :param docket: docket number, as listed in the search result
+        """
+        if case_url in self.seen_case_urls:
+            return
+        self.seen_case_urls.add(case_url)
+
+        case_dict = await self.parse_case_page(case_url, op_date)
+        case_dict["date"] = op_date
+        case_dict["docket"] = docket
+
+        judges = [
+            op["author"]
+            for op in case_dict["sub_opinions"]
+            if op.get("author")
+        ]
+        case_dict["judge"] = "; ".join(judges)
+
+        if (
+            self.checkbox >= 2  # only checking for COA's not crim
+            and self.court_number
+            != case_dict["docket"][
+                :2
+            ]  # first to docket numbers indicate the court (03-26-00075-CV)
+        ):
+            logger.warning(
+                "Skipping docket %s - belongs to court %s, not %s",
+                case_dict["docket"],
+                case_dict["docket"][:2],
+                self.court_number,
+            )
+            return
+
+        if not case_dict["sub_opinions"]:
+            # Some cases have opinion documents mislabeled on the
+            # court website (e.g. labeled as "Notice" or "Judgment"
+            # instead of "Opinion"), so get_opinions() returns an
+            # empty list.  Skip to avoid an InsanityException
+            # downstream when download_urls is missing. #1852
+            logger.error(
+                "Skipping docket %s - no opinion documents found",
+                case_dict["docket"],
+            )
+            return
+
+        self.cases.append(case_dict)
+
+    async def _process_released_docket(self) -> None:
+        """Collect cases from the court's "Released Orders & Opinions" pages
+
+        Since December 2024 the Document Search "Opinion" index holds no
+        documents for some courts of appeals, while the same opinions are
+        listed on the court's docket page for the day they were released.
+        There is one page per calendar day and no pagination.
+        """
+        day = self.start_date
+        while day <= self.end_date:
+            if not self.test_mode_enabled():
+                self.html = await self._get_html_tree_by_url(
+                    self.released_docket_url.format(
+                        coa=self.coa_code, day=day.strftime("%-m/%-d/%Y")
+                    )
+                )
+            op_date = self._released_docket_date(self.html) or day.strftime(
+                "%-m/%-d/%Y"
+            )
+            for row in self.html.xpath(self.released_docket_rows_xpath):
+                link = row.xpath("td[1]/a")[0]
+                await self._add_case(
+                    urljoin(self.released_docket_url, link.get("href")),
+                    op_date,
+                    link.text_content().strip(),
+                )
+            day += timedelta(days=1)
+            if self.test_mode_enabled():
+                break
+
+    @staticmethod
+    def _released_docket_date(html: lxmlHTML.HtmlElement) -> str:
+        """Date in the page heading: "Released Orders & Opinions for 8/13/2026"
+
+        :return: the date as `m/d/Y`, or an empty string if there is no heading
+        """
+        heading = " ".join(
+            html.xpath("//*[contains(text(), 'Released Orders')]/text()")
+        )
+        match = re.search(r"\d{1,2}/\d{1,2}/\d{4}", heading)
+        return match.group(0) if match else ""
 
     async def parse_case_page(self, link: str, opinion_date: str) -> dict:
         """Parses the case page
