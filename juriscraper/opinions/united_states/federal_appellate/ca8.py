@@ -17,11 +17,10 @@ class Site(OpinionSiteLinear):
     ]
     first_opinion_date = datetime(1995, 11, 1)
     days_interval = 365 * 35  # we just need the start and end input dates
-    base_url = "https://media.ca8.uscourts.gov/cgi-bin/opnByMM.pl?theMM=%02d&theYY=%s&A1=Get+Opinions"
+    base_url = "https://ecf.ca8.uscourts.gov/cgi-bin/opnByMM.pl?theMM=%02d&theYY=%s&A1=Get+Opinions"
     is_bap_scraper = False
 
     def __init__(self, *args, **kwargs):
-        kwargs.setdefault("verify", False)
         super().__init__(*args, **kwargs)
         self.court_id = self.__module__
 
@@ -102,7 +101,7 @@ class Site(OpinionSiteLinear):
         per_curiam, judges and summaries are available
         """
         self.url = (
-            "http://media.ca8.uscourts.gov/cgi-bin/opnByMM.pl?theMM=%02d&theYY=%s&A1=Get+Opinions"
+            "https://ecf.ca8.uscourts.gov/cgi-bin/opnByMM.pl?theMM=%02d&theYY=%s&A1=Get+Opinions"
             % (d.month, d.year)
         )
         logger.info("Backscraping %s-%s", d.year, d.month)
