@@ -16,7 +16,7 @@ class Site(OralArgumentSite):
         super().__init__(*args, **kwargs)
         self.court_id = self.__module__
         self.url = (
-            "http://www.supremecourt.gov/oral_arguments/argument_audio.aspx"
+            "https://www.supremecourt.gov/oral_arguments/argument_audio.aspx"
         )
         self.back_scrape_iterable = list(range(2010, 2015))
 
@@ -27,7 +27,7 @@ class Site(OralArgumentSite):
     @staticmethod
     def _return_download_url(d):
         file_type = "mp3"  # or 'wma' is also available for any case.
-        download_url = f"http://www.supremecourt.gov/media/audio/{file_type}files/{d}.{file_type}"
+        download_url = f"https://www.supremecourt.gov/media/audio/{file_type}files/{d}.{file_type}"
         return download_url
 
     def _get_case_names(self):
@@ -48,6 +48,6 @@ class Site(OralArgumentSite):
 
     async def _download_backwards(self, year):
         self.url = (
-            f"http://www.supremecourt.gov/oral_arguments/argument_audio/{year}"
+            f"https://www.supremecourt.gov/oral_arguments/argument_audio/{year}"
         )
         self.html = await self._download()

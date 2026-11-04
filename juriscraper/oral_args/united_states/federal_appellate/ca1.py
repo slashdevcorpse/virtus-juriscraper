@@ -19,7 +19,7 @@ class Site(OralArgumentSiteLinear):
         super().__init__(*args, **kwargs)
         self.court_id = self.__module__
 
-        self.url = "http://www.ca1.uscourts.gov/doarrss/feed"
+        self.url = "https://www.ca1.uscourts.gov/doarrss/feed"
 
     @override
     def _process_html(self) -> None:
