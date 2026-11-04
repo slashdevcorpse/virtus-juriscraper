@@ -1,20 +1,20 @@
 [
   {
-    "case_names": "Don Carbon Corporation v. Rami Azzam",
+    "case_names": "Richard Dale Reynolds v. Yesenia Molina and YM Unique Enterprises, LLC",
     "nature_of_suit": "Miscellaneous/other civil",
     "sub_opinions": [
       {
-        "download_urls": "https://search.txcourts.gov/SearchMedia.aspx?MediaVersionID=2ecb5d2b-2545-4930-be4a-71be15eb1061&coa=coa08&DT=Opinion&MediaID=3cb0b677-ecda-4905-bb94-6b73cb57729a",
+        "download_urls": "https://search.txcourts.gov/SearchMedia.aspx?MediaVersionID=129c6eb7-b190-4a0a-a48a-25ab18d1b685&coa=coa08&DT=Opinion&MediaID=e209cbc4-d5b5-4074-91e4-c1193efaffbb",
         "types": "020lead"
       }
     ],
-    "dispositions": "Dismissed",
-    "lower_courts": "346th District Court",
-    "lower_court_judges": "Honorable Patricia Baca",
-    "lower_court_numbers": "2022-DCV3158",
-    "court_reporter": "Mary Ann Marin",
-    "case_dates": "2024-03-05",
-    "docket_numbers": "08-23-00340-CV",
+    "dispositions": "Affirmed",
+    "lower_courts": "County Court at Law No 7",
+    "lower_court_judges": "Honorable Ruben P. Morales",
+    "lower_court_numbers": "2023DCV3519",
+    "court_reporter": "Maria Chavez",
+    "case_dates": "2026-10-28",
+    "docket_numbers": "08-25-00145-CV",
     "judges": "",
     "case_name_shorts": "",
     "date_filed_is_approximate": false,
@@ -22,21 +22,21 @@
     "precedential_statuses": "Published"
   },
   {
-    "case_names": "Ricardo Marquez v. the State of Texas",
-    "nature_of_suit": "Murder",
+    "case_names": "Alfredo Rodriguez v. A.Y. Automotive Carlos Andrade",
+    "nature_of_suit": "Miscellaneous/other civil",
     "sub_opinions": [
       {
-        "download_urls": "https://search.txcourts.gov/SearchMedia.aspx?MediaVersionID=d124175d-dca5-4224-a3e4-9fd689647f66&coa=coa08&DT=Opinion&MediaID=8ef508f9-e35c-4750-9563-0513f6b570b8",
+        "download_urls": "https://search.txcourts.gov/SearchMedia.aspx?MediaVersionID=b36bc61c-a11b-405c-98f6-8469b88c8bb2&coa=coa08&DT=Opinion&MediaID=75c1e9f3-2435-4971-a0f3-fdec4105887e",
         "types": "020lead"
       }
     ],
-    "dispositions": "Affirmed",
-    "lower_courts": "409th District Court",
-    "lower_court_judges": "Honorable Sam Medrano, Jr.",
-    "lower_court_numbers": "20220D01247",
-    "court_reporter": "Natalie Martinez",
-    "case_dates": "2024-02-29",
-    "docket_numbers": "08-22-00177-CR",
+    "dispositions": "Dismissed",
+    "lower_courts": "County Criminal Court No. 1",
+    "lower_court_judges": "Honorable Linda Perez",
+    "lower_court_numbers": "2025-CCV01033",
+    "court_reporter": "Elizabeth M. Augustain",
+    "case_dates": "2026-10-28",
+    "docket_numbers": "08-26-00241-CV",
     "judges": "",
     "case_name_shorts": "",
     "date_filed_is_approximate": false,

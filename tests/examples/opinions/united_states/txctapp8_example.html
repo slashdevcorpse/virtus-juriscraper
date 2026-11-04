@@ -1,329 +1,627 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
+<head id="ctl00_Head1"><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><title>
+	Released Opinions
+</title><meta name="description"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="shortcut icon" href="/ico/favicon.ico"><link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
 
-<head>
-    <title>
-        TAMES Search
-    </title>
-    <header>
-    </header>
-</head>
+    <link href="css/bootstrap.css" rel="stylesheet"><link href="css/bootstrap-responsive.css" rel="stylesheet">
+    <script src="../scripts/bootstrap.min.js"></script>
 
+    <link href="css/searchoca.css" rel="stylesheet"><link href="/bundles/sitecss.css?v=lYifLenTvIvu0It2jRfwX9GVJY2dFOUn1xlTpgPmwas1" rel="stylesheet">
+<script src="/bundles/sitescripts.js?v=vRHg8M97TWK3ybrYtO1RwDl29d8uY6Ijx8steLQb3BI1"></script>
+
+    
+    <style type="text/css">
+        .footer dd {
+            color: #96B7D4;
+            font-weight: 400;
+        }
+
+        .btn-primary {
+            height: 30px;
+        }
+
+        .panel-phone ul.nav-list {
+            font-size: 1em !important;
+        }
+    </style>
+
+
+<link href="/WebResource.axd?d=VTVkP81VnFLpPCHJQttOwJ0DcQhxLISyNdO1ixcHjDtqBXWKldDyAvmessdadE1CU75CIihtyPM9OSdky5L94y6N7w2k3yCV6hANLgXc1ks2pclr7PZRZX2Ytyzkv643quxlxVyFAZJyPtXtJIKkmg2&amp;t=637269762200000000" type="text/css" rel="stylesheet" class="Telerik_stylesheet"><link href="/WebResource.axd?d=hcJkVhMhJg3rsvrFfYe5xd-Wir1mGQS3DqgddCv7FO13yA5mXvjmI4KHa6Qqb9GYwL9Wh70UvH-vu6UoJBpArq4Ahp8q0eVojq679lhXAS1Y8ZyGEOXMRGrRiR2dfZqSYm96lyEipmLCtBmAqUYsckS5SbYkJ5xzwuHR2te_Bjo1&amp;t=637269762200000000" type="text/css" rel="stylesheet" class="Telerik_stylesheet"><link href="/WebResource.axd?d=qgsN5pbgrFvI5ajqWU_JX9MY5w-P2UYTKdsTMY8R8VUOVRqSzvjI8_AeaMJg0AUX0S2mLrA9E1_GIyytRBKQcAU0TlZoMmX8-MnhjIq_-TW8tf8wPY-HsqMG_7bBBMkG1EeXDowXOU-PsnpYwOjpbg2&amp;t=637269762200000000" type="text/css" rel="stylesheet" class="Telerik_stylesheet"><link href="/WebResource.axd?d=ewL-UKQXjaSJd5kyuRfxkPdn5_-t5qP-P8R6S75BHNqTtNNB4ZUj3srxalUtrFX4M_U2DCG4oguYDYY2zwnmt1wMIjCfp2GVYiN7mFpMP1yFX-nCtVMIn089tqjRLrHdsSbkXvM6A3s0VAjcZ6euEq1UGsfDIkZrY69AnHwm-Wo1&amp;t=637269762200000000" type="text/css" rel="stylesheet" class="Telerik_stylesheet"></head>
 <body>
+    <!--[if lt IE 7]>
+			<p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+    <![endif]-->
+    <header id="top-header" class="header-main no-print">
+        <div id="mainnav" class="mainnav">
+            <div class="container-fluid">
+                <div class="row-fluid">
+                    <div class="brand span6">
+                        <a class="brand" href="https://www.txcourts.gov/">
+                            <div class="brand-block">Texas Judicial</div>
+                            <p class="brandp">Branch</p>
+                        </a>
+                    </div>
+                    <div class="span3 text-right">
+                        <ul class="inline">
+                            <li>
+                                <a href="#MainContent"><span class="sr-only">Skip to main content</span></a>
+                            </li>
+                        </ul>
+                    </div>
+                    <nav class="span3">
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- top nav -->
+    <nav class="navbar tcomenu no-print">
+        <div class="navbar-inner">
+            <div class="container-fluid">
+                <button type="button" class="btn btn-navbar btn-small" data-toggle="collapse" data-target="#nav1">Menu</button>
+                <div class="nav-collapse collapse" id="nav1">
+                    <ul class="nav">
+  <li class="menuborder active"><a href="http://www.txcourts.gov/">Home</a></li>
+  <li class="menuborder dropdown"><a data-toggle="dropdown" class="dropdown-toggle" href="#">Courts<span class="sr-only">Click to expand submenu</span><b class="caret"></b></a><ul class="dropdown-menu">
+      <li>
+        <div class="tcomenu-content">
+          <ul class="span3 unstyled">
+            <li><a href="http://www.txcourts.gov/about-texas-courts/" target="_self">About Texas Courts</a></li>
+            <li><a href="http://www.txcourts.gov/supreme/" target="_self">Supreme Court</a></li>
+            <li><a href="http://www.txcourts.gov/cca/" target="_self">Court of Criminal Appeals</a></li>
+            <li><a href="http://www.txcourts.gov/1stcoa/" target="_self">1<sup>st</sup> Court of Appeals</a></li>
+            <li><a href="http://www.txcourts.gov/2ndcoa/" target="_self">2<sup>nd</sup> Court of Appeals</a></li>
+            <li><a href="http://www.txcourts.gov/3rdcoa/" target="_self">3<sup>rd</sup> Court of Appeals</a></li>
+            <li><a href="http://www.txcourts.gov/4thcoa/" target="_self">4<sup>th</sup> Court of Appeals</a></li>
+            <li><a href="http://www.txcourts.gov/5thcoa/" target="_self">5<sup>th</sup> Court of Appeals</a></li>
+            <li><a href="http://www.txcourts.gov/6thcoa/" target="_self">6<sup>th</sup> Court of Appeals</a></li>
+            <li><a href="http://www.txcourts.gov/7thcoa/" target="_self">7<sup>th</sup> Court of Appeals</a></li></ul><ul class=" span3 unstyled "><li><a href="http://www.txcourts.gov/8thcoa/" target="_self">8<sup>th</sup> Court of Appeals</a></li>
+            <li><a href="http://www.txcourts.gov/9thcoa/" target="_self">9<sup>th</sup> Court of Appeals</a></li>
+            <li><a href="http://www.txcourts.gov/10thcoa/" target="_self">10<sup>th</sup> Court of Appeals</a></li>
+            <li><a href="http://www.txcourts.gov/11thcoa/" target="_self">11<sup>th</sup> Court of Appeals</a></li>
+            <li><a href="http://www.txcourts.gov/12thcoa/" target="_self">12<sup>th</sup> Court of Appeals</a></li>
+            <li><a href="http://www.txcourts.gov/13thcoa/" target="_self">13<sup>th</sup> Court of Appeals</a></li>
+            <li><a href="http://www.txcourts.gov/14thcoa/" target="_self">14<sup>th</sup> Court of Appeals</a></li>
+            <li><a href="http://www.txcourts.gov/15thcoa/" target="_self">15<sup>th</sup> Court of Appeals</a></li>
+            <li><a href="http://www.txcourts.gov/courts/non-appellate-courts/multi-district-litigation-panel/" target="_self">Multi-District Litigation Panel</a></li>
+            <li><a href="http://www.txcourts.gov/courts/non-appellate-courts/specialty-courts/" target="_self">Specialty Courts</a></li>
+            <li><a href="http://www.txcourts.gov/courts/non-appellate-courts/trial-courts/" target="_self">Trial Courts</a></li>
+          </ul>
+        </div>
+      </li>
+    </ul>
+  </li>
+  <li class="menuborder dropdown"><a data-toggle="dropdown" class="dropdown-toggle" href="#">Rules &amp; Forms<span class="sr-only">Click to expand submenu</span><b class="caret"></b></a><ul class="dropdown-menu">
+      <li><a href="http://www.txcourts.gov/rules-forms/forms/" target="_self">Forms</a></li>
+      <li><a href="http://www.txcourts.gov/rules-forms/rules-advisories/" target="_self">Rules Advisories</a></li>
+      <li><a href="http://www.txcourts.gov/rules-forms/rules-standards/" target="_self">Rules &amp; Standards</a></li>
+    </ul>
+  </li>
+  <li class="menuborder dropdown"><a data-toggle="dropdown" class="dropdown-toggle" href="#">Organizations<span class="sr-only">Click to expand submenu</span><b class="caret"></b></a><ul class="dropdown-menu">
+      <li>
+        <div class="tcomenu-content">
+          <ul class="unstyled border-rt pull-left">
+            <li class="header">Policy &amp; Funding</li>
+            <li><a href="http://www.txcourts.gov/organizations/policy-funding/administrative-judicial-regions/" target="_self">Administrative Judicial Regions</a></li>
+            <li><a href="http://texaschildrenscommission.gov/" target="_blank">Children's Commission</a></li>
+            <li><a href="http://www.txcourts.gov/organizations/policy-funding/criminal-justice-integrity-unit/" target="_self">Criminal Justice Integrity Unit</a></li>
+            <li><a href="http://www.txcourts.gov/jbcc/" target="_self">Judicial Branch Certification Commission</a></li>
+            <li><a href="http://www.txcourts.gov/jcit/" target="_self">Judicial  Committee on Information Technology</a></li>
+            <li><a href="http://www.txcourts.gov/jcc/" target="_self">Judicial Compensation Commission</a></li>
+            <li><a href="http://www.txcourts.gov/scac/" target="_self">Supreme Court Advisory Committee</a></li>
+            <li><a href="http://www.txcourts.gov/organizations/policy-funding/task-force-on-judicial-emergency-preparedness/" target="_self">Task Force on Judicial Emergency Preparedness</a></li>
+            <li><a href="http://www.texasatj.org/" target="_blank">Texas Access to Justice Commission</a></li>
+            <li><a href="http://www.teajf.org/index.aspx" target="_blank">Texas Access to Justice Foundation</a></li>
+            <li><a href="http://www.txcourts.gov/organizations/policy-funding/texas-commission-to-expand-civil-legal-services/" target="_self">Texas Commission to Expand Civil Legal Services</a></li>
+            <li><a href="http://www.tidc.texas.gov" target="_blank">Texas Indigent Defense Commission</a></li>
+            <li><a href="http://www.txcourts.gov/tjc/" target="_self">Texas Judicial Council</a></li>
+            <li><a href="http://www.txcourts.gov/organizations/policy-funding/timothy-cole-exoneration-review-commission/" target="_self">Timothy Cole Exoneration Review Commission</a></li>
+          </ul>
+          <ul class="unstyled pull-left">
+            <li class="header">Agencies</li>
+            <li><a href="http://www.ocfw.texas.gov/" target="_blank">Office of Capital and Forensic Writs</a></li>
+            <li><a href="http://www.txcourts.gov/oca/" target="_self">Office of Court Administration</a></li>
+            <li><a href="http://www.scjc.texas.gov/" target="_blank">State Commission on Judicial Conduct</a></li>
+            <li><a href="http://www.sll.texas.gov/" target="_blank">State Law Library</a></li>
+            <li><a href="http://www.spa.texas.gov/" target="_blank">State Prosecuting Attorney</a></li>
+          </ul>
+          <ul class="unstyled border-lt pull-left">
+            <li class="header">Bar &amp; Education</li>
+            <li><a href="http://www.ble.state.tx.us/%20" target="_blank">Board of Law Examiners</a></li>
+            <li><a href="http://www.txcourts.gov/organizations/bar-education/judicial-education/" target="_self">Judicial Education</a></li>
+            <li><a href="http://www.texasbar.com/" target="_blank">State Bar of Texas</a></li>
+            <li><a href="http://www.tbls.org/Default.aspx%20" target="_blank">Texas Board of Legal Specialization</a></li>
+            <li><a href="http://www.legalethicstexas.com/Home.aspx%20" target="_blank">Texas Center for Legal Ethics</a></li>
+          </ul>
+        </div>
+      </li>
+    </ul>
+  </li>
+  <li class="menuborder dropdown"><a data-toggle="dropdown" class="dropdown-toggle" href="#">Publications &amp; Training<span class="sr-only">Click to expand submenu</span><b class="caret"></b></a><ul class="dropdown-menu">
+      <li><a href="http://www.txcourts.gov/publications-training/judicial-ethics-bench-books/" target="_self">Judicial Ethics &amp; Bench Books</a></li>
+      <li><a href="http://www.txcourts.gov/publications-training/legislative-information/" target="_self">Legislative Information</a></li>
+      <li><a href="http://www.txcourts.gov/publications-training/publications/" target="_self">Publications</a></li>
+      <li><a href="http://www.txcourts.gov/publications-training/training-materials/" target="_self">Training Materials</a></li>
+    </ul>
+  </li>
+  <li class="menuborder dropdown"><a data-toggle="dropdown" class="dropdown-toggle" href="#">Programs &amp; Services<span class="sr-only">Click to expand submenu</span><b class="caret"></b></a><ul class="dropdown-menu">
+      <li><a href="http://www.txcourts.gov/programs-services/certification-registration-licensing/" target="_self">Certification, Registration &amp; Licensing</a></li>
+      <li><a href="http://www.txcourts.gov/cip/" target="_self">Collection Improvement Program</a></li>
+      <li><a href="http://www.txcourts.gov/ccs/" target="_self">Court Consultant Services</a></li>
+      <li><a href="http://www.txcourts.gov/dvrp/" target="_self">Domestic Violence Resource Program</a></li>
+      <li><a href="http://www.txcourts.gov/programs-services/electronic-filing/" target="_self">Electronic Filing</a></li>
+      <li><a href="http://www.txcourts.gov/programs-services/guardianship-compliance-project/" target="_self">Guardianship Compliance Project</a></li>
+      <li><a href="http://www.tidc.texas.gov/" target="_blank">Indigent Defense</a></li>
+      <li><a href="http://www.txcourts.gov/programs-services/interpretation-translation/" target="_self">Interpretation &amp; Translation</a></li>
+      <li><a href="http://www.txcourts.gov/programs-services/legal-aid/" target="_self">Legal Aid</a></li>
+      <li><a href="http://www.txcourts.gov/programs-services/self-help/" target="_self">Self-Help</a></li>
+      <li><a href="http://www.txcourts.gov/programs-services/statewide-ecitation-system/" target="_self">Statewide eCitation System</a></li>
+    </ul>
+  </li>
+  <li class="menuborder dropdown"><a data-toggle="dropdown" class="dropdown-toggle" href="#">Judicial Data<span class="sr-only">Click to expand submenu</span><b class="caret"></b></a><ul class="dropdown-menu">
+      <li><a href="http://card.txcourts.gov/" target="_blank">Court Activity Database</a></li>
+      <li><a href="http://www.txcourts.gov/judicial-directory/" target="_self">Judicial Directory</a></li>
+      <li><a href="http://www.txcourts.gov/open-records-policy/" target="_self">Open Records Policy</a></li>
+      <li><a href="http://www.txcourts.gov/reporting-to-oca/" target="_self">Reporting to OCA</a></li>
+      <li><a href="http://www.txcourts.gov/statistics/" target="_self">Statistics &amp; Other Data</a></li>
+      <li><a href="http://www.txcourts.gov/judicial-data/vexatious-litigants/" target="_self">Vexatious Litigants</a></li>
+    </ul>
+  </li>
+  <li class="menuborder"><a href="http://www.efiletexas.gov/" target="_blank">eFile Texas</a></li>
+  <li class="menuborder"><a href="http://www.txcourts.gov/media/" target="_self">Media</a></li>
+</ul>
+                </div>
+                <!--/.nav-collapse -->
+            </div>
+        </div>
+    </nav>
+    <!-- end top nav -->
+    <!-- side nav -->
     <div class="container-fluid" id="content">
         <div class="row-fluid tcopage-header">
             <div class="span4 no-print">
-                <h1>
-                    Supreme Court
+                <h1 id="pageName">
+                    Eighth Court of Appeals
                 </h1>
             </div>
             <div class="span4 search no-print">
             </div>
             <div class="span4 search no-print">
-                <div class="input-append input-push-top no-print">
-                    <label>
-                        <span>Site Search</span></label>
-                    <i></i>
-                </div>
+                <form class="form-inline pull-right" method="get" action="https://www.txcourts.gov/search-result-page.aspx">
+                    <div class="input-append input-push-top no-print">
+                        <label for="searchInput">
+                            <span class="sr-only">Site Search</span></label>
+                        <input class="span10" id="searchInput" name="q" placeholder="Site Search" type="text" required="required">
+                        <button type="submit" class="btn btn-primary" title="Search">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+                </form>
             </div>
         </div>
+
         <div class="row-fluid no-print">
             <div class="span6 pull-left">
-                <ul>
-                    <li><a href="https://www.txcourts.gov/">Home</a><span>/</span></li>
-                    <li>Courts<span>/</span></li>
-                    <li><a href="https://www.txcourts.gov//supreme.aspx">Supreme Court</a></li>
-                </ul>
+                <nav class="pull-left">
+                    <ul class="breadcrumb breadcrumbsBackColor">
+                        <li><a href="https://www.txcourts.gov/">Home</a><span class="divider">/</span></li>
+                        <li>Courts<span class="divider">/</span></li>
+                        <li class="active"><a href="https://www.txcourts.gov//8thcoa.aspx">Eighth Court of Appeals</a></li>
+                    </ul>
+                </nav>
             </div>
             <div class="span6">
             </div>
         </div>
-        <div class="row-fluid">
-            <div class="span2 no-print">
-                <div class="panel-heading-no-collapse">Case Information<i></i></div>
-                <div class="panel-heading-no-collapse">
-                    Administration
-                    <i></i>
-                </div>
-                <ul>
-                    <li>
-                    </li>
-                    <li>
-                        <a href="/login.aspx?coa=cossup">Log In</a>
-                    </li>
-                </ul>
-            </div>
-            <div class="span10" id="MainContent">
-                <div class="panel">
-                    <div class="panel-heading panel-heading-content">
-                        <span>Document Search</span>
-                    </div>
-                    <div id="main-panel-content" class="panel-content">
-                        <div class="row-fluid">
-                            <div id="divSearchCriteria">
-                                <div id="divCriteria" class="row-fluid">
-                                    <div class="span5">
-                                        <div class="panel" id="panelSearchType">
-                                            <div class="panel-content">
-                                                <div class="rbHorizontal">
-                                                    <label>Case Search</label>
-                                                    <label>Document Search</label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="span7">
-                                        <div class="row-fluid">
-                                            <div class="span12">
-                                                <div id="ctl00_ContentPlaceHolder1_panelTextSearchCriteriaWrapper">
-                                                    <div class="panel" id="panelTextSelection">
-                                                        <div class="panel-heading panel-heading-content">
-                                                            Selection Criteria
-                                                        </div>
-                                                        <div class="panel-content">
-                                                            <div class="row-fluid">
-                                                                <div class="span4">
-                                                                    <label>
-                                                                        Text String To Search:
-                                                                    </label>
-                                                                </div>
-                                                                <div class="span8">
-                                                                </div>
-                                                            </div>
-                                                            <div class="row-fluid">
-                                                                <div class="span4">
-                                                                    &#160;
-                                                                </div>
-                                                                <div class="span8">
-                                                                    <span>
-                                                                        <a
-                                                                            href="DocumentSearchHelp.html#PhonicSearching">Phonic</a>&#160;&#160;&#160;
-                                                                    </span><span>
-                                                                        <a
-                                                                            href="DocumentSearchHelp.html#Stemming">Stemming</a>&#160;
-                                                                    </span>
-                                                                </div>
-                                                            </div>
-                                                            <div class="row-fluid">
-                                                                <div class="span4">
-                                                                    <label>
-                                                                        <span><a
-                                                                                href="DocumentSearchHelp.html#FuzzySearching">Fuzzy</a>&#160;
-                                                                        </span>
-                                                                    </label>
-                                                                </div>
-                                                                <div class="span6">
-                                                                    Disabled
-                                                                    Level 1 (Min)
-                                                                    Level 2
-                                                                    Level 3 (Max)
-                                                                </div>
-                                                            </div>
-                                                            <div class="row-fluid">
-                                                                <div class="span4">
-                                                                    <label>
-                                                                        From Date:
-                                                                    </label>
-                                                                </div>
-                                                                <div class="span4">
-                                                                </div>
-                                                                <div class="span4">
-                                                                </div>
-                                                            </div>
-                                                            <div id="mediaFileTypes" class="row-fluid checkboxList">
-                                                                <div class="span5">
-                                                                    <label>
-                                                                        Select media file type(s) to search: &#160;
-                                                                    </label>
-                                                                </div>
-                                                                <div class="span7">
-                                                                    <label>All</label>
-                                                                    <span><label>Opinion</label><label>Order</label><label>Other</label></span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div id="SearchText" class="row-fluid">
-                                                        </div>
-                                                        <div class="notation">
-                                                            <strong>Examples:</strong> apple pie <a
-                                                                href="DocumentSearchHelp.html#AND">and</a> pear | apple
-                                                            pie <a href="DocumentSearchHelp.html#OR">
-                                                                or</a> pear | apple pie <a
-                                                                href="DocumentSearchHelp.html#WN">w/5</a>
-                                                            pear | apple <a href="DocumentSearchHelp.html#NOT">not
-                                                                w/12</a> pear
-                                                            | apple <a href="DocumentSearchHelp.html#NOT">and not</a>
-                                                            pear | wildcard
-                                                            w/5 <a href="DocumentSearchHelp.html#Wildcards">match*</a> |
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div id="divSearchButtons" class="row-fluid">
-                                <div class="span12">
-                                </div>
-                            </div>
-                        </div>
-                        <div id="ctl00_ContentPlaceHolder1_loadingPanel">
-                        </div>
-                        <div id="div1" class="row-fluid">
-                            <span>
-                                &#160;&#160;
-                            </span>
-                        </div>
-                        <div id="ctl00_ContentPlaceHolder1_grdDocuments" class="RadGrid RadGrid_Default">
-                            <table class="rgMasterTable">
-                                <colgroup>
-                                    <col>
-                                    <col>
-                                    <col>
-                                    <col>
-                                    <col>
-                                    <col>
-                                </colgroup>
-                                <thead>
-                                    <tr class="rgPager">
-                                        <td colspan="6">
-                                            <table
-                                                summary="Data pager which controls on which page is the RadGrid control.">
-                                                <caption>
-                                                    <span>Data pager</span>
-                                                </caption>
-                                                <thead>
-                                                    <tr>
-                                                        <th scope="col">Data pager</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr>
-                                                        <td>
-                                                            <div class="rgWrap rgArrPart1">
-                                                            </div>
-                                                            <div class="rgWrap rgNumPart">
-                                                                <a><span>1</span></a><a><span>2</span></a>
-                                                            </div>
-                                                            <div class="rgWrap rgArrPart2">
-                                                            </div>
-                                                            <div class="rgWrap rgAdvPart">
-                                                            </div>
-                                                            <div class="rgWrap rgInfoPart">
-                                                                &#160;<strong>28</strong> items in <strong>2</strong>
-                                                                pages
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="col"><a title="Click here to sort">Hits</a></th>
-                                        <th scope="col"><a title="Click here to sort">Date</a></th>
-                                        <th scope="col">Summary</th>
-                                        <th scope="col"><a title="Click here to sort">Document Type</a></th>
-                                        <th scope="col"><a title="Click here to sort">Case Number</a></th>
-                                        <th scope="col"><a title="Click here to sort">Appellate Court</a></th>
-                                    </tr>
-                                </thead>
-                                <tr class="rgPager">
-                                    <td colspan="6">
-                                        <table
-                                            summary="Data pager which controls on which page is the RadGrid control.">
-                                            <caption>
-                                                <span>Data pager</span>
-                                            </caption>
-                                            <thead>
-                                                <tr>
-                                                    <th scope="col">Data pager</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td>
-                                                        <div class="rgWrap rgArrPart1">
-                                                        </div>
-                                                        <div class="rgWrap rgNumPart">
-                                                            <a><span>1</span></a><a><span>2</span></a>
-                                                        </div>
-                                                        <div class="rgWrap rgArrPart2">
-                                                        </div>
-                                                        <div class="rgWrap rgAdvPart">
-                                                        </div>
-                                                        <div class="rgWrap rgInfoPart">
-                                                            &#160;<strong>28</strong> items in <strong>2</strong> pages
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </td>
-                                </tr>
-                                <tbody>
-                                    <tr class="rgRow">
-                                        <td><b>
-                                                <a
-                                                    href="Highlighter.aspx?DocId=22170&amp;Index=%5c%5c10%2e20%2e4%2e7%5cTamesIndexes%5ccoa08%5cOpinion&amp;HitCount=0&amp;hits=">0</a>
-                                            </b></td>
-                                        <td>03/05/2024</td>
-                                        <td>
-                                        </td>
-                                        <td><b>
-                                                <a
-                                                    href="RetrieveDocument.aspx?DocId=22170&amp;Index=%5c%5c10%2e20%2e4%2e7%5cTamesIndexes%5ccoa08%5cOpinion">Opinion</a>
-                                            </b></td>
-                                        <td>
-                                            <a href="txctapp8_subexample_1.html">08-23-00340-CV</a>
-                                            <span>
-                                                <div
-                                                    id="ctl00_ContentPlaceHolder1_grdDocuments_ctl00_ctl04_caseNumberCOA">
-                                                </div>
-                                            </span>
-                                        </td>
-                                        <td>
-                                            COA08
-                                        </td>
-                                    </tr>
-                                    <tr class="rgAltRow">
-                                        <td><b>
-                                                <a
-                                                    href="Highlighter.aspx?DocId=22167&amp;Index=%5c%5c10%2e20%2e4%2e7%5cTamesIndexes%5ccoa08%5cOpinion&amp;HitCount=0&amp;hits=">0</a>
-                                            </b></td>
-                                        <td>02/29/2024</td>
-                                        <td>
-                                        </td>
-                                        <td><b>
-                                                <a
-                                                    href="RetrieveDocument.aspx?DocId=22167&amp;Index=%5c%5c10%2e20%2e4%2e7%5cTamesIndexes%5ccoa08%5cOpinion">Opinion</a>
-                                            </b></td>
-                                        <td>
-                                            <a href="txctapp8_subexample_2.html">08-22-00177-CR</a>
-                                            <span>
-                                                <div
-                                                    id="ctl00_ContentPlaceHolder1_grdDocuments_ctl00_ctl06_caseNumberCOA">
-                                                </div>
-                                            </span>
-                                        </td>
-                                        <td>
-                                            COA08
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <div id="ctl00_ContentPlaceHolder1_grdDocuments_SharedCalendarContainer">
-                            </div>
-                        </div>
 
+        
+
+        <div class="row-fluid">
+            <!--Start:main page content-->
+            <div class="span2 no-print">
+                <nav class="panel panel-phone no-print"><div class="panel-heading-no-collapse">Case Information<i class="icon-caret-right pull-right"></i></div>
+  <ul class="nav nav-list">
+    <li><a href="https://search.txcourts.gov/CaseSearch.aspx?coa=coa08&amp;s=c">Case Search</a></li>
+    <li><a href="https://search.txcourts.gov/CaseSearch.aspx?coa=coa08&amp;s=d&amp;d=1">Document Search</a></li>
+    <li><a href="https://search.txcourts.gov/Events/default.aspx?coa=coa08&amp;s=c">Event Reports</a></li>
+    <li><a href="https://search.txcourts.gov/DocketSrch.aspx?coa=coa08&amp;s=c">Released Orders/Opinions</a></li>
+    <li><a href="https://search.txcourts.gov/submission.aspx?coa=coa08&amp;s=c">Case Submissions</a></li>
+    <li><a href="https://search.txcourts.gov/submittedCases.aspx?coa=coa08&amp;s=c">Submitted Cases</a></li>
+    <li><a href="https://casemail.txcourts.gov/?coa=coa08&amp;s=c">Case Mail</a></li>
+  </ul></nav>
+
+
+
+                <nav id="ctl00_adminLinks" class="panel panel-phone no-print">
+                    <div class="panel-heading-no-collapse">
+                        Appellate Staff &amp; OCA
+                            <i class="icon-caret-right pull-right"></i>
                     </div>
+                    <ul class="nav nav-list">
+                        <li>
+                            
+                        </li>
+                        
+                        <li>
+                            <a id="ctl00_lnkLogin" href="/login.aspx?coa=coa08">Log In</a>
+                        </li>
+                        
+                    </ul>
+                </nav>
+
+            </div>
+
+            <div class="span10" id="MainContent">
+
+                <form name="aspnetForm" method="post" action="./Docket.aspx?coa=coa08&amp;FullDate=10%2f28%2f2026" id="aspnetForm">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUKMTIzNDE4MjA2OQ9kFgJmD2QWBgIBDw8WAh4HVmlzaWJsZWhkFgICAQ8PFgIeBFRleHRlZGQCAw8WAh8AZxYEZg8PFgIfAGhkZAICDw8WAh4LTmF2aWdhdGVVcmwFFS9sb2dpbi5hc3B4P2NvYT1jb2EwOGRkAgQPZBYCAgMPZBYSAgEPDxYCHwEFKVJlbGVhc2VkIE9yZGVycyAmIE9waW5pb25zIGZvciAxMC8yOC8yMDI2ZGQCAg8PFgIfAQUKMTAvMjgvMjAyNmRkAgYPFgIfAGhkAggPZBYCAgUPPCsADgIAFCsAAg8WDh4LXyFJdGVtQ291bnQCAR4MRGF0YVNvdXJjZUlEBQhkc0RvY2tldB4XRW5hYmxlQWpheFNraW5SZW5kZXJpbmdoHhJSZXNvbHZlZFJlbmRlck1vZGULKXJUZWxlcmlrLldlYi5VSS5SZW5kZXJNb2RlLCBUZWxlcmlrLldlYi5VSSwgVmVyc2lvbj0yMDIwLjIuNTEyLjQ1LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPTEyMWZhZTc4MTY1YmEzZDQBHgtfIURhdGFCb3VuZGceFUVuYWJsZUVtYmVkZGVkU2NyaXB0c2ceHEVuYWJsZUVtYmVkZGVkQmFzZVN0eWxlc2hlZXRnZBcCBQtFZGl0SW5kZXhlcxYABQ9TZWxlY3RlZEluZGV4ZXMWAAEWAhYLDwIHFCsABxQrAAUWAh4Eb2luZAICZGRkBQ5UZW1wbGF0ZUNvbHVtbhQrAAUWBB8KAgMeCERhdGFUeXBlGSsCZGRkBQVTdHlsZRQrAAUWBB8KAgQfCxkrAmRkZAUPRGlzcG9zaXRpb25UeXBlFCsABRYEHwoCBR8LGSsCZGRkBQZKdWRnZXMUKwAFFgQfCgIGHwsZKVhTeXN0ZW0uR3VpZCwgbXNjb3JsaWIsIFZlcnNpb249NC4wLjAuMCwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj1iNzdhNWM1NjE5MzRlMDg5ZGRkBQdFdmVudElEFCsABRYEHwoCBx8LGSsFZGRkBRBPcGluaW9uSURGb3JIVE1MFCsABRYEHwoCCB8LGSsCZGRkBQpDYXNlTnVtYmVyZGUUKwAACyl5VGVsZXJpay5XZWIuVUkuR3JpZENoaWxkTG9hZE1vZGUsIFRlbGVyaWsuV2ViLlVJLCBWZXJzaW9uPTIwMjAuMi41MTIuNDUsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49MTIxZmFlNzgxNjViYTNkNAE8KwAHAAspdFRlbGVyaWsuV2ViLlVJLkdyaWRFZGl0TW9kZSwgVGVsZXJpay5XZWIuVUksIFZlcnNpb249MjAyMC4yLjUxMi40NSwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj0xMjFmYWU3ODE2NWJhM2Q0ARYCHgRfZWZzFgIeE2NzX3BvcHVwc19DbG9zZVRleHQFBUNsb3NlZBYSHghEYXRhS2V5cxYAHwMCAh4FX2RzaWQFCGRzRG9ja2V0HgVfcWVsdBkpZ1N5c3RlbS5EYXRhLkRhdGFSb3dWaWV3LCBTeXN0ZW0uRGF0YSwgVmVyc2lvbj00LjAuMC4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkfBAUIZHNEb2NrZXQeFElzQm91bmRUb0ZvcndhcmRPbmx5aB4FXyFDSVMXAB8HZx4EX2Fjc2dkZhYGZg8UKwADZGRkZAIBDxYFFCsAAg8WEh8OFgAfAwICHw8FCGRzRG9ja2V0HxAZKwgfBAUIZHNEb2NrZXQfEWgfEhcAHwdnHxNnZBcDBQZfIURTSUMCAgUIXyFQQ291bnRkBQtfIUl0ZW1Db3VudAICFgIeA19zZRYCHgJfY2ZkFgdkZGRkZGRkFgJnZxYCZg9kFgxmD2QWAmYPZBYSZg8PFgQfAQUGJm5ic3A7HwBoZGQCAQ8PFgQfAQUGJm5ic3A7HwBoZGQCAg8PFgIfAQULQ2FzZSBOdW1iZXJkZAIDDw8WAh8BBQVTdHlsZWRkAgQPDxYCHwEFC0Rpc3Bvc2l0aW9uZGQCBQ8PFgIfAQUGSnVkZ2VzZGQCBg8PFgQfAQUHRXZlbnRJRB8AaGRkAgcPDxYEHwEFEE9waW5pb25JREZvckhUTUwfAGhkZAIIDw8WBB8BBQpDYXNlTnVtYmVyHwBoZGQCAQ8PFgIfAGhkFgJmD2QWEmYPDxYCHwEFBiZuYnNwO2RkAgEPDxYCHwEFBiZuYnNwO2RkAgIPDxYCHwEFBiZuYnNwO2RkAgMP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ZiBKdXN0aWNlIFNhbGFzIE1lbmRvemEgZGQCAQ9kFgJmDw8WBB8BBQkgWyBQREYgXSAfAgWrAVNlYXJjaE1lZGlhLmFzcHg/TWVkaWFWZXJzaW9uSUQ9YjM2YmM2MWMtYTExYi00MDVjLTk4ZjYtODQ2OWI4OGM4YmIyJk1lZGlhSUQ9NzVjMWU5ZjMtMjQzNS00OTcxLWEwZjMtZmRlYzQxMDU4ODdlJmNvYT0iICsgdGhpcy5DdXJyZW50V2ViU3RhdGUuQ3VycmVudENvdXJ0ICsgQCImRFQ9T3BpbmlvbmRkAgIPDxYCHwBoZGQCAw8PFgIfAQWYATxzcGFuIHN0eWxlPSdmb250LXdlaWdodDpib2xkJz5BbGZyZWRvIFJvZHJpZ3VleiB2LiBBLlkuIEF1dG9tb3RpdmUgQ2FybG9zIEFuZHJhZGU8L3NwYW4+PGJyIC8+QXBwZWFsIGZyb20gQ291bnR5IENyaW1pbmFsIENvdXJ0IE5vLiAxIG9mIEVsIFBhc28gQ291bnR5ZGQCBA8PFgIfAQUJRElTTUlTU0VEZGQCBQ8PFgIfAQVIQ2hpZWYgSnVzdGljZSBTYWxhcyBNZW5kb3phIDxici8+SnVzdGljZSBQYWxhZm94IDxici8+SnVzdGljZSBTb3RvIDxici8+ZGQCBg8PFgQfAQUkNGZkNjFjNTgtYzU4Zi00ODlhLThlNzItZTk2N2QxNjcxMDE0HwBoZGQCBw8PFgQfAQUkYzA4YTE0ZTUtNDViZi00MzUwLTg3MjktZDg1MWEwNGQ2YTE4HwBoZGQCCA8PFgQfAQUOMDgtMjYtMDAyNDEtQ1YfAGhkZAIFD2QWAmYPDxYCHwBoZGQCAg8PZBYCHgVzdHlsZQUNZGlzcGxheTpub25lOxYCZg88KwANAQAPFgQFG1VzZUNvbHVtbkhlYWRlcnNBc1NlbGVjdG9yc2gFGFVzZVJvd0hlYWRlcnNBc1NlbGVjdG9yc2gPFgQeE0VuYWJsZUVtYmVkZGVkU2tpbnNnHhFFbmFibGVBcmlhU3VwcG9ydGhkZAIKD2QWAgIDDzwrAA4CABQrAAIPFg4fAwIBHwQFCWRzRG9ja2V0Mh8FaB8GCysEAR8HZx8IZx8JZ2QXAgULRWRpdEluZGV4ZXMWAAUPU2VsZWN0ZWRJbmRleGVzFgABFgIWCw8CBxQrAAcUKwAFFgIfCgICZGRkBQ5UZW1wbGF0ZUNvbHVtbhQrAAUWBB8KAgMfCxkrAmRkZAUFU3R5bGUUKwAFFgQfCgIEHwsZKwJkZGQFD0Rpc3Bvc2l0aW9uVHlwZRQrAAUWBB8KAgUfCxkrAmRkZAUGSnVkZ2VzFCsABRYEHwoCBh8LGSsFZGRkBQdFdmVudElEFCsABRYEHwoCBx8LGSsFZGRkBRBPcGluaW9uSURGb3JIVE1MFCsABRYEHwoCCB8LGSsCZGRkBQpDYXNlTnVtYmVyZGUUKwAACysGATwrAAcACysHARYCHwwWAh8NBQVDbG9zZWQWEh8OFgAfAwIBHw8FCWRzRG9ja2V0Mh8QGSsIHwQFCWRzRG9ja2V0Mh8RaB8SFwAfB2cfE2dkZhYGZg8UKwADZGRkZAIBDxYFFCsAAg8WEh8OFgAfAwIBHw8FCWRzRG9ja2V0Mh8QGSsIHwQFCWRzRG9ja2V0Mh8RaB8SFwAfB2cfE2dkFwMFBl8hRFNJQwIBBQhfIVBDb3VudGQFC18hSXRlbUNvdW50AgEWAh8UFgIfFWZkFgdkZGRkZGRkFgJnZxYCZg9kFghmD2QWAmYPZBYSZg8PFgQfAQUGJm5ic3A7HwBoZGQCAQ8PFgQfAQUGJm5ic3A7HwBoZGQCAg8PFgIfAQULQ2FzZSBOdW1iZXJkZAIDDw8WAh8BBQVTdHlsZWRkAgQPDxYCHwEFC0Rpc3Bvc2l0aW9uZGQCBQ8PFgIfAQUGSnVkZ2VzZGQCBg8PFgQfAQUHRXZlbnRJRB8AaGRkAgcPDxYEHwEFEE9waW5pb25JREZvckhUTUwfAGhkZAIIDw8WBB8BBQpDYXNlTnVtYmVyHwBoZGQCAQ8PFgIfAGhkFgJmD2QWEmYPDxYCHwEFBiZuYnNwO2RkAgEPDxYCHwEFBiZuYnNwO2RkAgIPDxYCHwEFBiZuYnNwO2RkAgMPDxYCHwEFBiZuYnNwO2RkAgQPDxYCHwEFBiZuYnNwO2RkAgUPDxYCHwEFBiZuYnNwO2RkAgYPDxYCHwEFBiZuYnNwO2RkAgcPDxYCHwEFBiZuYnNwO2RkAggPDxYCHwEFBiZuYnNwO2RkAgIPDxYCHxYFATBkFhJmDw8WAh8AaGRkAgEPDxYEHwEFBiZuYnNwOx8AaGRkAgIPDxYCHwFlZBYGAgEPDxYCHwIFG0Nhc2UuYXNweD9jbj0wOC0yNi0wMDIyNy1DVmQWAmYPFQEOMDgtMjYtMDAyMjctQ1ZkAgMPDxYKHwEFkgI8Yj5PcGVuIERvY3VtZW50PC9iPiBieSBjbGlja2luZyB0aGUgaHlwZXJsaW5rPGJyLz48YnIvPjxiPkNvcHkgSHlwZXJsaW5rPC9iPiB0byBjbGlwYm9hcmQgYnkgcmlnaHQgY2xpY2tpbmcgYW5kIHNlbGVjdGluZyA8Yj5Db3B5IFNob3J0Y3V0PC9iPiAoSW50ZXJuZXQgRXhwbG9yZXIpLCA8Yj5Db3B5IExpbmsgQWRkcmVzczwvYj4gKEZpcmVmb3gpLCA8Yj5Db3B5IExpbms8L2I+IChTYWZhcmkpLCBvciB0aGUgY29weSBmZWF0dXJlIHBlcnRpbmVudCB0byB5b3VyIGJyb3dzZXIuHwlnHwYLKwQBHwVoHwhnZGQCBQ88KwARAwAPFgQfB2cfAwIBZAEQFgAWABYADBQrAAAWAmYPZBYGZg8PFgIfAGhkZAIBD2QWBGYPDxYCHwEFBk9yZGVyIGRkAgEPZBYCZg8PFgQfAQUJIFsgUERGIF0gHwIFqQFTZWFyY2hNZWRpYS5hc3B4P01lZGlhVmVyc2lvbklEPTNhNWE0MzlkLWY5MmUtNGE0MC04ODU1LTBiYWFhNzZmMzYyMCZNZWRpYUlEPTZjMmFlNjQ5LWFjMWYtNDUwNi1iZmMyLTIzNDhmMjQ2MzI3NiZjb2E9IiArIHRoaXMuQ3VycmVudFdlYlN0YXRlLkN1cnJlbnRDb3VydCArIEAiJkRUPU9yZGVyZGQCAg8PFgIfAGhkZAIDDw8WAh8BBcsBPHNwYW4gc3R5bGU9J2ZvbnQtd2VpZ2h0OmJvbGQnPkJyZW5uYW4gU2hvcnQgdi4gU2VhbiBKLiBSaWNlLCBJbmRpdmlkdWFsbHkgYW5kIGFzIFdyb25nZnVsIERlYXRoIEJlbmVmaWNpYXJ5IG9mIFRhbGlhIFlhc21lZW4gUmljZSAoRGVjZWFzZWQpPC9zcGFuPjxiciAvPkFwcGVhbCBmcm9tIDQxc3QgRGlzdHJpY3QgQ291cnQgb2YgRWwgUGFzbyBDb3VudHlkZAIEDw8WAh8BBQYmbmJzcDtkZAIFDw8WAh8BBQYmbmJzcDtkZAIGDw8W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AAwUKwAAFgJmD2QWBmYPDxYCHwBoZGQCAQ9kFgRmDw8WAh8BBQZPcmRlciBkZAIBD2QWAmYPDxYEHwEFCSBbIFBERiBdIB8CBakBU2VhcmNoTWVkaWEuYXNweD9NZWRpYVZlcnNpb25JRD0yN2IxYTE1My01ZmQ5LTQ3NjctODhlNS1lNjlhYzA5ZDFlYmQmTWVkaWFJRD1lZGY5YTEzOS0yNjhjLTQ1ODAtODZjMS0zMDg2YTYxMTMzNWEmY29hPSIgKyB0aGlzLkN1cnJlbnRXZWJTdGF0ZS5DdXJyZW50Q291cnQgKyBAIiZEVD1PcmRlcmRkAgIPDxYCHwBoZGQCAw8PFgIfAQWTATxzcGFuIHN0eWxlPSdmb250LXdlaWdodDpib2xkJz5EZWF1amFsYWUgTWVjaG9uIEV2YW5zIHYuIFRoZSBTdGF0ZSBvZiBUZXhhczwvc3Bhbj48YnIgLz5BcHBlYWwgZnJvbSBDcmltaW5hbCBEaXN0cmljdCBDb3VydCBOby4gMiBvZiBUYXJyYW50IENvdW50eWRkAgQPDxYCHwEFBiZuYnNwO2RkAgUPDxYCHwEFBiZuYnNwO2RkAgYPDxYEHwEFJDVjMjU1YWM0LTY5ZWYtNDgwNC1hNWIwLWM5ZDU2ZDQxOWQ5Mh8AaGRkAgcPDxYEHwFlHwBoZGQCCA8PFgQfAQUOMDgtMjYtMDAxOTctQ1IfAGhkZAIFD2QWAmYPDxYCHwBoZGQCAg8PZBYCHxcFDWRpc3BsYXk6bm9uZTsWAmYPPCsADQEADxYEBRtVc2VDb2x1bW5IZWFkZXJzQXNTZWxlY3RvcnNoBRhVc2VSb3dIZWFkZXJzQXNTZWxlY3RvcnNoDxYEHxhnHxloZGQCEg8PZA8QFgJmAgEWAhYCHg5QYXJhbWV0ZXJWYWx1ZQUKMTAvMjgvMjAyNhYCHxtkFgJmAgNkZAIUDw9kDxAWAmYCARYCFgIfGwUKMTAvMjgvMjAyNhYCHxtkFgJmAgNkZBgGBT1jdGwwMCRDb250ZW50UGxhY2VIb2xkZXIxJGdyZE9yZGVyczIkY3RsMDAkY3RsMDYkZGRsQ29udGFpbmVyDzwrAAwBCAIBZAU8Y3RsMDAkQ29udGVudFBsYWNlSG9sZGVyMSRncmREb2NrZXQkY3RsMDAkY3RsMDQkZGRsQ29udGFpbmVyDzwrAAwBCAIBZAUeX19Db250cm9sc1JlcXVpcmVQb3N0QmFja0tleV9fFgkFI2N0bDAwJENvbnRlbnRQbGFjZUhvbGRlcjEkZ3JkRG9ja2V0BTpjdGwwMCRDb250ZW50UGxhY2VIb2xkZXIxJGdyZERvY2tldCRjdGwwMCRjdGwwNCRydHRsbmtDYXNlBTpjdGwwMCRDb250ZW50UGxhY2VIb2xkZXIxJGdyZERvY2tldCRjdGwwMCRjdGwwNiRydHRsbmtDYXNlBSRjdGwwMCRDb250ZW50UGxhY2VIb2xkZXIxJGdyZE9yZGVyczEFPGN0bDAwJENvbnRlbnRQbGFjZUhvbGRlcjEkZ3JkT3JkZXJzMSRjdGwwMCRjdGwwNCRydHRsbmtDYXNlMQUkY3RsMDAkQ29udGVudFBsYWNlSG9sZGVyMSRncmREb2NrZXQyBSRjdGwwMCRDb250ZW50UGxhY2VIb2xkZXIxJGdyZE9yZGVyczIFPGN0bDAwJENvbnRlbnRQbGFjZUhvbGRlcjEkZ3JkT3JkZXJzMiRjdGwwMCRjdGwwNCRydHRsbmtDYXNlMQU8Y3RsMDAkQ29udGVudFBsYWNlSG9sZGVyMSRncmRPcmRlcnMyJGN0bDAwJGN0bDA2JHJ0dGxua0Nhc2UxBTxjdGwwMCRDb250ZW50UGxhY2VIb2xkZXIxJGdyZERvY2tldCRjdGwwMCRjdGwwNiRkZGxDb250YWluZXIPPCsADAEIAgFkBT1jdGwwMCRDb250ZW50UGxhY2VIb2xkZXIxJGdyZE9yZGVyczEkY3RsMDAkY3RsMDQkZGRsQ29udGFpbmVyDzwrAAwBCAIBZAU9Y3RsMDAkQ29udGVudFBsYWNlSG9sZGVyMSRncmRPcmRlcnMyJGN0bDAwJGN0bDA0JGRkbENvbnRhaW5lcg88KwAMAQgCAWReWqUfqGAUV+GWvO16D5fecWv5I/1hB2QWPGk0ry5X4g==">
+
+
+<script src="/ScriptResource.axd?d=g76YPjbmPIp8V2BPCLACqQcVKN5dQ_kHf76LrC7pkbxLv-5Q4tZhi_6Up2qlhCMfhSGPPSsJpXzs2BBMdiyDfUX0nU-IOomktHlUEqU2-JyBR_xrxmxoPECRpERkuwr3LkvLMtazRGLKKw3p1EOGVWWIzRwbHsATxR-JcoW8WH8byj4UcxCxyPrENsBWpttx0&amp;t=ffffffffbec1863d" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+if (typeof(Sys) === 'undefined') throw new Error('ASP.NET Ajax client-side framework failed to load.');
+//]]>
+</script>
+
+<script src="/ScriptResource.axd?d=KDeG2Sjx-J0LV5PT1nwp1Co2mPC7x9ZAH8wDvuHrfDFverV3rtP42dKMj-y2Xn_PwZEABBf41MVyGcs-9ibeb8XUVvRisanY5iqdZeq8IBTVlAUk-lxmX7M40LxmpEmSjbRD-R-PhAqrQ2XyvaOQgA2&amp;t=ffffffffcd00b330" type="text/javascript"></script>
+<script src="/ScriptResource.axd?d=0sUms4dgelia4zGtqldWWFDgv46rGlbVaOAwwVKigKTlAE1Pdt3q1gvyZVdUfjoSqwhQ21UKsAOkz44yVISWktGt4BoEJRdp2ImCj5E_OAjir6A0L8Innaa-v0yfwGM_GbOQsT7hAUXP240-GQoY5Sw8DKOGUNytC9xasgNJNI3ydSmx-JthKRvYM5rSlhuy0&amp;t=ffffffffcd00b330" type="text/javascript"></script>
+<script src="/ScriptResource.axd?d=nVqKBsHJd8K7WdHognOFkBtPJkIrAqnElPnXOjdbybDTWTGAIdfu3bC7c_JuNfjtapg218JEU2HxbiYNYzBFXb3ViF_5ea9NY_ycwSR7QZbmXBpuAWTeRpLJ40-8-j5qm1-0pI88sJJRgpf7qHplFw2&amp;t=ffffffffcd00b330" type="text/javascript"></script>
+<script src="/ScriptResource.axd?d=qtn6__YEiNUOmMX_PfX5DvjFXGhc-BV_cmuxJizKIV7yV3zVMXm4-dqii9xAZbTLbLNb33gtaahtn3NGhmEV4YBSOrud224P0KDaXsG8i5ivuS31mX6QXEMY0TXQOInNEhCbEQcfiLbGleK3oPGyww2&amp;t=ffffffffcd00b330" type="text/javascript"></script>
+<script src="/ScriptResource.axd?d=YrzwA4JK43cUmL1N-fkqFnmSqCqy6bF-sEtX3r_T4CUh0UXNWmPez7TwMQ3OQlU3CLAGw0Ps43pa1Utezoiw_mYczRZGfNCSK0_AWOG6jn_aB2C0_qaZEKFcnqfMfW_9jp-jV8u-nGe1M0qpBRGZkA2&amp;t=ffffffffcd00b330" type="text/javascript"></script>
+<script src="/ScriptResource.axd?d=xDYgg8gpReP4Z4PGdoRrqelsvFU5qWX5xaOaJUwXsWTvLSqr2TN_xgeYPZVMqFjviAQThGe3gFfYSRHyx9YbekDCV9IPno6tE9I_VI82ETYA5lq1JheyjQ-Fn5DuwVQpvuNuoBqfT_XzDBaZXlvmzZAGon6R_ybk65sWdlIx-_NRk-loY8KLC-Z_stiYt8Sm0&amp;t=ffffffffcd00b330" type="text/javascript"></script>
+<script src="/ScriptResource.axd?d=YNPRO5YhMgOn6urxzG4IwtUn9JRao5Zvm73hfEM1lqD3f-yObHqNp7z9l1FF0kyIi1ys_26Tx0zIIRcNY287wbdlQXUwG-SyrBRfa6aVckGbwBN0az-34666vZMk7aBpJom_U7eMXrHUkHNDS1PEiBvpQaanlzqwAcgbccXrhLw1&amp;t=ffffffffcd00b330" type="text/javascript"></script>
+<script src="/ScriptResource.axd?d=ujZXRDeEwz9ojGcTHGavFxVDG3o4pPGHJQlwd7dOX5K38tcxrFOoZq1iRatjjObwqeFucVSPygZzLrYYE8MNme9kwRSHcbAOaHDOn4xSonTO9sAop5oT1c6vMX0C58ntkejpqWSIS7vVp63_mbX0aijgbPvDrEMQLsbvQXijFlc1&amp;t=ffffffffcd00b330" type="text/javascript"></script>
+<script src="/ScriptResource.axd?d=roID--dTw9HAGzU3b-TWIbLFAffF3qSrXyY-sN3OKdyhlgl7MyHseF6Gg40iQVZUyn29DndiDQup89EMhyFjrYfONJMDoXj32c7qoWzgEc6OZNyKjEliX0JC_n2uOv8hGAM4l4q8pzAojCmrbTzV0OziHcJApu2p95nnDRTIyXI1&amp;t=ffffffffcd00b330" type="text/javascript"></script>
+<script src="/ScriptResource.axd?d=8cA9w-GKdhrNkYAWhqNDgQuwZinHC00nZneFHE1-O6M1uLJVQLgHO2-7mKDfq58JNJHk4ITS3Ey4yMkqNAmEe5Y5XafiBuXZC9vL45C-iGtTNVakbcYMmxZ9Iq75qze0HYsntNorlFPOSwCQgR7EfZ_a6u9lX970Iz93Yd4mVGM1&amp;t=ffffffffcd00b330" type="text/javascript"></script>
+<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="153FDA1C">
+
+                    
+                    
+    <div id="main-panel-content" class="panel">
+        <div class="panel-heading">
+            <span id="ctl00_ContentPlaceHolder1_lblHeading">Released Orders &amp; Opinions for 10/28/2026</span>
+        </div>
+        <div class="panel-content">
+            <div id="ctl00_ContentPlaceHolder1_actions" class="row-fluid span12 no-print">
+                <div class="span3">
+                    <strong><a href="https://search.txcourts.gov/Docket.aspx?coa=coa08&amp;FullDate=10/28/2026&amp;p=1"><i class="fa fa-print"></i>
+                        Print-Friendly</a> </strong>
                 </div>
-                <div>
+                <div class="span9">
                 </div>
-                <span>28</span>
+            </div>
+            
+            <div class="row-fluid" style="display: block">
+                <div class="span12">
+                    <div id="ctl00_ContentPlaceHolder1_pnlEvents">
+	
+                        
+                        <h3>
+                            Civil Causes Decided
+                            <span id="ctl00_ContentPlaceHolder1_lblCaseType"></span>
+                        </h3>
+                        <div id="ctl00_ContentPlaceHolder1_grdDocket" class="RadGrid RadGrid_Default outerGrid">
+
+	<!-- 2020.2.512.45 --><table class="rgMasterTable" rules="all" border="1" id="ctl00_ContentPlaceHolder1_grdDocket_ctl00" width="100%" style="table-layout:auto;empty-cells:show;">
+		<colgroup>
+		<col>
+		<col>
+		<col>
+		<col>
+	</colgroup>
+<thead>
+			<tr>
+				<th scope="col" class="rgHeader">Case Number</th><th scope="col" class="rgHeader">Style</th><th scope="col" class="rgHeader">Disposition</th><th scope="col" class="rgHeader">Judges</th>
+			</tr>
+		</thead><tbody>
+		<tr class="rgRow" id="ctl00_ContentPlaceHolder1_grdDocket_ctl00__0">
+			<td width="20%">
+                                            <a id="ctl00_ContentPlaceHolder1_grdDocket_ctl00_ctl04_lnkCase" href="txctapp8_subexample_1.html">08-25-00145-CV</a>
+                                            <div id="ctl00_ContentPlaceHolder1_grdDocket_ctl00_ctl04_rttlnkCase" style="display:none;position:absolute;">
+				<input id="ctl00_ContentPlaceHolder1_grdDocket_ctl00_ctl04_rttlnkCase_ClientState" name="ctl00_ContentPlaceHolder1_grdDocket_ctl00_ctl04_rttlnkCase_ClientState" type="hidden">
+			</div>
+                                            <div>
+				<table class="docGrid" cellspacing="0" border="0" id="ctl00_ContentPlaceHolder1_grdDocket_ctl00_ctl04_ddlContainer">
+					<tr>
+						<td>Memorandum Opinion by Chief Justice Salas Mendoza </td><td width="25%" nowrap><a href='SearchMedia.aspx?MediaVersionID=129c6eb7-b190-4a0a-a48a-25ab18d1b685&amp;MediaID=e209cbc4-d5b5-4074-91e4-c1193efaffbb&amp;coa="%20+%20this.CurrentWebState.CurrentCourt%20+%20@"&amp;DT=Opinion' target="_blank"> [ PDF ] </a></td>
+					</tr>
+				</table>
+			</div>
+                                        </td><td class="caseStyle"><span style="font-weight:bold">Richard Dale Reynolds v. Yesenia Molina and YM Unique Enterprises, LLC</span><br>Appeal from County Court at Law No 7 of El Paso County</td><td class="caseDisp" width="20%">AFFIRMED</td><td width="20%" nowrap>Chief Justice Salas Mendoza <br>Justice Palafox <br>Justice Soto <br></td>
+		</tr><tr class="rgAltRow" id="ctl00_ContentPlaceHolder1_grdDocket_ctl00__1" bgcolor="WhiteSmoke">
+			<td width="20%">
+                                            <a id="ctl00_ContentPlaceHolder1_grdDocket_ctl00_ctl06_lnkCase" href="txctapp8_subexample_2.html">08-26-00241-CV</a>
+                                            <div id="ctl00_ContentPlaceHolder1_grdDocket_ctl00_ctl06_rttlnkCase" style="display:none;position:absolute;">
+				<input id="ctl00_ContentPlaceHolder1_grdDocket_ctl00_ctl06_rttlnkCase_ClientState" name="ctl00_ContentPlaceHolder1_grdDocket_ctl00_ctl06_rttlnkCase_ClientState" type="hidden">
+			</div>
+                                            <div>
+				<table class="docGrid" cellspacing="0" border="0" id="ctl00_ContentPlaceHolder1_grdDocket_ctl00_ctl06_ddlContainer">
+					<tr>
+						<td>Memorandum Opinion by Chief Justice Salas Mendoza </td><td width="25%" nowrap><a href='SearchMedia.aspx?MediaVersionID=b36bc61c-a11b-405c-98f6-8469b88c8bb2&amp;MediaID=75c1e9f3-2435-4971-a0f3-fdec4105887e&amp;coa="%20+%20this.CurrentWebState.CurrentCourt%20+%20@"&amp;DT=Opinion' target="_blank"> [ PDF ] </a></td>
+					</tr>
+				</table>
+			</div>
+                                        </td><td class="caseStyle"><span style="font-weight:bold">Alfredo Rodriguez v. A.Y. Automotive Carlos Andrade</span><br>Appeal from County Criminal Court No. 1 of El Paso County</td><td class="caseDisp" width="20%">DISMISSED</td><td width="20%" nowrap>Chief Justice Salas Mendoza <br>Justice Palafox <br>Justice Soto <br></td>
+		</tr>
+		</tbody>
+
+	</table><div id="ctl00_ContentPlaceHolder1_grdDocket_SharedCalendarContainer" style="display:none;">
+
+	</div><input id="ctl00_ContentPlaceHolder1_grdDocket_ClientState" name="ctl00_ContentPlaceHolder1_grdDocket_ClientState" type="hidden">	</div>
+	
+                    
+</div>
+                </div>
+            </div>
+            <div class="row-fluid" style="display: block">
+                <div class="span12">
+                    <div id="ctl00_ContentPlaceHolder1_Panel2">
+	
+                        <br>
+                        <h3>
+                            Civil Orders
+                            <span id="ctl00_ContentPlaceHolder1_Label2"></span>
+                        </h3>
+                        <div id="ctl00_ContentPlaceHolder1_grdOrders1" class="RadGrid RadGrid_Default outerGrid">
+
+	<table class="rgMasterTable" rules="all" border="1" id="ctl00_ContentPlaceHolder1_grdOrders1_ctl00" width="100%" style="table-layout:auto;empty-cells:show;">
+		<colgroup>
+		<col>
+		<col>
+		<col>
+		<col>
+	</colgroup>
+<thead>
+			<tr>
+				<th scope="col" class="rgHeader">Case Number</th><th scope="col" class="rgHeader">Style</th><th scope="col" class="rgHeader">Disposition</th><th scope="col" class="rgHeader">Judges</th>
+			</tr>
+		</thead><tbody>
+		<tr class="rgRow" id="ctl00_ContentPlaceHolder1_grdOrders1_ctl00__0">
+			<td class="caseLink" width="20%">
+                                            <a id="ctl00_ContentPlaceHolder1_grdOrders1_ctl00_ctl04_lnkCase1" href="Case.aspx?cn=08-26-00227-CV">08-26-00227-CV</a>
+                                            <div id="ctl00_ContentPlaceHolder1_grdOrders1_ctl00_ctl04_rttlnkCase1" style="display:none;position:absolute;">
+				<input id="ctl00_ContentPlaceHolder1_grdOrders1_ctl00_ctl04_rttlnkCase1_ClientState" name="ctl00_ContentPlaceHolder1_grdOrders1_ctl00_ctl04_rttlnkCase1_ClientState" type="hidden">
+			</div>
+                                            <div>
+				<table class="docGrid" cellspacing="0" border="0" id="ctl00_ContentPlaceHolder1_grdOrders1_ctl00_ctl04_ddlContainer">
+					<tr>
+						<td width="80%">Order </td><td nowrap><a href='SearchMedia.aspx?MediaVersionID=3a5a439d-f92e-4a40-8855-0baaa76f3620&amp;MediaID=6c2ae649-ac1f-4506-bfc2-2348f2463276&amp;coa="%20+%20this.CurrentWebState.CurrentCourt%20+%20@"&amp;DT=Order' target="_blank" style="display:inline-block;"> [ PDF ] </a></td>
+					</tr>
+				</table>
+			</div>
+                                        </td><td class="caseStyle"><span style="font-weight:bold">Brennan Short v. Sean J. Rice, Individually and as Wrongful Death Beneficiary of Talia Yasmeen Rice (Deceased)</span><br>Appeal from 41st District Court of El Paso County</td><td class="caseDisp" width="20%"> </td><td width="20%" nowrap> </td>
+		</tr>
+		</tbody>
+
+	</table><div id="ctl00_ContentPlaceHolder1_grdOrders1_SharedCalendarContainer" style="display:none;">
+
+	</div><input id="ctl00_ContentPlaceHolder1_grdOrders1_ClientState" name="ctl00_ContentPlaceHolder1_grdOrders1_ClientState" type="hidden">	</div>
+	
+                    
+</div>
+                </div>
+            </div>
+            <div class="row-fluid" style="display: block">
+                <div class="span12">
+                    <div id="ctl00_ContentPlaceHolder1_Panel1">
+	
+                        <br>
+                        <h3>
+                            Criminal Causes Decided
+                            <span id="ctl00_ContentPlaceHolder1_Label1"></span>
+                        </h3>
+                        <div id="ctl00_ContentPlaceHolder1_grdDocket2" class="RadGrid RadGrid_Default outerGrid">
+
+	<table class="rgMasterTable" rules="all" border="1" id="ctl00_ContentPlaceHolder1_grdDocket2_ctl00" width="100%" style="table-layout:auto;empty-cells:show;">
+		<colgroup>
+		<col>
+		<col>
+		<col>
+		<col>
+	</colgroup>
+<thead>
+			<tr>
+				<th scope="col" class="rgHeader">Case Number</th><th scope="col" class="rgHeader">Style</th><th scope="col" class="rgHeader">Disposition</th><th scope="col" class="rgHeader">Judges</th>
+			</tr>
+		</thead><tbody>
+		<tr class="rgNoRecords">
+			<td colspan="4" style="text-align:left;"><div>No records to display.</div></td>
+		</tr>
+		</tbody>
+
+	</table><div id="ctl00_ContentPlaceHolder1_grdDocket2_SharedCalendarContainer" style="display:none;">
+
+	</div><input id="ctl00_ContentPlaceHolder1_grdDocket2_ClientState" name="ctl00_ContentPlaceHolder1_grdDocket2_ClientState" type="hidden">	</div>
+	
+                    
+</div>
+                </div>
+            </div>
+            <div class="row-fluid" style="display: block">
+                <div class="span12">
+                    <div id="ctl00_ContentPlaceHolder1_Panel3">
+	
+                        <br>
+                        <h3>
+                            Criminal Orders
+                            <span id="ctl00_ContentPlaceHolder1_Label3"></span>
+                        </h3>
+                        <div id="ctl00_ContentPlaceHolder1_grdOrders2" class="RadGrid RadGrid_Default outerGrid">
+
+	<table class="rgMasterTable" rules="all" border="1" id="ctl00_ContentPlaceHolder1_grdOrders2_ctl00" width="100%" style="table-layout:auto;empty-cells:show;">
+		<colgroup>
+		<col>
+		<col>
+		<col>
+		<col>
+	</colgroup>
+<thead>
+			<tr>
+				<th scope="col" class="rgHeader">Case Number</th><th scope="col" class="rgHeader">Style</th><th scope="col" class="rgHeader">Disposition</th><th scope="col" class="rgHeader">Judges</th>
+			</tr>
+		</thead><tbody>
+		<tr class="rgRow" id="ctl00_ContentPlaceHolder1_grdOrders2_ctl00__0">
+			<td class="caseLink" width="20%">
+                                            <a id="ctl00_ContentPlaceHolder1_grdOrders2_ctl00_ctl04_lnkCase1" href="Case.aspx?cn=08-26-00133-CR">08-26-00133-CR</a>
+                                            <div id="ctl00_ContentPlaceHolder1_grdOrders2_ctl00_ctl04_rttlnkCase1" style="display:none;position:absolute;">
+				<input id="ctl00_ContentPlaceHolder1_grdOrders2_ctl00_ctl04_rttlnkCase1_ClientState" name="ctl00_ContentPlaceHolder1_grdOrders2_ctl00_ctl04_rttlnkCase1_ClientState" type="hidden">
+			</div>
+                                            <div>
+				<table class="docGrid" cellspacing="0" border="0" id="ctl00_ContentPlaceHolder1_grdOrders2_ctl00_ctl04_ddlContainer">
+					<tr>
+						<td width="80%">Order </td><td nowrap><a href='SearchMedia.aspx?MediaVersionID=9e0a4c4c-294e-4ffb-9f0e-710d8abf6fde&amp;MediaID=479ef833-5078-472d-9593-17096b7cac03&amp;coa="%20+%20this.CurrentWebState.CurrentCourt%20+%20@"&amp;DT=Order' target="_blank" style="display:inline-block;"> [ PDF ] </a></td>
+					</tr>
+				</table>
+			</div>
+                                        </td><td class="caseStyle"><span style="font-weight:bold">Zachary Robert Urling v. The State of Texas</span><br>Appeal from County Criminal Court No. 4 of El Paso County</td><td class="caseDisp" width="20%"> </td><td width="20%" nowrap> </td>
+		</tr><tr class="rgAltRow" id="ctl00_ContentPlaceHolder1_grdOrders2_ctl00__1" bgcolor="WhiteSmoke">
+			<td class="caseLink" width="20%">
+                                            <a id="ctl00_ContentPlaceHolder1_grdOrders2_ctl00_ctl06_lnkCase1" href="Case.aspx?cn=08-26-00197-CR">08-26-00197-CR</a>
+                                            <div id="ctl00_ContentPlaceHolder1_grdOrders2_ctl00_ctl06_rttlnkCase1" style="display:none;position:absolute;">
+				<input id="ctl00_ContentPlaceHolder1_grdOrders2_ctl00_ctl06_rttlnkCase1_ClientState" name="ctl00_ContentPlaceHolder1_grdOrders2_ctl00_ctl06_rttlnkCase1_ClientState" type="hidden">
+			</div>
+                                            <div>
+				<table class="docGrid" cellspacing="0" border="0" id="ctl00_ContentPlaceHolder1_grdOrders2_ctl00_ctl06_ddlContainer">
+					<tr>
+						<td width="80%">Order </td><td nowrap><a href='SearchMedia.aspx?MediaVersionID=27b1a153-5fd9-4767-88e5-e69ac09d1ebd&amp;MediaID=edf9a139-268c-4580-86c1-3086a611335a&amp;coa="%20+%20this.CurrentWebState.CurrentCourt%20+%20@"&amp;DT=Order' target="_blank" style="display:inline-block;"> [ PDF ] </a></td>
+					</tr>
+				</table>
+			</div>
+                                        </td><td class="caseStyle"><span style="font-weight:bold">Deaujalae Mechon Evans v. The State of Texas</span><br>Appeal from Criminal District Court No. 2 of Tarrant County</td><td class="caseDisp" width="20%"> </td><td width="20%" nowrap> </td>
+		</tr>
+		</tbody>
+
+	</table><div id="ctl00_ContentPlaceHolder1_grdOrders2_SharedCalendarContainer" style="display:none;">
+
+	</div><input id="ctl00_ContentPlaceHolder1_grdOrders2_ClientState" name="ctl00_ContentPlaceHolder1_grdOrders2_ClientState" type="hidden">	</div>
+	
+                    
+</div>
+                </div>
+            </div>
+            <div id="ctl00_ContentPlaceHolder1_divData">
+            </div>
+            <div id="adobeNote">
+                <hr>
+                <p style="font-size: 12px; font-family: Tahoma, Arial, sans-serif;">
+                    To view or print PDF files you must have the Adobe Acrobat® reader. This software
+                    may be obtained without charge from Adobe. <a href="http://www.adobe.com/products/acrobat/readstep2.html" target="_blank">Download the reader from the Adobe Web site</a>
+                </p>
             </div>
         </div>
     </div>
-</body>
 
+
+    
+    
+
+                
+
+<script type="text/javascript">
+//<![CDATA[
+Sys.Application.add_init(function() {
+    $create(Telerik.Web.UI.RadToolTip, {"_cssClass":"","_manualCloseButtonText":"Close","animation":2,"clientStateFieldID":"ctl00_ContentPlaceHolder1_grdDocket_ctl00_ctl04_rttlnkCase_ClientState","formID":"aspnetForm","hideEvent":2,"position":33,"skin":"Default","targetControlID":"ctl00_ContentPlaceHolder1_grdDocket_ctl00_ctl04_lnkCase","text":"\u003cb\u003eOpen Document\u003c/b\u003e by clicking the hyperlink\u003cbr/\u003e\u003cbr/\u003e\u003cb\u003eCopy Hyperlink\u003c/b\u003e to clipboard by right clicking and selecting \u003cb\u003eCopy Shortcut\u003c/b\u003e (Internet Explorer), \u003cb\u003eCopy Link Address\u003c/b\u003e (Firefox), \u003cb\u003eCopy Link\u003c/b\u003e (Safari), or the copy feature pertinent to your browser."}, null, null, $get("ctl00_ContentPlaceHolder1_grdDocket_ctl00_ctl04_rttlnkCase"));
+});
+Sys.Application.add_init(function() {
+    $create(Telerik.Web.UI.RadToolTip, {"_cssClass":"","_manualCloseButtonText":"Close","animation":2,"clientStateFieldID":"ctl00_ContentPlaceHolder1_grdDocket_ctl00_ctl06_rttlnkCase_ClientState","formID":"aspnetForm","hideEvent":2,"position":33,"skin":"Default","targetControlID":"ctl00_ContentPlaceHolder1_grdDocket_ctl00_ctl06_lnkCase","text":"\u003cb\u003eOpen Document\u003c/b\u003e by clicking the hyperlink\u003cbr/\u003e\u003cbr/\u003e\u003cb\u003eCopy Hyperlink\u003c/b\u003e to clipboard by right clicking and selecting \u003cb\u003eCopy Shortcut\u003c/b\u003e (Internet Explorer), \u003cb\u003eCopy Link Address\u003c/b\u003e (Firefox), \u003cb\u003eCopy Link\u003c/b\u003e (Safari), or the copy feature pertinent to your browser."}, null, null, $get("ctl00_ContentPlaceHolder1_grdDocket_ctl00_ctl06_rttlnkCase"));
+});
+Sys.Application.add_init(function() {
+    $create(Telerik.Web.UI.RadGrid, {"ClientID":"ctl00_ContentPlaceHolder1_grdDocket","ClientSettings":{"AllowAutoScrollOnDragDrop":true,"ShouldCreateRows":true,"DataBinding":{},"Selecting":{"CellSelectionMode":0},"Scrolling":{},"Resizing":{},"ClientMessages":{},"KeyboardNavigationSettings":{"AllowActiveRowCycle":false,"EnableKeyboardShortcuts":true,"FocusKey":89,"InitInsertKey":73,"RebindKey":82,"ExitEditInsertModeKey":27,"UpdateInsertItemKey":13,"DeleteActiveRow":127,"ExpandDetailTableKey":39,"CollapseDetailTableKey":37,"MoveDownKey":40,"MoveUpKey":38,"SaveChangesKey":85,"CancelChangesKey":81},"Animation":{},"Virtualization":{}},"Skin":"Default","UniqueID":"ctl00$ContentPlaceHolder1$grdDocket","_activeRowIndex":"","_controlToFocus":"","_currentPageIndex":0,"_defaultDateTimeFormat":"M/d/yyyy h:mm:ss tt","_editIndexes":"[]","_embeddedSkin":true,"_freezeText":"Freeze","_gridTableViewsData":"[{\"ClientID\":\"ctl00_ContentPlaceHolder1_grdDocket_ctl00\",\"UniqueID\":\"ctl00$ContentPlaceHolder1$grdDocket$ctl00\",\"PageSize\":10,\"PageCount\":1,\"EditMode\":\"EditForms\",\"AllowPaging\":false,\"CurrentPageIndex\":0,\"VirtualItemCount\":0,\"AllowMultiColumnSorting\":false,\"AllowNaturalSort\":true,\"AllowFilteringByColumn\":false,\"PageButtonCount\":10,\"HasDetailTables\":false,\"HasMultiHeaders\":false,\"CheckListWebServicePath\":\"\",\"GroupLoadMode\":\"Server\",\"PagerAlwaysVisible\":true,\"IsItemInserted\":false,\"clientDataKeyNames\":[],\"hasDetailItemTemplate\":false,\"_dataBindTemplates\":false,\"_selectedItemStyle\":\"\",\"_selectedItemStyleClass\":\"rgSelectedRow\",\"_columnsData\":[{\"UniqueName\":\"TemplateColumn\",\"Resizable\":true,\"Reorderable\":true,\"Selectable\":true,\"Groupable\":true,\"ColumnType\":\"GridTemplateColumn\",\"ColumnGroupName\":\"\",\"Editable\":false,\"DataTypeName\":\"System.String\",\"DataField\":\"\",\"ReadOnly\":true,\"Display\":true},{\"UniqueName\":\"Style\",\"Resizable\":true,\"Reorderable\":true,\"Selectable\":true,\"Groupable\":true,\"ColumnType\":\"GridBoundColumn\",\"ColumnGroupName\":\"\",\"Editable\":false,\"DataTypeName\":\"System.String\",\"DataField\":\"Style\",\"ReadOnly\":true,\"Display\":true},{\"UniqueName\":\"DispositionType\",\"Resizable\":true,\"Reorderable\":true,\"Selectable\":true,\"Groupable\":true,\"ColumnType\":\"GridBoundColumn\",\"ColumnGroupName\":\"\",\"Editable\":false,\"DataTypeName\":\"System.String\",\"DataField\":\"DispositionType\",\"ReadOnly\":true,\"Display\":true},{\"UniqueName\":\"Judges\",\"Resizable\":true,\"Reorderable\":true,\"Selectable\":true,\"Groupable\":true,\"ColumnType\":\"GridBoundColumn\",\"ColumnGroupName\":\"\",\"Editable\":false,\"DataTypeName\":\"System.String\",\"DataField\":\"Judges\",\"ReadOnly\":true,\"Display\":true}]}]","_masterClientID":"ctl00_ContentPlaceHolder1_grdDocket_ctl00","_shouldFocusOnPage":false,"_unfreezeText":"Unfreeze","allowMultiRowSelection":false,"clientStateFieldID":"ctl00_ContentPlaceHolder1_grdDocket_ClientState","expandItems":{},"renderMode":1}, null, null, $get("ctl00_ContentPlaceHolder1_grdDocket"));
+});
+Sys.Application.add_init(function() {
+    $create(Telerik.Web.UI.RadToolTip, {"_cssClass":"","_manualCloseButtonText":"Close","animation":2,"clientStateFieldID":"ctl00_ContentPlaceHolder1_grdOrders1_ctl00_ctl04_rttlnkCase1_ClientState","formID":"aspnetForm","hideEvent":2,"position":33,"skin":"Default","targetControlID":"ctl00_ContentPlaceHolder1_grdOrders1_ctl00_ctl04_lnkCase1","text":"\u003cb\u003eOpen Document\u003c/b\u003e by clicking the hyperlink\u003cbr/\u003e\u003cbr/\u003e\u003cb\u003eCopy Hyperlink\u003c/b\u003e to clipboard by right clicking and selecting \u003cb\u003eCopy Shortcut\u003c/b\u003e (Internet Explorer), \u003cb\u003eCopy Link Address\u003c/b\u003e (Firefox), \u003cb\u003eCopy Link\u003c/b\u003e (Safari), or the copy feature pertinent to your browser."}, null, null, $get("ctl00_ContentPlaceHolder1_grdOrders1_ctl00_ctl04_rttlnkCase1"));
+});
+Sys.Application.add_init(function() {
+    $create(Telerik.Web.UI.RadGrid, {"ClientID":"ctl00_ContentPlaceHolder1_grdOrders1","ClientSettings":{"AllowAutoScrollOnDragDrop":true,"ShouldCreateRows":true,"DataBinding":{},"Selecting":{"CellSelectionMode":0},"Scrolling":{},"Resizing":{},"ClientMessages":{},"KeyboardNavigationSettings":{"AllowActiveRowCycle":false,"EnableKeyboardShortcuts":true,"FocusKey":89,"InitInsertKey":73,"RebindKey":82,"ExitEditInsertModeKey":27,"UpdateInsertItemKey":13,"DeleteActiveRow":127,"ExpandDetailTableKey":39,"CollapseDetailTableKey":37,"MoveDownKey":40,"MoveUpKey":38,"SaveChangesKey":85,"CancelChangesKey":81},"Animation":{},"Virtualization":{}},"Skin":"Default","UniqueID":"ctl00$ContentPlaceHolder1$grdOrders1","_activeRowIndex":"","_controlToFocus":"","_currentPageIndex":0,"_defaultDateTimeFormat":"M/d/yyyy h:mm:ss tt","_editIndexes":"[]","_embeddedSkin":true,"_freezeText":"Freeze","_gridTableViewsData":"[{\"ClientID\":\"ctl00_ContentPlaceHolder1_grdOrders1_ctl00\",\"UniqueID\":\"ctl00$ContentPlaceHolder1$grdOrders1$ctl00\",\"PageSize\":10,\"PageCount\":1,\"EditMode\":\"EditForms\",\"AllowPaging\":false,\"CurrentPageIndex\":0,\"VirtualItemCount\":0,\"AllowMultiColumnSorting\":false,\"AllowNaturalSort\":true,\"AllowFilteringByColumn\":false,\"PageButtonCount\":10,\"HasDetailTables\":false,\"HasMultiHeaders\":false,\"CheckListWebServicePath\":\"\",\"GroupLoadMode\":\"Server\",\"PagerAlwaysVisible\":true,\"IsItemInserted\":false,\"clientDataKeyNames\":[],\"hasDetailItemTemplate\":false,\"_dataBindTemplates\":false,\"_selectedItemStyle\":\"\",\"_selectedItemStyleClass\":\"rgSelectedRow\",\"_columnsData\":[{\"UniqueName\":\"TemplateColumn\",\"Resizable\":true,\"Reorderable\":true,\"Selectable\":true,\"Groupable\":true,\"ColumnType\":\"GridTemplateColumn\",\"ColumnGroupName\":\"\",\"Editable\":false,\"DataTypeName\":\"System.String\",\"DataField\":\"\",\"ReadOnly\":true,\"Display\":true},{\"UniqueName\":\"Style\",\"Resizable\":true,\"Reorderable\":true,\"Selectable\":true,\"Groupable\":true,\"ColumnType\":\"GridBoundColumn\",\"ColumnGroupName\":\"\",\"Editable\":false,\"DataTypeName\":\"System.String\",\"DataField\":\"Style\",\"ReadOnly\":true,\"Display\":true},{\"UniqueName\":\"DispositionType\",\"Resizable\":true,\"Reorderable\":true,\"Selectable\":true,\"Groupable\":true,\"ColumnType\":\"GridBoundColumn\",\"ColumnGroupName\":\"\",\"Editable\":false,\"DataTypeName\":\"System.String\",\"DataField\":\"DispositionType\",\"ReadOnly\":true,\"Display\":true},{\"UniqueName\":\"Judges\",\"Resizable\":true,\"Reorderable\":true,\"Selectable\":true,\"Groupable\":true,\"ColumnType\":\"GridBoundColumn\",\"ColumnGroupName\":\"\",\"Editable\":false,\"DataTypeName\":\"System.String\",\"DataField\":\"Judges\",\"ReadOnly\":true,\"Display\":true}]}]","_masterClientID":"ctl00_ContentPlaceHolder1_grdOrders1_ctl00","_shouldFocusOnPage":false,"_unfreezeText":"Unfreeze","allowMultiRowSelection":false,"clientStateFieldID":"ctl00_ContentPlaceHolder1_grdOrders1_ClientState","expandItems":{},"renderMode":1}, null, null, $get("ctl00_ContentPlaceHolder1_grdOrders1"));
+});
+Sys.Application.add_init(function() {
+    $create(Telerik.Web.UI.RadGrid, {"ClientID":"ctl00_ContentPlaceHolder1_grdDocket2","ClientSettings":{"AllowAutoScrollOnDragDrop":true,"ShouldCreateRows":true,"DataBinding":{},"Selecting":{"CellSelectionMode":0},"Scrolling":{},"Resizing":{},"ClientMessages":{},"KeyboardNavigationSettings":{"AllowActiveRowCycle":false,"EnableKeyboardShortcuts":true,"FocusKey":89,"InitInsertKey":73,"RebindKey":82,"ExitEditInsertModeKey":27,"UpdateInsertItemKey":13,"DeleteActiveRow":127,"ExpandDetailTableKey":39,"CollapseDetailTableKey":37,"MoveDownKey":40,"MoveUpKey":38,"SaveChangesKey":85,"CancelChangesKey":81},"Animation":{},"Virtualization":{}},"Skin":"Default","UniqueID":"ctl00$ContentPlaceHolder1$grdDocket2","_activeRowIndex":"","_controlToFocus":"","_currentPageIndex":0,"_defaultDateTimeFormat":"M/d/yyyy h:mm:ss tt","_editIndexes":"[]","_embeddedSkin":true,"_freezeText":"Freeze","_gridTableViewsData":"[{\"ClientID\":\"ctl00_ContentPlaceHolder1_grdDocket2_ctl00\",\"UniqueID\":\"ctl00$ContentPlaceHolder1$grdDocket2$ctl00\",\"PageSize\":10,\"PageCount\":1,\"EditMode\":\"EditForms\",\"AllowPaging\":false,\"CurrentPageIndex\":0,\"VirtualItemCount\":0,\"AllowMultiColumnSorting\":false,\"AllowNaturalSort\":true,\"AllowFilteringByColumn\":false,\"PageButtonCount\":10,\"HasDetailTables\":false,\"HasMultiHeaders\":false,\"CheckListWebServicePath\":\"\",\"GroupLoadMode\":\"Server\",\"PagerAlwaysVisible\":true,\"IsItemInserted\":false,\"clientDataKeyNames\":[],\"hasDetailItemTemplate\":false,\"_dataBindTemplates\":false,\"_selectedItemStyle\":\"\",\"_selectedItemStyleClass\":\"rgSelectedRow\",\"_columnsData\":[{\"UniqueName\":\"TemplateColumn\",\"Resizable\":true,\"Reorderable\":true,\"Selectable\":true,\"Groupable\":true,\"ColumnType\":\"GridTemplateColumn\",\"ColumnGroupName\":\"\",\"Editable\":false,\"DataTypeName\":\"System.String\",\"DataField\":\"\",\"ReadOnly\":true,\"Display\":true},{\"UniqueName\":\"Style\",\"Resizable\":true,\"Reorderable\":true,\"Selectable\":true,\"Groupable\":true,\"ColumnType\":\"GridBoundColumn\",\"ColumnGroupName\":\"\",\"Editable\":false,\"DataTypeName\":\"System.String\",\"DataField\":\"Style\",\"ReadOnly\":true,\"Display\":true},{\"UniqueName\":\"DispositionType\",\"Resizable\":true,\"Reorderable\":true,\"Selectable\":true,\"Groupable\":true,\"ColumnType\":\"GridBoundColumn\",\"ColumnGroupName\":\"\",\"Editable\":false,\"DataTypeName\":\"System.String\",\"DataField\":\"DispositionType\",\"ReadOnly\":true,\"Display\":true},{\"UniqueName\":\"Judges\",\"Resizable\":true,\"Reorderable\":true,\"Selectable\":true,\"Groupable\":true,\"ColumnType\":\"GridBoundColumn\",\"ColumnGroupName\":\"\",\"Editable\":false,\"DataTypeName\":\"System.String\",\"DataField\":\"Judges\",\"ReadOnly\":true,\"Display\":true}]}]","_masterClientID":"ctl00_ContentPlaceHolder1_grdDocket2_ctl00","_shouldFocusOnPage":false,"_unfreezeText":"Unfreeze","allowMultiRowSelection":false,"clientStateFieldID":"ctl00_ContentPlaceHolder1_grdDocket2_ClientState","renderMode":1}, null, null, $get("ctl00_ContentPlaceHolder1_grdDocket2"));
+});
+Sys.Application.add_init(function() {
+    $create(Telerik.Web.UI.RadToolTip, {"_cssClass":"","_manualCloseButtonText":"Close","animation":2,"clientStateFieldID":"ctl00_ContentPlaceHolder1_grdOrders2_ctl00_ctl04_rttlnkCase1_ClientState","formID":"aspnetForm","hideEvent":2,"position":33,"skin":"Default","targetControlID":"ctl00_ContentPlaceHolder1_grdOrders2_ctl00_ctl04_lnkCase1","text":"\u003cb\u003eOpen Document\u003c/b\u003e by clicking the hyperlink\u003cbr/\u003e\u003cbr/\u003e\u003cb\u003eCopy Hyperlink\u003c/b\u003e to clipboard by right clicking and selecting \u003cb\u003eCopy Shortcut\u003c/b\u003e (Internet Explorer), \u003cb\u003eCopy Link Address\u003c/b\u003e (Firefox), \u003cb\u003eCopy Link\u003c/b\u003e (Safari), or the copy feature pertinent to your browser."}, null, null, $get("ctl00_ContentPlaceHolder1_grdOrders2_ctl00_ctl04_rttlnkCase1"));
+});
+Sys.Application.add_init(function() {
+    $create(Telerik.Web.UI.RadToolTip, {"_cssClass":"","_manualCloseButtonText":"Close","animation":2,"clientStateFieldID":"ctl00_ContentPlaceHolder1_grdOrders2_ctl00_ctl06_rttlnkCase1_ClientState","formID":"aspnetForm","hideEvent":2,"position":33,"skin":"Default","targetControlID":"ctl00_ContentPlaceHolder1_grdOrders2_ctl00_ctl06_lnkCase1","text":"\u003cb\u003eOpen Document\u003c/b\u003e by clicking the hyperlink\u003cbr/\u003e\u003cbr/\u003e\u003cb\u003eCopy Hyperlink\u003c/b\u003e to clipboard by right clicking and selecting \u003cb\u003eCopy Shortcut\u003c/b\u003e (Internet Explorer), \u003cb\u003eCopy Link Address\u003c/b\u003e (Firefox), \u003cb\u003eCopy Link\u003c/b\u003e (Safari), or the copy feature pertinent to your browser."}, null, null, $get("ctl00_ContentPlaceHolder1_grdOrders2_ctl00_ctl06_rttlnkCase1"));
+});
+Sys.Application.add_init(function() {
+    $create(Telerik.Web.UI.RadGrid, {"ClientID":"ctl00_ContentPlaceHolder1_grdOrders2","ClientSettings":{"AllowAutoScrollOnDragDrop":true,"ShouldCreateRows":true,"DataBinding":{},"Selecting":{"CellSelectionMode":0},"Scrolling":{},"Resizing":{},"ClientMessages":{},"KeyboardNavigationSettings":{"AllowActiveRowCycle":false,"EnableKeyboardShortcuts":true,"FocusKey":89,"InitInsertKey":73,"RebindKey":82,"ExitEditInsertModeKey":27,"UpdateInsertItemKey":13,"DeleteActiveRow":127,"ExpandDetailTableKey":39,"CollapseDetailTableKey":37,"MoveDownKey":40,"MoveUpKey":38,"SaveChangesKey":85,"CancelChangesKey":81},"Animation":{},"Virtualization":{}},"Skin":"Default","UniqueID":"ctl00$ContentPlaceHolder1$grdOrders2","_activeRowIndex":"","_controlToFocus":"","_currentPageIndex":0,"_defaultDateTimeFormat":"M/d/yyyy h:mm:ss tt","_editIndexes":"[]","_embeddedSkin":true,"_freezeText":"Freeze","_gridTableViewsData":"[{\"ClientID\":\"ctl00_ContentPlaceHolder1_grdOrders2_ctl00\",\"UniqueID\":\"ctl00$ContentPlaceHolder1$grdOrders2$ctl00\",\"PageSize\":10,\"PageCount\":1,\"EditMode\":\"EditForms\",\"AllowPaging\":false,\"CurrentPageIndex\":0,\"VirtualItemCount\":0,\"AllowMultiColumnSorting\":false,\"AllowNaturalSort\":true,\"AllowFilteringByColumn\":false,\"PageButtonCount\":10,\"HasDetailTables\":false,\"HasMultiHeaders\":false,\"CheckListWebServicePath\":\"\",\"GroupLoadMode\":\"Server\",\"PagerAlwaysVisible\":true,\"IsItemInserted\":false,\"clientDataKeyNames\":[],\"hasDetailItemTemplate\":false,\"_dataBindTemplates\":false,\"_selectedItemStyle\":\"\",\"_selectedItemStyleClass\":\"rgSelectedRow\",\"_columnsData\":[{\"UniqueName\":\"TemplateColumn\",\"Resizable\":true,\"Reorderable\":true,\"Selectable\":true,\"Groupable\":true,\"ColumnType\":\"GridTemplateColumn\",\"ColumnGroupName\":\"\",\"Editable\":false,\"DataTypeName\":\"System.String\",\"DataField\":\"\",\"ReadOnly\":true,\"Display\":true},{\"UniqueName\":\"Style\",\"Resizable\":true,\"Reorderable\":true,\"Selectable\":true,\"Groupable\":true,\"ColumnType\":\"GridBoundColumn\",\"ColumnGroupName\":\"\",\"Editable\":false,\"DataTypeName\":\"System.String\",\"DataField\":\"Style\",\"ReadOnly\":true,\"Display\":true},{\"UniqueName\":\"DispositionType\",\"Resizable\":true,\"Reorderable\":true,\"Selectable\":true,\"Groupable\":true,\"ColumnType\":\"GridBoundColumn\",\"ColumnGroupName\":\"\",\"Editable\":false,\"DataTypeName\":\"System.String\",\"DataField\":\"DispositionType\",\"ReadOnly\":true,\"Display\":true},{\"UniqueName\":\"Judges\",\"Resizable\":true,\"Reorderable\":true,\"Selectable\":true,\"Groupable\":true,\"ColumnType\":\"GridBoundColumn\",\"ColumnGroupName\":\"\",\"Editable\":false,\"DataTypeName\":\"System.String\",\"DataField\":\"Judges\",\"ReadOnly\":true,\"Display\":true}]}]","_masterClientID":"ctl00_ContentPlaceHolder1_grdOrders2_ctl00","_shouldFocusOnPage":false,"_unfreezeText":"Unfreeze","allowMultiRowSelection":false,"clientStateFieldID":"ctl00_ContentPlaceHolder1_grdOrders2_ClientState","expandItems":{},"renderMode":1}, null, null, $get("ctl00_ContentPlaceHolder1_grdOrders2"));
+});
+//]]>
+</script>
+</form>
+            </div>
+        </div>
+    </div>
+    <footer class="footer no-print">
+        <div class="page">
+            <div class="container-fluid">
+                <div class="row-fluid">
+                    <div class="headpad">
+                        <div class="span1">
+                            <a href="https://www.txcourts.gov/">
+                            <img src="img/brand/tjb-seal-144.png" id="ctl00_seal" alt="Texas Judicial Branch home page">
+                            </a>
+                            </div>
+                        <div class="span2">
+                            <a href="https://www.texasamerica250.com/" target="_blank">
+                            <img src="/img/brand/texasamerica250-logo.jpg" alt="Texas America250 website">
+                            </a>
+                        </div>
+                      
+                        <div class="span7">
+                        </div>
+
+                        <div class="span2 no-print">
+                            <dl>
+                                <dt class="goldText">Resources</dt>
+                                <dd><a target="_blank" href="https://www.txcourts.gov/careers.aspx">Careers</a></dd>
+                                <dd><a href="https://www.txcourts.gov/site-policies.aspx">Site Policies</a></dd>
+                                <dd><a target="_blank" href="http://www.texashomelandsecurity.com/">Texas Homeland Security</a></dd>
+                                <dd><a target="_blank" href="http://www.texas.gov/">Texas.gov</a></dd>
+                                <dd><a target="_blank" href="http://www2.tsl.state.tx.us/trail/">TRAIL</a></dd>
+                                <dd><a href="https://www.txcourts.gov/contact-us.aspx">WebMaster</a></dd>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- like it or not!!!!! -- tidc.js has the main navigation event handlers! --->
+    <script type="text/javascript" src="https://www.txcourts.gov/Scripts/tidc.js"></script>
+    <script type="text/javascript" src="https://www.txcourts.gov/Scripts/widgets-ck.js"></script>
+    <script type="text/javascript">
+        $(".panel-heading").click(function () {
+            var self = $(this),
+					arrow = $("i", self);
+
+            if (arrow.is(":visible")) {
+                var sibling = self.next(".nav"),
+						panel = self.parent();
+                if (sibling.is(":visible")) {
+                    arrow.attr('class', 'icon-caret-right pull-right');
+                    panel.addClass('panel-phone');
+                } else {
+                    arrow.attr('class', 'icon-caret-down pull-right');
+                    panel.removeClass('panel-phone');
+                }
+                sibling.toggle();
+            }
+        });
+    </script>
+
+    <script>
+        var _gaq = [['_setAccount', 'UA-XXXXX-X'], ['_trackPageview']];
+        (function (d, t) {
+            var g = d.createElement(t), s = d.getElementsByTagName(t)[0];
+            g.src = '//www.google-analytics.com/ga.js';
+            s.parentNode.insertBefore(g, s)
+        }(document, 'script'));
+    </script>
+
+</body>
 </html>
