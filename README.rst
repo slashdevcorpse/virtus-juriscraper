@@ -77,6 +77,17 @@ default if it exists on the filesystem)::
 
     export JURISCRAPER_LOG=/path/to/your/log.txt
 
+Virtus fork
+===========
+
+This is the Virtus fork of Juriscraper. Its version ends in ``+virtus.<n>``.
+
+The text "CourtListener" stays in this code on purpose. It is upstream
+text: comments, docstrings, docs and links. It is also the User-Agent
+value sent by two scrapers (``juriscraper/AbstractSite.py`` and
+``juriscraper/opinions/united_states/state/colo.py``). Do not rename it.
+The Virtus name guard allow-lists this package by path.
+
 Contributing
 ============
 
