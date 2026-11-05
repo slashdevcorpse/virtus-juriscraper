@@ -22,9 +22,13 @@ Changes:
 
 Fixes:
 - Ask the Illinois oral-argument scrapers for 180 days. A 30-day request returned no rows for the supreme court, the third district, and workers' compensation on 2026-11-05.
+- Keep italic words in an Illinois Supreme Court oral-argument case name. The listing wraps ex rel in em, and the first text node was only People.
+- Store Colorado Court of Appeals PDFs from `research.coloradojudicial.gov`. The appeals branch was storing `colorado.vlex.io` viewer links.
 - Fix `txctapp5`, `txctapp8`, `txctapp12` and `txctapp14` returning no opinions. TAMES Document Search has had no "Opinion" documents for these courts since December 2024, so they now read each court's Released Orders & Opinions page for every day of the range.
 - Fix `tenn`, `tennctapp`, `tenncrimapp` and `tenn_workers_comp` crash when a row's opinion link has an empty URL; those rows are now skipped. #2303
 - Send the session's default headers, including `User-Agent`, on PACER magic link downloads; PACER was intermittently resetting the connection without them.
+- Read Massachusetts unpublished dispositions from the labeled list row.
+- Read Louisiana 4th Circuit opinions from Search.aspx. A writ row has a decision date and no decree.
 
 ## 4.0.1 - 2026-10-15
 
