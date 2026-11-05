@@ -4,6 +4,8 @@ Court Short Name: La. Ct. App. 4th Cir.
 Author: Luis-manzur
 History:
   2025-04-22: Created by Luis-manzur
+  2026-11-05: The opinion search lives on Search.aspx. Each result
+    labels Parties, Decree, Opinion Date and Document.
 """
 
 import re
@@ -12,10 +14,25 @@ from datetime import date, datetime
 from lxml.html import HtmlElement
 from typing_extensions import override
 
+from juriscraper.AbstractSite import logger
 from juriscraper.lib.date_utils import unique_year_month
 from juriscraper.lib.string_utils import titlecase
 from juriscraper.lib.type_utils import OpinionType
 from juriscraper.OpinionSiteLinear import OpinionSiteLinear
+
+
+def _field_text(node: HtmlElement) -> str:
+    """Field text without the label or the screen-reader duplicate."""
+    chunks = node.xpath(
+        ".//text()[not(ancestor::strong) and "
+        "not(ancestor::span[contains(@class, 'sr-only')])]"
+    )
+    return " ".join(part.strip() for part in chunks if part.strip())
+
+
+def _paragraph(result: HtmlElement, label: str) -> HtmlElement | None:
+    nodes = result.xpath(f".//p[strong[contains(., '{label}')]]")
+    return nodes[0] if nodes else None
 
 
 class Site(OpinionSiteLinear):
@@ -25,7 +42,7 @@ class Site(OpinionSiteLinear):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.court_id = self.__module__
-        self.url = "https://www.la4th.org/Default.aspx"
+        self.url = "https://www.la4th.org/Search.aspx"
         self.search_date = datetime.today()
         self.make_backscrape_iterable(kwargs)
         self.status = "Published"
@@ -40,37 +57,62 @@ class Site(OpinionSiteLinear):
         :return None
         """
 
-        # XPath for the opinion results
-        opinion_results_xpath = "//div[contains(@class, 'opinion-result')]"
-        results = self.html.xpath(opinion_results_xpath)
+        results = self.html.xpath("//div[contains(@class, 'opinion-result')]")
 
         self.cases = []
         for result in results:
-            docket = result.xpath(".//strong/text()")[0]
-            name = (
-                result.xpath(".//p[not(strong)]/text()")[0]
-                .replace(" VS. .", ".")
-                .strip()
-            )
-            decree = result.xpath(
-                ".//p[strong[contains(text(), 'Decree')]]/text()"
-            )[0]
-            date = result.xpath(
-                ".//p[strong[contains(text(), 'Opinion Date')]]/text()"
-            )[0]
-            download_url = result.xpath(
-                ".//p/a[contains(text(), 'View Document')]/@href"
-            )[0]
+            if result.xpath(".//strong[contains(., 'Parties')]"):
+                try:
+                    self.cases.append(self._labeled_case(result))
+                except ValueError as error:
+                    logger.error("lactapp_4: skipping result: %s", error)
+            else:
+                self.cases.append(self._plain_case(result))
 
-            self.cases.append(
-                {
-                    "docket": docket,
-                    "name": titlecase(name),
-                    "disposition": titlecase(decree),
-                    "date": date,
-                    "url": download_url,
-                }
-            )
+    def _labeled_case(self, result: HtmlElement) -> dict[str, str]:
+        docket = result.xpath("./p[1]/strong/text()")[0]
+        parties = _paragraph(result, "Parties")
+        decree = _paragraph(result, "Decree")
+        filed = _paragraph(result, "Opinion Date")
+        if filed is None:
+            filed = _paragraph(result, "Decision Date")
+        if parties is None or filed is None:
+            raise ValueError("opinion result has no parties or date")
+        if decree is None:
+            disposition = ""
+        else:
+            disposition = titlecase(_field_text(decree))
+        return {
+            "docket": docket.strip(),
+            "name": titlecase(_field_text(parties)),
+            "disposition": disposition,
+            "date": _field_text(filed),
+            "url": result.xpath(".//a[contains(@href, '.pdf')]/@href")[0],
+        }
+
+    def _plain_case(self, result: HtmlElement) -> dict[str, str]:
+        docket = result.xpath(".//strong/text()")[0]
+        name = (
+            result.xpath(".//p[not(strong)]/text()")[0]
+            .replace(" VS. .", ".")
+            .strip()
+        )
+        decree = result.xpath(
+            ".//p[strong[contains(text(), 'Decree')]]/text()"
+        )[0]
+        date = result.xpath(
+            ".//p[strong[contains(text(), 'Opinion Date')]]/text()"
+        )[0]
+        download_url = result.xpath(
+            ".//p/a[contains(text(), 'View Document')]/@href"
+        )[0]
+        return {
+            "docket": docket,
+            "name": titlecase(name),
+            "disposition": titlecase(decree),
+            "date": date,
+            "url": download_url,
+        }
 
     def update_parameters(self) -> None:
         """Set year and month values in the parameters for the search.
