@@ -24,6 +24,22 @@ from juriscraper.AbstractSite import VIRTUS_USER_AGENT, logger
 from juriscraper.lib.html_utils import strip_bad_html_tags_insecure
 from juriscraper.OpinionSiteLinear import OpinionSiteLinear
 
+_COURT_PDF_HOST = "https://research.coloradojudicial.gov/"
+
+
+def court_pdf_url(detail_json: dict) -> str | None:
+    """PDF URL on the Colorado judicial research host."""
+    for fmt in detail_json.get("formats") or []:
+        if (
+            not isinstance(fmt, dict)
+            or fmt.get("mime_type") != "application/pdf"
+        ):
+            continue
+        raw = str(fmt.get("url") or "")
+        if raw.startswith("vid/") and "/download/" in raw:
+            return _COURT_PDF_HOST + raw
+    return None
+
 
 class Site(OpinionSiteLinear):
     base_url = "https://research.coloradojudicial.gov/search.json"
@@ -180,9 +196,14 @@ class Site(OpinionSiteLinear):
             ):
                 case["url"] = f"{detail_json['public_url']}/content"
             else:
-                case["url"] = (
-                    f"https://colorado.vlex.io/pdf_viewer/{result.get('id')}"
-                )
+                court_pdf = court_pdf_url(detail_json)
+                if court_pdf is None:
+                    logger.error(
+                        "Skipping case with no court-host PDF. Detail URL: %s",
+                        url,
+                    )
+                    continue
+                case["url"] = court_pdf
 
             case = self.update_case(case, detail_json)
 
