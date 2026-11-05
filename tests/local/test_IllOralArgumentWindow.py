@@ -15,6 +15,7 @@ from juriscraper.oral_args.united_states.state import (
 # On 2026-11-05 the 30-day form returned "No listings were found" for the
 # supreme court, the third district, and workers' compensation.
 MIN_WINDOW_DAYS = 150
+MAX_WINDOW_DAYS = 200
 
 _SITES = (
     ill,
@@ -40,6 +41,6 @@ class IllOralArgumentWindowTest(unittest.TestCase):
         short = []
         for module in _SITES:
             span = _window_days(module.Site())
-            if span < MIN_WINDOW_DAYS:
+            if span < MIN_WINDOW_DAYS or span > MAX_WINDOW_DAYS:
                 short.append(f"{module.__name__} asks for {span} days")
         self.assertEqual(short, [])
