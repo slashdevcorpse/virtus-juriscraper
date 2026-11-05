@@ -22,6 +22,7 @@ from typing_extensions import override
 
 from juriscraper.AbstractSite import logger
 from juriscraper.lib.auth_utils import set_api_token_header
+from juriscraper.lib.exceptions import InvalidDocumentError
 from juriscraper.lib.judge_parsers import normalize_judge_string
 from juriscraper.OpinionSiteLinear import OpinionSiteLinear
 
@@ -223,11 +224,17 @@ class Site(OpinionSiteLinear):
 
         :param content: downloaded content `r.content`
         :return: opinion content without hash altering elements
+        :raises InvalidDocumentError: on the reporter's not-found page
         """
         try:
             html_str = content.decode("utf-8")
         except UnicodeDecodeError:
             return content
+
+        # The search lists a slip opinion before the reporter posts it, and
+        # the reporter answers HTTP 200 with its not-found page until then
+        if "<title>404 ERROR - N.Y. State Courts</title>" in html_str[:2000]:
+            raise InvalidDocumentError("ny: the reporter has not posted it")
 
         if not nh3.is_html(html_str):
             return content
