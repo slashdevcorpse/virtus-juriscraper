@@ -18,6 +18,16 @@ Features:
 -
 
 Changes:
+-
+
+Fixes:
+-
+
+## 4.0.1+virtus.7 - 2026-11-05
+
+The virtus fork releases 4.0.1+virtus.1 to 4.0.1+virtus.7 hold these changes since 4.0.1.
+
+Changes:
 - Send `virtus-juriscraper/<version> (+https://virtusrt.com)` as the User-Agent in place of the upstream provider names in `AbstractSite` and the Colorado opinion scraper.
 
 Fixes:
