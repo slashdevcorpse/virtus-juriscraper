@@ -87,3 +87,37 @@ class ReleasedDocketRequestsTest(unittest.IsolatedAsyncioTestCase):
         # The same two cases are on each page; each is parsed once.
         self.assertEqual(len(site.cases), 2)
         self.assertEqual({c["date"] for c in site.cases}, {"8/13/2026"})
+
+
+class ConsolidatedCaseTest(unittest.IsolatedAsyncioTestCase):
+    """03-26-00672-CV lists two "Memorandum opinion issued" events on one day.
+
+    Recorded from the live case page on 2026-11-04. Before the split, the
+    cluster held two majority opinions and the sanity check raised
+    InsanityException, which failed the whole txctapp3 scrape.
+    """
+
+    async def test_each_majority_opinion_gets_its_own_cluster(self):
+        site = _site("txctapp3")
+        path = os.path.join(EXAMPLES, "txctapp3_consolidated_case.html")
+        with open(path, encoding="utf8") as f:
+            tree = lxml_html.fromstring(f.read())
+
+        async def fake_get(url: str):
+            return tree
+
+        site._get_html_tree_by_url = fake_get
+        await site._add_case(
+            "https://search.txcourts.gov/Case.aspx?cn=03-26-00672-CV",
+            "10/30/2026",
+            "03-26-00672-CV",
+        )
+
+        self.assertEqual(len(site.cases), 2)
+        urls = [op["url"] for c in site.cases for op in c["sub_opinions"]]
+        self.assertEqual(len(set(urls)), 2)
+        for case in site.cases:
+            self.assertEqual(
+                [op["type"] for op in case["sub_opinions"]], ["020lead"]
+            )
+            self.assertEqual(case["docket"], "03-26-00672-CV")
