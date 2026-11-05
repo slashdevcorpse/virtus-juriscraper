@@ -138,3 +138,38 @@ class ConsolidatedCaseTest(unittest.IsolatedAsyncioTestCase):
         (out,) = texapp.Site._split_majorities(case)
         self.assertEqual(out["disposition"], "Affirmed")
         self.assertNotIn("disposition", out["sub_opinions"][0])
+
+
+class CriminalAppealsOrderTest(unittest.IsolatedAsyncioTestCase):
+    """WR-97,994-01 issues its opinion as one document typed "Order".
+
+    Recorded from the live case page on 2026-11-05. The document type was
+    none of the four that texcrimapp knew, so the opinion had no type and
+    the majority split raised KeyError, which failed the whole scrape.
+    """
+
+    async def test_order_document_is_the_lead_opinion(self):
+        site = _site("texcrimapp")
+        path = os.path.join(EXAMPLES, "texcrimapp_order_case.html")
+        with open(path, encoding="utf8") as f:
+            tree = lxml_html.fromstring(f.read())
+
+        async def fake_get(url: str):
+            return tree
+
+        site._get_html_tree_by_url = fake_get
+        await site._add_case(
+            "https://search.txcourts.gov/Case.aspx?cn=WR-97,994-01",
+            "10/22/2026",
+            "WR-97,994-01",
+        )
+
+        (case,) = site.cases
+        self.assertEqual(
+            [op["type"] for op in case["sub_opinions"]], ["020lead"]
+        )
+        self.assertIn(
+            "MediaVersionID=53773e95-e312-4da1-b679-b544edb3c73c",
+            case["sub_opinions"][0]["url"],
+        )
+        self.assertEqual(case["disposition"], "Out of Time Appeal Granted")

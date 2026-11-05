@@ -48,11 +48,7 @@ class Site(texapp.Site):
             op["url"] = link[0].xpath("td/a/@href")[0]
 
             op_type = link[0].xpath("td[2]/text()")[0].strip()
-            if op_type == "Original":
-                # use the 'main' opinion disposition as cluster disposition
-                disposition = opinion.xpath(".//td[3]/text()")[0]
-                op["type"] = OpinionType.MAJORITY.value
-            elif op_type == "Concurring & Dissenting":
+            if op_type == "Concurring & Dissenting":
                 op["type"] = (
                     OpinionType.CONCURRING_IN_PART_AND_DISSENTING_IN_PART.value
                 )
@@ -60,6 +56,10 @@ class Site(texapp.Site):
                 op["type"] = OpinionType.DISSENT.value
             elif op_type == "Concurring":
                 op["type"] = OpinionType.CONCURRENCE.value
+            else:
+                # "Original", or an "Order" when the court rules by order
+                disposition = opinion.xpath(".//td[3]/text()")[0]
+                op["type"] = OpinionType.MAJORITY.value
 
             opinions.append(op)
 
