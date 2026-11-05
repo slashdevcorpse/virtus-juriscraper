@@ -11,10 +11,19 @@ Date: 2020-02-27
 from datetime import date, timedelta
 from urllib.parse import urlencode
 
+from lxml.html import HtmlElement
 from typing_extensions import override
 
 from juriscraper.lib.string_utils import titlecase
 from juriscraper.OpinionSiteLinear import OpinionSiteLinear
+
+
+def _labeled(row: HtmlElement, prefix: str) -> str:
+    """The value next to a heading such as case-heading-1."""
+    chunks = row.xpath(
+        f".//div[starts-with(@aria-labelledby, '{prefix}')]/text()"
+    )
+    return " ".join(part.strip() for part in chunks if part.strip())
 
 
 class Site(OpinionSiteLinear):
@@ -58,21 +67,39 @@ class Site(OpinionSiteLinear):
 
     @override
     def _process_html(self) -> None:
-        """Process the data
+        """Process the data.
+
+        The 2020 page uses a div row and a ``col-md-7`` value. The current
+        page uses an li row and a labeled ``col-md-9`` value.
 
         :return: None
         """
-        for row in self.html.xpath("//div[@data-rowtype]"):
-            docket, name, date = row.xpath(
-                ".//div[@class='col-md-7 font-bold']/text()"
-            )
-            path = row.xpath(".//div/div/a/@href")[0]
+        rows = self.html.xpath("//div[@data-rowtype]")
+        if rows:
+            for row in rows:
+                docket, name, filed = row.xpath(
+                    ".//div[@class='col-md-7 font-bold']/text()"
+                )
+                path = row.xpath(".//div/div/a/@href")[0]
+                self.cases.append(
+                    {
+                        "date": filed.strip(),
+                        "docket": docket.strip(),
+                        "name": titlecase(name.strip()),
+                        "url": path,
+                        "status": "Unpublished",
+                    }
+                )
+            return
+        for row in self.html.xpath("//li[@data-rowtype]"):
             self.cases.append(
                 {
-                    "date": date.strip(),
-                    "docket": docket.strip(),
-                    "name": titlecase(name.strip()),
-                    "url": path,
+                    "date": _labeled(row, "release-heading"),
+                    "docket": _labeled(row, "docket-heading"),
+                    "name": titlecase(_labeled(row, "case-heading")),
+                    "url": row.xpath(
+                        ".//a[contains(@href, 'DownloadDisposition')]/@href"
+                    )[0],
                     "status": "Unpublished",
                 }
             )
