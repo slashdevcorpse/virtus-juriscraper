@@ -163,7 +163,9 @@ class Site(OpinionSiteLinear):
             case = {
                 "name": cells[0].text_content().strip(),
                 "date": cells[1].text_content().strip(),
-                "url": url[0],
+                # The results table links the reporter over http; the
+                # reporter host serves the same page over https
+                "url": re.sub(r"^http://", "https://", url[0]),
                 "status": status,
                 "docket": docket,
                 "citation": official_citation,
