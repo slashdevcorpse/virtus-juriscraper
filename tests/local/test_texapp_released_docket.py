@@ -121,3 +121,20 @@ class ConsolidatedCaseTest(unittest.IsolatedAsyncioTestCase):
                 [op["type"] for op in case["sub_opinions"]], ["020lead"]
             )
             self.assertEqual(case["docket"], "03-26-00672-CV")
+            for op in case["sub_opinions"]:
+                self.assertNotIn("disposition", op)
+        self.assertEqual(
+            [c["disposition"] for c in site.cases], ["Abated", "Consolidated"]
+        )
+
+    async def test_single_majority_keeps_last_majority_disposition(self):
+        case = {
+            "disposition": "Affirmed",
+            "sub_opinions": [
+                {"url": "a", "type": "020lead", "disposition": "Affirmed"},
+                {"url": "b", "type": "040dissent"},
+            ],
+        }
+        (out,) = texapp.Site._split_majorities(case)
+        self.assertEqual(out["disposition"], "Affirmed")
+        self.assertNotIn("disposition", out["sub_opinions"][0])

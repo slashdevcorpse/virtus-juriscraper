@@ -253,8 +253,13 @@ class Site(ClusterSite):
         :return: one case dict per majority opinion, or the input unchanged
         """
         majority = OpinionType.MAJORITY.value
+        dispositions = [
+            op.pop("disposition", None) for op in case_dict["sub_opinions"]
+        ]
         majorities = [
-            op for op in case_dict["sub_opinions"] if op["type"] == majority
+            (op, disp)
+            for op, disp in zip(case_dict["sub_opinions"], dispositions)
+            if op["type"] == majority
         ]
         if len(majorities) < 2:
             return [case_dict]
@@ -263,10 +268,11 @@ class Site(ClusterSite):
             op for op in case_dict["sub_opinions"] if op["type"] != majority
         ]
         clusters = []
-        for i, op in enumerate(majorities):
+        for i, (op, disp) in enumerate(majorities):
             clusters.append(
                 {
                     **case_dict,
+                    "disposition": disp,
                     "sub_opinions": [op, *others] if i == 0 else [op],
                 }
             )
@@ -528,6 +534,7 @@ class Site(ClusterSite):
                 op["type"] = OpinionType.MAJORITY.value
                 # use the 'main' opinion disposition as cluster disposition
                 disposition = op_disposition_raw
+                op["disposition"] = op_disposition_raw
 
             opinions.append(op)
 
