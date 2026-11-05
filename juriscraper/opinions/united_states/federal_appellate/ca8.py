@@ -89,7 +89,7 @@ class Site(OpinionSiteLinear):
             for i in rrule(
                 MONTHLY,
                 dtstart=self.back_scrape_iterable[0][0],
-                until=self.back_scrape_iterable[0][1],
+                until=self.back_scrape_iterable[-1][1],
             )
         ]
 

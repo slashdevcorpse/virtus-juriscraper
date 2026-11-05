@@ -29,6 +29,7 @@ Fixes:
 - Send the session's default headers, including `User-Agent`, on PACER magic link downloads; PACER was intermittently resetting the connection without them.
 - Read Massachusetts unpublished dispositions from the labeled list row.
 - Read Louisiana 4th Circuit opinions from Search.aspx. A writ row has a decision date and no decree.
+- Fix `ca8` and `bap8` backscrapes that asked for only the first month when `days_interval` was shorter than the range. The month ticks now run to the end of the last window.
 
 ## 4.0.1 - 2026-10-15
 

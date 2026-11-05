@@ -5,6 +5,7 @@ import unittest
 from datetime import date
 
 from juriscraper.AbstractSite import logger
+from juriscraper.opinions.united_states.federal_bankruptcy import bap8
 from juriscraper.opinions.united_states.state import nev, nevapp
 
 
@@ -326,3 +327,15 @@ class ScraperSpotTest(unittest.TestCase):
         asyncio.run(site._download_backwards(site.back_scrape_iterable[0]))
         self.assertEqual(len(site.cases), 1)
         self.assertEqual(pages, [])
+
+    def test_bap8_backscrape_months_span_all_windows(self):
+        """A short `days_interval` still yields one tick per month of the range"""
+        site = bap8.Site(
+            backscrape_start="2026/05/01",
+            backscrape_end="2026/10/31",
+            days_interval=30,
+        )
+        self.assertEqual(
+            site.back_scrape_iterable,
+            [date(2026, month, 1) for month in range(5, 11)],
+        )
