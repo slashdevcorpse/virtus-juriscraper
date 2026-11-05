@@ -58,8 +58,10 @@ class Site(texapp.Site):
                 op["type"] = OpinionType.CONCURRENCE.value
             else:
                 # "Original", or an "Order" when the court rules by order
-                disposition = opinion.xpath(".//td[3]/text()")[0]
+                cell = opinion.xpath(".//td[3]/text()")
+                disposition = cell[0].strip() if cell else ""
                 op["type"] = OpinionType.MAJORITY.value
+                op["disposition"] = disposition
 
             opinions.append(op)
 
