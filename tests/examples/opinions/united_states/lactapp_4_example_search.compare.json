@@ -1,0 +1,35 @@
+[
+  {
+    "case_dates": "2026-11-02",
+    "case_names": "State of Louisiana v. Rachelle Dorsey",
+    "download_urls": "https://www.la4th.org/opinion/2026/4970995.pdf",
+    "precedential_statuses": "Published",
+    "blocked_statuses": false,
+    "date_filed_is_approximate": false,
+    "dispositions": "Writ Granted; Judgment Reversed in Part; Remanded",
+    "docket_numbers": "2026-K-0751",
+    "case_name_shorts": ""
+  },
+  {
+    "case_dates": "2026-11-02",
+    "case_names": "State of Louisiana v. Bokio B. Johnson",
+    "download_urls": "https://www.la4th.org/opinion/2025/4971008.pdf",
+    "precedential_statuses": "Published",
+    "blocked_statuses": false,
+    "date_filed_is_approximate": false,
+    "dispositions": "Convictions Affirmed; Remanded With Instructions",
+    "docket_numbers": "2025-KA-0437",
+    "case_name_shorts": ""
+  },
+  {
+    "case_dates": "2026-11-02",
+    "case_names": "Jeff A. Meckstroth v. Louisiana Tax Commission",
+    "download_urls": "https://www.la4th.org/opinion/2026/4971055.pdf",
+    "precedential_statuses": "Published",
+    "blocked_statuses": false,
+    "date_filed_is_approximate": false,
+    "dispositions": "",
+    "docket_numbers": "2026-C-0800",
+    "case_name_shorts": ""
+  }
+]
