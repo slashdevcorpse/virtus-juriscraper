@@ -58,7 +58,9 @@ class Site(OralArgumentSiteLinear):
                 {
                     "date": row.xpath(".//td[1]/span[1]/text()")[0],
                     "docket": row.xpath(".//td[2]/span[1]/text()")[0],
-                    "name": row.xpath(".//td[3]/span[1]/text()")[0],
+                    "name": " ".join(
+                        row.xpath(".//td[3]/span[1]")[0].text_content().split()
+                    ),
                     "url": audio_anchor[0],
                 }
             )
