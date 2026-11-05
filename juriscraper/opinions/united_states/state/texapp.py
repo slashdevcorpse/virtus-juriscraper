@@ -238,7 +238,45 @@ class Site(ClusterSite):
             )
             return
 
-        self.cases.append(case_dict)
+        self.cases.extend(self._split_majorities(case_dict))
+
+    @staticmethod
+    def _split_majorities(case_dict: dict) -> list[dict]:
+        """Give each majority opinion of a case page its own cluster
+
+        A consolidated or abated case lists one "opinion issued" event per
+        cause number on the same day, each with its own majority opinion.
+        A cluster may hold only one, so the others become clusters of their
+        own. Concurrences and dissents stay with the first majority.
+
+        :param case_dict: parsed case with all its opinions
+        :return: one case dict per majority opinion, or the input unchanged
+        """
+        majority = OpinionType.MAJORITY.value
+        dispositions = [
+            op.pop("disposition", None) for op in case_dict["sub_opinions"]
+        ]
+        majorities = [
+            (op, disp)
+            for op, disp in zip(case_dict["sub_opinions"], dispositions)
+            if op["type"] == majority
+        ]
+        if len(majorities) < 2:
+            return [case_dict]
+
+        others = [
+            op for op in case_dict["sub_opinions"] if op["type"] != majority
+        ]
+        clusters = []
+        for i, (op, disp) in enumerate(majorities):
+            clusters.append(
+                {
+                    **case_dict,
+                    "disposition": disp,
+                    "sub_opinions": [op, *others] if i == 0 else [op],
+                }
+            )
+        return clusters
 
     async def _process_released_docket(self) -> None:
         """Collect cases from the court's "Released Orders & Opinions" pages
@@ -496,6 +534,7 @@ class Site(ClusterSite):
                 op["type"] = OpinionType.MAJORITY.value
                 # use the 'main' opinion disposition as cluster disposition
                 disposition = op_disposition_raw
+                op["disposition"] = op_disposition_raw
 
             opinions.append(op)
 
