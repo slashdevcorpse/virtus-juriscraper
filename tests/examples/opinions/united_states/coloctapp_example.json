@@ -109,7 +109,7 @@
                     {
                         "mime_type": "application/pdf",
                         "show_inline": false,
-                        "url": "pdf/1035297640",
+                        "url": "vid/1035297640/download/fixture",
                         "original": false,
                         "label": "Document",
                         "isAuthorized": true
@@ -336,7 +336,7 @@
                     {
                         "mime_type": "application/pdf",
                         "show_inline": false,
-                        "url": "pdf/1035272272",
+                        "url": "vid/1035272272/download/fixture",
                         "original": false,
                         "label": "Document",
                         "isAuthorized": true
