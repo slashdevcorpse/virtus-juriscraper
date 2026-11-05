@@ -41,19 +41,19 @@
   },
   {
     "case_dates": "2022-05-11",
+    "case_names": "In re Craig H.",
+    "download_urls": "https://ilcourtsaudio.blob.core.windows.net/antilles-resources/resources/752ed250-aecc-41d4-b9ef-104c59364c84/051122_126256.mp3",
+    "blocked_statuses": false,
+    "docket_numbers": "126256",
+    "case_name_shorts": ""
+  },
+  {
+    "case_dates": "2022-05-11",
     "case_names": "Green v. Chicago Police Dept.",
     "download_urls": "https://ilcourtsaudio.blob.core.windows.net/antilles-resources/resources/b35bceb8-70b1-495d-ae0d-94e3f42b8bb6/051122_127229.mp3",
     "blocked_statuses": false,
     "docket_numbers": "127229",
     "case_name_shorts": "Green"
-  },
-  {
-    "case_dates": "2022-05-11",
-    "case_names": "Craig H.",
-    "download_urls": "https://ilcourtsaudio.blob.core.windows.net/antilles-resources/resources/752ed250-aecc-41d4-b9ef-104c59364c84/051122_126256.mp3",
-    "blocked_statuses": false,
-    "docket_numbers": "126256",
-    "case_name_shorts": "Craig H."
   },
   {
     "case_dates": "2022-05-10",
@@ -73,10 +73,10 @@
   },
   {
     "case_dates": "2022-05-10",
-    "case_names": "Kelan W.",
+    "case_names": "In re Kelan W.",
     "download_urls": "https://ilcourtsaudio.blob.core.windows.net/antilles-resources/resources/04bc3f59-63a3-4476-bb31-3d16f6e018f3/051022_128031.mp3",
     "blocked_statuses": false,
     "docket_numbers": "128031",
-    "case_name_shorts": "Kelan W."
+    "case_name_shorts": ""
   }
 ]
