@@ -52,7 +52,7 @@ except PackageNotFoundError:
     _PACKAGE_VERSION = "unknown"
 
 # User agent that this fork sends: virtus-juriscraper/<package version>.
-VIRTUS_USER_AGENT = f"virtus-juriscraper/{_PACKAGE_VERSION}"
+VIRTUS_USER_AGENT = f"virtus-juriscraper/{_PACKAGE_VERSION} (+https://virtusrt.com)"
 
 
 class AbstractSite:
