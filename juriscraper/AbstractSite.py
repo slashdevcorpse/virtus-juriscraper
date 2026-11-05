@@ -9,6 +9,7 @@ import urllib.parse
 import urllib.request
 from collections.abc import Awaitable
 from datetime import datetime
+from importlib.metadata import PackageNotFoundError, version
 
 import certifi
 import httpx
@@ -45,6 +46,14 @@ from juriscraper.lib.utils import (
 
 logger = make_default_logger()
 
+try:
+    _PACKAGE_VERSION = version("juriscraper")
+except PackageNotFoundError:
+    _PACKAGE_VERSION = "unknown"
+
+# User agent that this fork sends: virtus-juriscraper/<package version>.
+VIRTUS_USER_AGENT = f"virtus-juriscraper/{_PACKAGE_VERSION}"
+
 
 class AbstractSite:
     """Contains generic methods for scraping data. Should be extended by all
@@ -76,7 +85,7 @@ class AbstractSite:
     def __init__(
         self,
         cnt: CaseNameTweaker | None = None,
-        user_agent: str = "Juriscraper",
+        user_agent: str = VIRTUS_USER_AGENT,
         **kwargs,
     ):
         super().__init__()
@@ -476,7 +485,7 @@ class AbstractSite:
         if self.needs_special_headers:
             headers = self.request["headers"]
         else:
-            headers = {"User-Agent": "CourtListener"}
+            headers = {"User-Agent": VIRTUS_USER_AGENT}
 
         if self.use_urllib:
             r = self._download_content_urllib(download_url, headers)
