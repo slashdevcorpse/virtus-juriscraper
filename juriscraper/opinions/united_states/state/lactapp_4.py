@@ -14,6 +14,7 @@ from datetime import date, datetime
 from lxml.html import HtmlElement
 from typing_extensions import override
 
+from juriscraper.AbstractSite import logger
 from juriscraper.lib.date_utils import unique_year_month
 from juriscraper.lib.string_utils import titlecase
 from juriscraper.lib.type_utils import OpinionType
@@ -61,7 +62,10 @@ class Site(OpinionSiteLinear):
         self.cases = []
         for result in results:
             if result.xpath(".//strong[contains(., 'Parties')]"):
-                self.cases.append(self._labeled_case(result))
+                try:
+                    self.cases.append(self._labeled_case(result))
+                except ValueError as error:
+                    logger.error("lactapp_4: skipping result: %s", error)
             else:
                 self.cases.append(self._plain_case(result))
 
