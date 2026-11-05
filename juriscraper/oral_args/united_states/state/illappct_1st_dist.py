@@ -24,7 +24,7 @@ class Site(OralArgumentSiteLinear):
         self.url = "https://www.illinoiscourts.gov/courts/appellate-court/oral-argument-audio/"
         self.method = "POST"
         self.today = today().strftime("%m/%d/%Y")
-        self.earlier = (today() - timedelta(days=30)).strftime("%m/%d/%Y")
+        self.earlier = (today() - timedelta(days=180)).strftime("%m/%d/%Y")
         self.district = "1st"
         self._set_parameters()
 
