@@ -85,7 +85,8 @@ This is the Virtus fork of Juriscraper. Its version ends in ``+virtus.<n>``.
 The text "CourtListener" stays in this code on purpose. It is upstream
 text: comments, docstrings, docs, links and package names such as
 ``juriscraper``. The user agents are ours: the default user agent, the
-download fallback and the Colorado scraper send ``virtus-juriscraper/<version>``
+download fallback and the Colorado scraper send
+``virtus-juriscraper/<version> (+https://virtusrt.com)``
 (``VIRTUS_USER_AGENT`` in ``juriscraper/AbstractSite.py``).
 The Virtus name guard allow-lists this package by path.
 

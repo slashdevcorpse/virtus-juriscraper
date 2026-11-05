@@ -18,7 +18,7 @@ Features:
 -
 
 Changes:
-- Send `virtus-juriscraper/<version>` as the User-Agent in place of the upstream provider names in `AbstractSite` and the Colorado opinion scraper.
+- Send `virtus-juriscraper/<version> (+https://virtusrt.com)` as the User-Agent in place of the upstream provider names in `AbstractSite` and the Colorado opinion scraper.
 
 Fixes:
 - Fix `txctapp5`, `txctapp8`, `txctapp12` and `txctapp14` returning no opinions. TAMES Document Search has had no "Opinion" documents for these courts since December 2024, so they now read each court's Released Orders & Opinions page for every day of the range.
