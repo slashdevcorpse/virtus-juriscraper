@@ -9,7 +9,6 @@ import urllib.parse
 import urllib.request
 from collections.abc import Awaitable
 from datetime import datetime
-from importlib.metadata import PackageNotFoundError, version
 
 import certifi
 import httpx
@@ -46,13 +45,26 @@ from juriscraper.lib.utils import (
 
 logger = make_default_logger()
 
-try:
-    _PACKAGE_VERSION = version("juriscraper")
-except PackageNotFoundError:
-    _PACKAGE_VERSION = "unknown"
+# D-240. One desktop Chrome string. Byte-equal to virtus_sdk.etl.fetcher.USER_AGENT.
+_CHROME_VERSION = "151"
+VIRTUS_USER_AGENT = (
+    "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 "
+    f"(KHTML, like Gecko) Chrome/{_CHROME_VERSION}.0.0.0 Safari/537.36"
+)
+VIRTUS_ACCEPT = (
+    "text/html,application/xhtml+xml,application/xml;q=0.9,"
+    "image/avif,image/webp,image/apng,*/*;q=0.8"
+)
+VIRTUS_ACCEPT_LANGUAGE = "en-US,en;q=0.9"
 
-# User agent that this fork sends: virtus-juriscraper/<package version>.
-VIRTUS_USER_AGENT = f"virtus-juriscraper/{_PACKAGE_VERSION} (+https://virtusrt.com)"
+
+def browser_request_headers(user_agent: str) -> dict[str, str]:
+    """The User-Agent, Accept and Accept-Language sent on a page fetch."""
+    return {
+        "User-Agent": user_agent,
+        "Accept": VIRTUS_ACCEPT,
+        "Accept-Language": VIRTUS_ACCEPT_LANGUAGE,
+    }
 
 
 class AbstractSite:
@@ -66,16 +78,10 @@ class AbstractSite:
     # Useful for sites that block httpx via TLS fingerprinting.
     use_urllib = False
 
-    # Some courts' bot management blocks the "Juriscraper" User-Agent, and
-    # some also block browser User-Agents that have gone stale. Scrapers that
-    # need to look like a browser should use `self.chrome_user_agent` instead
-    # of hardcoding a string, so a single bump here updates all of them.
-    # Keep in sync with the current stable Chrome release.
-    chrome_version = "151"
-    chrome_user_agent = (
-        "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 "
-        f"(KHTML, like Gecko) Chrome/{chrome_version}.0.0.0 Safari/537.36"
-    )
+    # Bump this when a court rejects a stale Chrome string. `VIRTUS_USER_AGENT`
+    # and `chrome_user_agent` are that string.
+    chrome_version = _CHROME_VERSION
+    chrome_user_agent = VIRTUS_USER_AGENT
     # Client hints matching `chrome_user_agent`, for sites that check them
     chrome_sec_ch_ua = (
         f'"Google Chrome";v="{chrome_version}", '
@@ -117,7 +123,7 @@ class AbstractSite:
         self.request = {
             "session": httpx.AsyncClient(**kwargs),
             "headers": {
-                "User-Agent": self.user_agent,
+                **browser_request_headers(self.user_agent),
                 # Disable CDN caching on sites like SCOTUS (ahem)
                 "Cache-Control": "no-cache, max-age=0, must-revalidate",
                 # backwards compatibility with HTTP/1.0 caches
@@ -485,7 +491,7 @@ class AbstractSite:
         if self.needs_special_headers:
             headers = self.request["headers"]
         else:
-            headers = {"User-Agent": VIRTUS_USER_AGENT}
+            headers = browser_request_headers(VIRTUS_USER_AGENT)
 
         if self.use_urllib:
             r = self._download_content_urllib(download_url, headers)

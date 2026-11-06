@@ -13,7 +13,7 @@ from datetime import datetime
 
 from typing_extensions import override
 
-from juriscraper.AbstractSite import logger
+from juriscraper.AbstractSite import VIRTUS_USER_AGENT, logger
 from juriscraper.OpinionSiteLinear import OpinionSiteLinear
 
 
@@ -51,7 +51,7 @@ class Site(OpinionSiteLinear):
         self.request["headers"] = {
             "Content-Type": "application/json",
             "Accept": "application/json",
-            "User-Agent": "Juriscraper",
+            "User-Agent": VIRTUS_USER_AGENT,
         }
 
     async def _download(self, request_dict=None):

@@ -18,7 +18,7 @@ Features:
 -
 
 Changes:
--
+- The default User-Agent is the Chrome 151 desktop string. Accept and Accept-Language go with it. A site that names its own agent keeps that agent.
 
 Fixes:
 - `mesuperct` backscrape bounds take a `YYYY/MM/DD` date (and a bare year). A date raised `ValueError` before.

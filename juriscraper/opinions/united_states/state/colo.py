@@ -20,7 +20,7 @@ from urllib.parse import urlencode
 from lxml import etree, html
 from typing_extensions import override
 
-from juriscraper.AbstractSite import VIRTUS_USER_AGENT, logger
+from juriscraper.AbstractSite import logger
 from juriscraper.lib.html_utils import strip_bad_html_tags_insecure
 from juriscraper.OpinionSiteLinear import OpinionSiteLinear
 
@@ -75,7 +75,6 @@ class Site(OpinionSiteLinear):
             "hide_ct6": "true",
         }
         self.dates = self.update_url()
-        self.request["headers"]["User-Agent"] = VIRTUS_USER_AGENT
 
         # https://www.coloradojudicial.gov/system/files/opinions-2024-11/24SC459.pdf
         # Request won't work without some of these X- headers

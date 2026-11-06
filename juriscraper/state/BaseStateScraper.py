@@ -18,6 +18,10 @@ from typing import (
 
 import httpx
 
+from juriscraper.AbstractSite import (
+    VIRTUS_USER_AGENT,
+    browser_request_headers,
+)
 from juriscraper.lib.log_tools import make_default_logger
 
 logger = make_default_logger()
@@ -62,7 +66,7 @@ class ScraperRequestManager:
             self.session = httpx.AsyncClient(http2=True, follow_redirects=True)
             self.session.headers.update(
                 {
-                    "User-Agent": "Juriscraper",
+                    **browser_request_headers(VIRTUS_USER_AGENT),
                     "Cache-Control": "no-cache, max-age=0, must-revalidate",
                     "Pragma": "no-cache",
                 }

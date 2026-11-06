@@ -27,11 +27,6 @@ class Site(OpinionSiteLinear):
         self.url = "https://cafc.uscourts.gov/category/opinion-order/feed/"
         self.court_id = self.__module__
         self.needs_special_headers = True
-        self.request.update(
-            {
-                "headers": {"User-Agent": self.chrome_user_agent},
-            }
-        )
         self.should_have_results = True
 
     @override

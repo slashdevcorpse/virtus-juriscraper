@@ -29,11 +29,9 @@ class Site(OpinionSiteLinear):
             "court": self.court_parameter,
             "year": str(datetime.date.today().year),
         }
-        # The site's WAF answers 500 with a "Website Maintenance" page to
-        # user agents on its bot list, which includes "Juriscraper" and
-        # outdated browser versions, so `AbstractSite.chrome_version` needs
-        # to be bumped when the court starts failing again. See #2129
-        self.request["headers"]["User-Agent"] = self.chrome_user_agent
+        # The WAF answers 500 to a product User-Agent and to a stale Chrome
+        # string. Downloads use the session headers. Bump `chrome_version`
+        # when this court starts failing. See #2129
 
         self.status = "Published"
         self.pages = {}

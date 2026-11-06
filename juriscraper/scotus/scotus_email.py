@@ -14,6 +14,10 @@ import httpx
 from lxml import html
 from lxml.html import HtmlElement
 
+from juriscraper.AbstractSite import (
+    VIRTUS_USER_AGENT,
+    browser_request_headers,
+)
 from juriscraper.lib.email_utils import parse_email_html
 from juriscraper.lib.html_utils import clean_html
 from juriscraper.lib.log_tools import make_default_logger
@@ -266,7 +270,7 @@ class SCOTUSEmail:
         ) as client:
             response = await client.get(
                 self.data["followup_url"],
-                headers={"User-Agent": "Free Law Project"},
+                headers=browser_request_headers(VIRTUS_USER_AGENT),
                 timeout=timeout,
             )
         response.raise_for_status()
