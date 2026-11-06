@@ -21,7 +21,7 @@ Changes:
 -
 
 Fixes:
--
+- `mesuperct` backscrape bounds take a `YYYY/MM/DD` date (and a bare year). A date raised `ValueError` before.
 
 ## 4.0.1+virtus.8 - 2026-11-05
 
