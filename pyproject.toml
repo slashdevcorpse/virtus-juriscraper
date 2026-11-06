@@ -6,7 +6,7 @@ requires = [
 
 [project]
 name = "juriscraper"
-version = "4.0.1+virtus.8"
+version = "4.0.1+virtus.9"
 description = "An API to scrape American court websites for metadata."
 readme = "README.rst"
 keywords = [ "scraping", "legal", "pacer" ]

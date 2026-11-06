@@ -18,6 +18,14 @@ Features:
 -
 
 Changes:
+-
+
+Fixes:
+-
+
+## 4.0.1+virtus.9 - 2026-11-06
+
+Changes:
 - The default User-Agent is the Chrome 151 desktop string. Accept and Accept-Language go with it. A site that names its own agent keeps that agent.
 
 Fixes:
