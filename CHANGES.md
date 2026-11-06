@@ -23,6 +23,12 @@ Changes:
 Fixes:
 -
 
+## 4.0.1+virtus.8 - 2026-11-05
+
+Fixes:
+- Read a `texcrimapp` opinion document of type "Order" as the lead opinion. A case with only an Order document raised `KeyError: 'type'` and failed the whole scrape. An empty disposition cell no longer fails a majority.
+- Raise `InvalidDocumentError` in `ny.cleanup_content` on the Law Reporting Bureau's "404 ERROR" page. The reporter returns that page with HTTP 200 until it posts a listed slip opinion; it raised `ValueError` before. Every NY appellate module inherits the fix.
+
 ## 4.0.1+virtus.7 - 2026-11-05
 
 The virtus fork releases 4.0.1+virtus.1 to 4.0.1+virtus.7 hold these changes since 4.0.1.
