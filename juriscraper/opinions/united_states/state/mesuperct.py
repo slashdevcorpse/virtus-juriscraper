@@ -7,6 +7,7 @@ Date created: December 28, 2023
 History:
   2023-12-28: Created
   2025-02-25: Implement backscraper
+  2026-11-06: Backscrape bounds take a YYYY/MM/DD date, as the caller passes
 """
 
 from datetime import date
@@ -65,6 +66,11 @@ class Site(OpinionSiteLinear):
                 }
             )
 
+    @staticmethod
+    def _year(value: str | int) -> int:
+        """Read the year of a backscrape bound: 2020, "2020" or "2020/12/31"."""
+        return int(str(value).split("/")[0])
+
     def make_backscrape_iterable(self, kwargs: dict) -> None:
         """Checks if backscrape start and end arguments have been passed
         by caller, and parses them accordingly
@@ -76,7 +82,7 @@ class Site(OpinionSiteLinear):
         start = kwargs.get("backscrape_start")
         end = kwargs.get("backscrape_end")
 
-        start = int(start) if start else self.start_year
-        end = int(end) + 1 if end else self.current_year
+        start = self._year(start) if start else self.start_year
+        end = self._year(end) + 1 if end else self.current_year
 
         self.back_scrape_iterable = range(start, end)
