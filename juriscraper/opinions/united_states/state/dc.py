@@ -29,7 +29,6 @@ class Site(OpinionSiteLinear):
         self.status = "Published"
 
         self.needs_special_headers = True
-        self.request["headers"]["User-Agent"] = self.chrome_user_agent
 
     @override
     def _process_html(self) -> None:

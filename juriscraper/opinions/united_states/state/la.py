@@ -57,9 +57,6 @@ class Site(OpinionSiteLinear):
         # (url, rendered news-release HTML) pairs, compiled into a single
         # archivable response for save_response after processing (#1983).
         self.rendered_pages: list[tuple[str, str]] = []
-        # lasc.org sits behind Cloudflare and serves the default httpx
-        # User-Agent the 521/empty shell more often; a browser UA is stabler.
-        self.request["headers"]["User-Agent"] = self.chrome_user_agent
 
     async def _download(self, request_dict=None):
         if self.test_mode_enabled():

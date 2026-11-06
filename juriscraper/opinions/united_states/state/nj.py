@@ -22,10 +22,9 @@ class Site(OpinionSiteLinear):
         self.status = "Published"
         self.make_backscrape_iterable(kwargs)
         self.should_have_results = True
-        # Imperva WAF blocks the default UA on both the index pages and the
-        # opinion PDFs, so the override must also apply to content downloads.
+        # Imperva blocks a non-browser User-Agent on the index and the PDFs.
+        # Downloads use the session headers.
         self.needs_special_headers = True
-        self.request["headers"]["User-Agent"] = self.chrome_user_agent
 
     @override
     def _process_html(self) -> None:

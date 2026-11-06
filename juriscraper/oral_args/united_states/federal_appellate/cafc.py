@@ -31,11 +31,6 @@ class Site(OralArgumentSiteLinear):
         self.url = "https://www.cafc.uscourts.gov/home/oral-argument/listen-to-oral-arguments/"
         self.data_url = "https://www.cafc.uscourts.gov/wp-admin/admin-ajax.php?action=get_wdtable&table_id=8"
         self.needs_special_headers = True
-        self.request.update(
-            {
-                "headers": {"User-Agent": self.chrome_user_agent},
-            }
-        )
 
         self.start_date = None
         self.end_date = None

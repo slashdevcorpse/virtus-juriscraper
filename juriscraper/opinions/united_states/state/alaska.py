@@ -116,11 +116,8 @@ class Site(OpinionSiteLinear):
         self.court_id = self.__module__
         self.end_date = date.today()
         self.start_date = self.end_date - timedelta(days=self.days_interval)
-        # A browser User-Agent is required to pass the site's bot management
-        self.request["headers"]["User-Agent"] = self.chrome_user_agent
-        # Tell the caller (CourtListener) to download opinions with the same
-        # browser headers, otherwise the per-document fetch goes out as
-        # "CourtListener" and trips the bot management we just bypassed
+        # Downloads use the session headers. A non-browser User-Agent trips
+        # the site's bot management.
         self.needs_special_headers = True
         # Opinions are served as HTML documents, not PDFs
         self.expected_content_types = ["text/html"]

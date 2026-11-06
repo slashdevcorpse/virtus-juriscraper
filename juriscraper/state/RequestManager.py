@@ -32,11 +32,16 @@ from httpx import (
 from httpx._client import UseClientDefault
 from typing_extensions import override
 
+from juriscraper.AbstractSite import (
+    VIRTUS_ACCEPT,
+    VIRTUS_ACCEPT_LANGUAGE,
+    VIRTUS_USER_AGENT,
+)
 from juriscraper.lib.log_tools import make_default_logger
 
 logger = make_default_logger()
 
-USER_AGENT: str = "Juriscraper (Free Law Project)"
+USER_AGENT: str = VIRTUS_USER_AGENT
 
 PrimitiveData = str | int | float | bool | None
 CookieType = Cookies | CookieJar | dict[str, str] | list[tuple[str, str]]
@@ -262,8 +267,7 @@ class RequestManager(AsyncClient):
             params: Query parameters (httpx AsyncClient passthrough)
             headers: Headers to include in every request (httpx AsyncClient passthrough). If
                 there is no "User-Agent" header specified, it will be added with the
-                value "Juriscraper (Free Law Project)". If a value is specified, it will be
-                forced to contain the Juriscraper user agent string (case-sensitive).
+                desktop browser string. A caller User-Agent is kept.
             cookies: Cookies to include in every request (httpx AsyncClient passthrough)
             timeout: Timeout for every request (httpx AsyncClient passthrough)
             follow_redirects: Whether to follow redirects (httpx AsyncClient passthrough)
@@ -273,16 +277,17 @@ class RequestManager(AsyncClient):
         """
         if retry is None:
             retry = NoRetry()
-        extra_headers = {
-            "Cache-Control": "no-cache, max-age=0, must-revalidate",
-            "Pragma": "no-cache",
-        }
         logger.debug("Creating request manager.")
         headers = httpx.Headers(headers)
-        ua_header = headers.setdefault("User-Agent", USER_AGENT)
-        if "Juriscraper" not in ua_header:
-            extra_headers |= {"User-Agent": ua_header + f" {USER_AGENT}"}
-        headers.update(extra_headers)
+        headers.setdefault("User-Agent", USER_AGENT)
+        headers.setdefault("Accept", VIRTUS_ACCEPT)
+        headers.setdefault("Accept-Language", VIRTUS_ACCEPT_LANGUAGE)
+        headers.update(
+            {
+                "Cache-Control": "no-cache, max-age=0, must-revalidate",
+                "Pragma": "no-cache",
+            }
+        )
         super().__init__(
             auth=auth,
             params=params,

@@ -9,6 +9,7 @@ from typing import Any
 import httpx
 from httpx import Cookies
 
+from juriscraper.AbstractSite import VIRTUS_USER_AGENT
 from juriscraper.lib.exceptions import PacerLoginException
 from juriscraper.lib.html_utils import (
     get_html_parsed_text,
@@ -125,7 +126,7 @@ class PacerSession(httpx.AsyncClient):
         password=None,
         client_code=None,
         get_acms_tokens=False,
-        user_agent="Juriscraper",
+        user_agent=VIRTUS_USER_AGENT,
         **kwargs,
     ):
         """
@@ -502,7 +503,7 @@ class PacerSession(httpx.AsyncClient):
         To get the authentication token, it's necessary to send a POST request:
         curl --location --request POST 'https://pacer.login.uscourts.gov/services/cso-auth' \
             --header 'Accept: application/json' \
-            --header 'User-Agent: Juriscraper' \
+            --header 'User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36' \
             --header 'Content-Type: application/json' \
             --data-raw '{
                 "loginId": "USERNAME",

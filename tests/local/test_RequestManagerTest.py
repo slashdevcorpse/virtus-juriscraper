@@ -4,6 +4,7 @@ import unittest
 
 import httpx
 
+from juriscraper.AbstractSite import VIRTUS_ACCEPT
 from juriscraper.state.RequestManager import (
     USER_AGENT,
     ExponentialBackoff,
@@ -35,25 +36,15 @@ class RequestManagerCoreTest(unittest.IsolatedAsyncioTestCase):
 
     async def test_default_user_agent(self):
         self.assertEqual(self.manager.headers.get("User-Agent"), USER_AGENT)
+        self.assertIn("Chrome/151.0.0.0", USER_AGENT)
+        self.assertEqual(self.manager.headers.get("Accept"), VIRTUS_ACCEPT)
 
-    async def test_user_agent_already_contains_juriscraper_left_alone(self):
-        manager = _make_manager(
-            headers={"User-Agent": "Custom Juriscraper Build/1.0"}
-        )
-        try:
-            self.assertEqual(
-                manager.headers.get("User-Agent"),
-                "Custom Juriscraper Build/1.0",
-            )
-        finally:
-            await manager.aclose()
-
-    async def test_user_agent_missing_juriscraper_gets_appended(self):
+    async def test_caller_user_agent_is_kept(self):
         manager = _make_manager(headers={"User-Agent": "CustomAgent/1.0"})
         try:
-            ua = manager.headers.get("User-Agent")
-            self.assertIn("CustomAgent/1.0", ua)
-            self.assertIn(USER_AGENT, ua)
+            self.assertEqual(
+                manager.headers.get("User-Agent"), "CustomAgent/1.0"
+            )
         finally:
             await manager.aclose()
 
