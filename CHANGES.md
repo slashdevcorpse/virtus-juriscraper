@@ -21,7 +21,7 @@ Changes:
 -
 
 Fixes:
--
+- `okla` (and `oklaag`, `oklacivapp`, `oklacrimapp`) raise `InvalidDocumentError` when a page has no `#oscn-content`, such as the OSCN Cloudflare Turnstile page. It raised `IndexError` before.
 
 ## 4.0.1+virtus.10 - 2026-11-07
 

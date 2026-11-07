@@ -11,6 +11,7 @@ from lxml import html
 from typing_extensions import override
 
 from juriscraper.AbstractSite import logger
+from juriscraper.lib.exceptions import InvalidDocumentError
 from juriscraper.lib.html_utils import strip_bad_html_tags_insecure
 from juriscraper.OpinionSiteLinear import OpinionSiteLinear
 
@@ -105,7 +106,13 @@ class Site(OpinionSiteLinear):
             if comment.getparent():
                 comment.getparent().remove(comment)
 
-        # Find the core element with id 'oscn-content'
-        core_element = tree.xpath("//*[@id='oscn-content']")[0]
-        html_content = html.tostring(core_element).decode("ISO-8859-1").strip()
+        core_elements = tree.xpath("//*[@id='oscn-content']")
+        if not core_elements:
+            raise InvalidDocumentError(
+                "okla: opinion container '#oscn-content' missing; "
+                "the document request was likely blocked"
+            )
+        html_content = (
+            html.tostring(core_elements[0]).decode("ISO-8859-1").strip()
+        )
         return f"<html>{html_content}</html>".encode("ISO-8859-1")
