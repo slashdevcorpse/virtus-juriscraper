@@ -21,8 +21,13 @@ Changes:
 -
 
 Fixes:
+-
+
+## 4.0.1+virtus.12 - 2026-11-07
+
+Fixes:
 - `lactapp_4` posts the month search with the search button as `__EVENTTARGET`. The page's empty hidden `__EVENTTARGET` had replaced it, so the search returned the bare form and no opinions.
-- `pa` (and `pasuperct`) type a per curiam "Majority Opinion" as UNANIMOUS when the cluster already has an authored majority. The court posts some per curiam orders that way, and the cluster failed the one-majority sanity rule.
+- `pa` types a per curiam "Majority Opinion" as UNANIMOUS when the cluster already has an authored majority. The court posts some per curiam orders that way, and the cluster failed the one-majority sanity rule.
 
 ## 4.0.1+virtus.11 - 2026-11-07
 
