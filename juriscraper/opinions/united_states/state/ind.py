@@ -23,6 +23,8 @@ class Site(OpinionSiteLinear):
         self.court_name = "Supreme Court"
         self.status = "Published"
         self.url = f"https://public.courts.in.gov/Decisions/api/Search?courtId={self.page_court_id}"
+        # The API answers 500 when the browser Accept asks for XML.
+        self.request["headers"]["Accept"] = "application/json"
         self.should_have_results = True
 
     @override

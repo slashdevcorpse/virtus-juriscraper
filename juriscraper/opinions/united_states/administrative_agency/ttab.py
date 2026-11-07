@@ -39,6 +39,8 @@ class Site(OpinionSiteLinear):
         }
         self.parameters = {}
         self.request["parameters"] = {"json": self._search_payload}
+        # The API answers XML when the browser Accept ranks XML first.
+        self.request["headers"]["Accept"] = "application/json"
         self.make_backscrape_iterable(kwargs)
 
     @override
