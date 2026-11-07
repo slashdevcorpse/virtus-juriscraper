@@ -1,0 +1,191 @@
+{
+  "Items": [
+    {
+      "Author": null,
+      "BoardDocketNumber": null,
+      "CanEditDates": false,
+      "Caption": "Previte v. Erie Co. Bd. Elections, Pet. - No. 230 WAL 2024",
+      "CourtDocketNumber": null,
+      "CourtType": 3,
+      "DispositionDate": "2026-08-06T00:00:00",
+      "Keywords": null,
+      "UploadDate": "0001-01-01T00:00:00",
+      "PostedToday": false,
+      "Postings": [
+        {
+          "Id": 94557,
+          "AuthorId": "Per Curiam",
+          "OpinionId": 85716,
+          "FileName": "230WAL2024 - 106879384369125972.pdf",
+          "ProcessedDate": "2026-08-06T00:00:00",
+          "PostedDateDisplay": "2026-08-06T00:00:00",
+          "PostedDateOverride": null,
+          "PostingTypeId": "sd",
+          "PublicationTypeId": null,
+          "RenderedDate": "2026-08-06T00:00:00",
+          "SortOrder": 0,
+          "FileVersion": 1,
+          "Author": null,
+          "PostType": {
+            "Id": 0,
+            "PostingTypeCode": "sd",
+            "PostingTypeId": "Summary Disposition",
+            "SortOrder": 99
+          },
+          "PublicationType": null
+        }
+      ],
+      "UserIdentifier": "W.D. Prothonotary",
+      "CreatedById": null,
+      "DeletedById": null,
+      "UpdatedById": null,
+      "CreatedOn": null,
+      "DeletedOn": null,
+      "UpdatedOn": null,
+      "CreatedBy": null,
+      "DeletedBy": null,
+      "UpdatedBy": null,
+      "Id": 85716
+    },
+    {
+      "Author": null,
+      "BoardDocketNumber": null,
+      "CanEditDates": false,
+      "Caption": "Khalil, S., Aplt. v. Mary Jane Home Enrich Center, et al. - No. 16 EAP 2025",
+      "CourtDocketNumber": null,
+      "CourtType": 3,
+      "DispositionDate": "2026-08-05T00:00:00",
+      "Keywords": null,
+      "UploadDate": "0001-01-01T00:00:00",
+      "PostedToday": false,
+      "Postings": [
+        {
+          "Id": 94537,
+          "AuthorId": "Donohue, Christine",
+          "OpinionId": 85698,
+          "FileName": "J-2-2026mo - 106877560368928994.pdf",
+          "ProcessedDate": "2026-08-05T00:00:00",
+          "PostedDateDisplay": "2026-08-05T00:00:00",
+          "PostedDateOverride": null,
+          "PostingTypeId": "mo",
+          "PublicationTypeId": null,
+          "RenderedDate": "2026-08-05T00:00:00",
+          "SortOrder": 0,
+          "FileVersion": 1,
+          "Author": {
+            "Id": 0,
+            "AuthorName": "Justice Christine Donohue",
+            "AuthorCode": "Donohue, Christine",
+            "Selectable": true,
+            "SortOrder": 1430
+          },
+          "PostType": {
+            "Id": 0,
+            "PostingTypeCode": "mo",
+            "PostingTypeId": "Majority Opinion",
+            "SortOrder": 1
+          },
+          "PublicationType": null
+        }
+      ],
+      "UserIdentifier": "E.D. Prothonotary",
+      "CreatedById": null,
+      "DeletedById": null,
+      "UpdatedById": null,
+      "CreatedOn": null,
+      "DeletedOn": null,
+      "UpdatedOn": null,
+      "CreatedBy": null,
+      "DeletedBy": null,
+      "UpdatedBy": null,
+      "Id": 85698
+    },
+    {
+      "Author": null,
+      "BoardDocketNumber": null,
+      "CanEditDates": false,
+      "Caption": "Galette, C. v. NJ Transit, et al.; Apl. of: NJT - No. 4 EAP 2024",
+      "CourtDocketNumber": null,
+      "CourtType": 3,
+      "DispositionDate": "2026-08-05T00:00:00",
+      "Keywords": null,
+      "UploadDate": "0001-01-01T00:00:00",
+      "PostedToday": false,
+      "Postings": [
+        {
+          "Id": 90846,
+          "AuthorId": "Brobson, P. Kevin",
+          "OpinionId": 82352,
+          "FileName": "J-55-2024mo - 106301691303012743.pdf",
+          "ProcessedDate": "2025-03-12T00:00:00",
+          "PostedDateDisplay": "2025-03-12T00:00:00",
+          "PostedDateOverride": null,
+          "PostingTypeId": "mo",
+          "PublicationTypeId": null,
+          "RenderedDate": "2025-03-12T00:00:00",
+          "SortOrder": 0,
+          "FileVersion": 1,
+          "Author": {
+            "Id": 0,
+            "AuthorName": "Justice P. Kevin Brobson",
+            "AuthorCode": "Brobson, P. Kevin",
+            "Selectable": true,
+            "SortOrder": 1470
+          },
+          "PostType": {
+            "Id": 0,
+            "PostingTypeCode": "mo",
+            "PostingTypeId": "Majority Opinion",
+            "SortOrder": 1
+          },
+          "PublicationType": null
+        },
+        {
+          "Id": 94540,
+          "AuthorId": "per curiam",
+          "OpinionId": 82352,
+          "FileName": "J-55-2024mo - 106878043368985449.pdf",
+          "ProcessedDate": "2026-08-05T00:00:00",
+          "PostedDateDisplay": "2026-08-05T00:00:00",
+          "PostedDateOverride": null,
+          "PostingTypeId": "mo",
+          "PublicationTypeId": null,
+          "RenderedDate": "2026-08-05T00:00:00",
+          "SortOrder": 0,
+          "FileVersion": 1,
+          "Author": {
+            "Id": 0,
+            "AuthorName": "Per Curiam",
+            "AuthorCode": "per curiam",
+            "Selectable": true,
+            "SortOrder": 9999
+          },
+          "PostType": {
+            "Id": 0,
+            "PostingTypeCode": "mo",
+            "PostingTypeId": "Majority Opinion",
+            "SortOrder": 1
+          },
+          "PublicationType": null
+        }
+      ],
+      "UserIdentifier": "E.D. Prothonotary",
+      "CreatedById": null,
+      "DeletedById": null,
+      "UpdatedById": null,
+      "CreatedOn": null,
+      "DeletedOn": null,
+      "UpdatedOn": null,
+      "CreatedBy": null,
+      "DeletedBy": null,
+      "UpdatedBy": null,
+      "Id": 82352
+    }
+  ],
+  "TotalItems": 3,
+  "TotalPages": 1,
+  "PageNumber": 1,
+  "PageSize": 20,
+  "HasPrevious": false,
+  "HasNext": false
+}

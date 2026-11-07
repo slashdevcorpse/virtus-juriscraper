@@ -1,0 +1,65 @@
+[
+  {
+    "case_dates": "2026-08-06",
+    "case_names": "Previte v. Erie Co. Bd. Elections",
+    "docket_numbers": "230 WAL 2024",
+    "citations": "",
+    "sub_opinions": [
+      {
+        "download_urls": "https://www.pacourts.us/assets/opinions/Supreme/out/230WAL2024 - 106879384369125972.pdf",
+        "authors": "",
+        "per_curiam": false,
+        "types": "010combined"
+      }
+    ],
+    "judges": "",
+    "precedential_statuses": "Published",
+    "case_name_shorts": "Previte",
+    "date_filed_is_approximate": false,
+    "blocked_statuses": false
+  },
+  {
+    "case_dates": "2026-08-05",
+    "case_names": "Khalil, S., Aplt. v. Mary Jane Home Enrich Center",
+    "docket_numbers": "16 EAP 2025",
+    "citations": "",
+    "sub_opinions": [
+      {
+        "download_urls": "https://www.pacourts.us/assets/opinions/Supreme/out/J-2-2026mo - 106877560368928994.pdf",
+        "authors": "Donohue, Christine",
+        "per_curiam": false,
+        "types": "020lead"
+      }
+    ],
+    "judges": "Donohue, Christine",
+    "precedential_statuses": "Published",
+    "case_name_shorts": "",
+    "date_filed_is_approximate": false,
+    "blocked_statuses": false
+  },
+  {
+    "case_dates": "2026-08-05",
+    "case_names": "Galette, C. v. NJ Transit; Apl. of: NJT",
+    "docket_numbers": "4 EAP 2024",
+    "citations": "",
+    "sub_opinions": [
+      {
+        "download_urls": "https://www.pacourts.us/assets/opinions/Supreme/out/J-55-2024mo - 106301691303012743.pdf",
+        "authors": "Brobson, P. Kevin",
+        "per_curiam": false,
+        "types": "020lead"
+      },
+      {
+        "download_urls": "https://www.pacourts.us/assets/opinions/Supreme/out/J-55-2024mo - 106878043368985449.pdf",
+        "authors": "",
+        "per_curiam": true,
+        "types": "015unamimous"
+      }
+    ],
+    "judges": "Brobson, P. Kevin",
+    "precedential_statuses": "Published",
+    "case_name_shorts": "",
+    "date_filed_is_approximate": false,
+    "blocked_statuses": false
+  }
+]
