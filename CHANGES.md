@@ -21,6 +21,11 @@ Changes:
 -
 
 Fixes:
+-
+
+## 4.0.1+virtus.10 - 2026-11-07
+
+Fixes:
 - `ind`, `indctapp`, `indtc`, `nmcca` and `ttab` send `Accept: application/json`. Their JSON APIs answer 500 or XML to the browser Accept.
 
 ## 4.0.1+virtus.9 - 2026-11-06
