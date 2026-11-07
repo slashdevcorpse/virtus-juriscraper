@@ -21,6 +21,11 @@ Changes:
 -
 
 Fixes:
+-
+
+## 4.0.1+virtus.13 - 2026-11-07
+
+Fixes:
 - `scotus_slip` requests each term page once. A backscrape had prefixed the term URL onto itself, so the court answered 403, and a window that crosses 1 October had skipped the term that holds the end date.
 
 ## 4.0.1+virtus.12 - 2026-11-07
