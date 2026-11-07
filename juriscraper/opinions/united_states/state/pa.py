@@ -118,6 +118,7 @@ class Site(ClusterSite):
                     }
                 )
 
+            self.one_majority(parsed_cluster["sub_opinions"])
             self.cases.append(parsed_cluster)
 
         if not self.test_mode_enabled() and json_response.get("HasNext"):
@@ -127,6 +128,27 @@ class Site(ClusterSite):
             self.url = f"{self.base_url}{urlencode(self.params)}"
             self.html = await self._download()
             await self._process_html()
+
+    @staticmethod
+    def one_majority(sub_opinions: list[dict]) -> None:
+        """Type a per curiam "Majority Opinion" as UNANIMOUS when the
+        cluster already has an authored majority.
+
+        The court posts some per curiam orders as "Majority Opinion" next to
+        the opinion they follow. Galette v. NJ Transit (J-55-2024) lists
+        Brobson's 2025 majority and the 2026 per curiam order after the U.S.
+        Supreme Court remand, both as "mo".
+
+        :param sub_opinions: the cluster's parsed sub_opinions, changed in place
+        :return: None
+        """
+        majority = OpinionType.MAJORITY.value
+        majorities = [op for op in sub_opinions if op["type"] == majority]
+        if len(majorities) < 2 or all(op["per_curiam"] for op in majorities):
+            return
+        for op in majorities:
+            if op["per_curiam"]:
+                op["type"] = OpinionType.UNANIMOUS.value
 
     def parse_case_title(self, title: str) -> tuple[str, str]:
         """Separates case_name and docket_number from case string

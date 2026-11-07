@@ -21,7 +21,7 @@ Changes:
 -
 
 Fixes:
--
+- `pa` (and `pasuperct`) type a per curiam "Majority Opinion" as UNANIMOUS when the cluster already has an authored majority. The court posts some per curiam orders that way, and the cluster failed the one-majority sanity rule.
 
 ## 4.0.1+virtus.11 - 2026-11-07
 
