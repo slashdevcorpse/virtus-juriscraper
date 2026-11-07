@@ -15,10 +15,12 @@ LISTING = (
     / "mesuperct_example.html"
 ).read_bytes()
 POSTED = "/library/SuperiorCourt/decisions/CUMbcd-cv-22-66.pdf"
+ALL = ["CUMbcd-cv-22-66", "CUMcv-20-537"]
 
 
-def maine(seen_heads: list[str]) -> httpx.MockTransport:
-    """The listing, one posted PDF, and a 404 for every other PDF."""
+def maine(seen_heads: list[str], other=None) -> httpx.MockTransport:
+    """The listing, one posted PDF, and `other` (default a 404) for every
+    other PDF. `other` is a status code or an exception to raise."""
 
     def handler(request: httpx.Request) -> httpx.Response:
         if request.url.host == "apps.maine.edu":
@@ -26,7 +28,11 @@ def maine(seen_heads: list[str]) -> httpx.MockTransport:
                 200, content=LISTING, headers={"Content-Type": "text/html"}
             )
         seen_heads.append(request.method)
-        return httpx.Response(200 if request.url.path == POSTED else 404)
+        if request.url.path == POSTED:
+            return httpx.Response(200)
+        if isinstance(other, Exception):
+            raise other
+        return httpx.Response(other or 404)
 
     return httpx.MockTransport(handler)
 
@@ -49,3 +55,17 @@ class MesuperctPostedPdfTest(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(
             [case["docket"] for case in site.cases], ["CUMbcd-cv-22-66"]
         )
+
+    async def test_a_gone_pdf_is_skipped_but_an_error_keeps_the_case(self):
+        cases = {
+            410: ["CUMbcd-cv-22-66"],
+            429: ALL,
+            503: ALL,
+            httpx.ConnectError("refused"): ALL,
+        }
+        for other, expected in cases.items():
+            with self.subTest(other=other):
+                site = mesuperct.Site(transport=maine([], other))
+                async with site:
+                    await site.parse()
+                self.assertEqual(sorted(site.docket_numbers), expected)

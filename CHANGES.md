@@ -21,7 +21,7 @@ Changes:
 -
 
 Fixes:
-- `mesuperct` keeps a listed case only when its PDF answers 200 on the legacy file host. Maine posts decision PDFs only on request since about 2021, so those cases are skipped instead of failing every fetch.
+- `mesuperct` skips a listed case when its PDF answers 404 or 410 on the legacy file host. Maine posts decision PDFs only on request since about 2021, so those cases no longer fail every fetch. A server error or a rate limit keeps the case.
 - `okla` (and `oklaag`, `oklacivapp`, `oklacrimapp`) raise `InvalidDocumentError` when a page has no `#oscn-content`, such as the OSCN Cloudflare Turnstile page. It raised `IndexError` before.
 
 ## 4.0.1+virtus.10 - 2026-11-07

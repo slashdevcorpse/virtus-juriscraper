@@ -47,8 +47,8 @@ class Site(OpinionSiteLinear):
         """Processes the HTML content and extracts case information.
 
         Maine publishes decision PDFs only on request since about 2021. The
-        legacy file host still serves older ones, so a listed case is kept
-        only when its PDF answers 200.
+        legacy file host still serves older ones, so a listed case whose PDF
+        answers 404 or 410 is skipped.
 
         :return: None
         """
@@ -69,8 +69,9 @@ class Site(OpinionSiteLinear):
         self.cases.extend(cases)
 
     async def _pdf_is_posted(self, url: str, limit: asyncio.Semaphore) -> bool:
-        """Whether the decision PDF answers 200. A transport error keeps the
-        case, so the document fetch can retry it."""
+        """False only when the host says the PDF is not there. A server
+        error, a rate limit or a transport error keeps the case, so the
+        document fetch can retry it."""
         async with limit:
             try:
                 response = await self.request["session"].head(
@@ -79,7 +80,7 @@ class Site(OpinionSiteLinear):
             except httpx.HTTPError as error:
                 logger.warning("mesuperct: HEAD %s failed: %s", url, error)
                 return True
-        return response.status_code == 200
+        return response.status_code not in (404, 410)
 
     def _listed_cases(self) -> list[dict]:
         """Read the case rows of the listing table."""
