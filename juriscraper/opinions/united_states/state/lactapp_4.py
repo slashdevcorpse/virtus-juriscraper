@@ -46,9 +46,7 @@ class Site(OpinionSiteLinear):
         self.search_date = datetime.today()
         self.make_backscrape_iterable(kwargs)
         self.status = "Published"
-        self.parameters = {
-            "__EVENTTARGET": "ctl00$Main$btnOpMonthYearSearch",
-        }
+        self.parameters = {}
 
     @override
     def _process_html(self) -> None:
@@ -133,6 +131,9 @@ class Site(OpinionSiteLinear):
             value = input.get("value", "")
 
             self.parameters[name] = value
+        # The page's hidden __EVENTTARGET is empty. The search runs only when
+        # it names the LinkButton, so it is set after the hidden fields.
+        self.parameters["__EVENTTARGET"] = "ctl00$Main$btnOpMonthYearSearch"
 
     async def _download_backwards(self, search_date: date) -> None:
         """Download and process HTML for a given target date.
