@@ -106,15 +106,12 @@ class Site(OpinionSiteLinear):
         super().make_backscrape_iterable(kwargs)
         start = self.get_term(self.back_scrape_iterable[0][0])
         end = self.get_term(self.back_scrape_iterable[-1][1])
-        if start == end:
-            self.back_scrape_iterable = [f"{self.base_url}/{start}"]
-        else:
-            self.back_scrape_iterable = [
-                f"{self.base_url}/{yy}" for yy in range(start, end)
-            ]
+        self.back_scrape_iterable = [
+            f"{self.base_url}/{yy}" for yy in range(start, end + 1)
+        ]
 
     async def _download_backwards(self, d: str):
-        self.url = f"{self.base_url}/{d}"
+        self.url = d
         logger.info("Backscraping %s", self.url)
         self.html = await self._download()
         self._process_html()
