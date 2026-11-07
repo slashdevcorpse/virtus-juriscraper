@@ -25,6 +25,8 @@ class Site(OpinionSiteLinear):
         super().__init__(*args, **kwargs)
         self.court_id = self.__module__
         self.url = self.base_url
+        # The API answers 500 to the browser Accept.
+        self.request["headers"]["Accept"] = "application/json"
         self.make_backscrape_iterable(kwargs)
 
     @override
